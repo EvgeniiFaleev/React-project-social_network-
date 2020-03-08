@@ -1,0 +1,50 @@
+html,body{
+    height: 1200px;
+    width: 100;
+    background-color: #EDF2F6;
+}
+.app-wrapper {
+    display: grid;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+
+    grid-template-areas:
+        'h h'
+        'n m'; //по какому шаблону расположить стр и колонки
+
+    grid-template-rows: 60px 1fr; //две строки 
+    grid-template-columns: 2fr 10fr; //две колонки
+    grid-gap: 10px;
+    .header {
+        grid-area: h;
+        background-color: #26cc87b9;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .nav {
+        grid-area: n;
+        background-color: #26cc87b9;
+    }
+
+    .content {
+        grid-area: m;
+        background-color: rgb(188, 240, 212);
+
+        img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .bio {
+            .ava {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    }
+}
