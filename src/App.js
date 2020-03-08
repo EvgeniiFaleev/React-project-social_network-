@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.scss';
 // My components
 import Header from './components/Header';
-import Nav from './components/Nav';
+import Nav from './components/Nav'; 
 import Profile from './components/Profile';
 // ===================================
 export default App;
