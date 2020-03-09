@@ -1,0 +1,15 @@
+.dialogs_wrapper {
+  display: grid;
+
+//   grid-template-areas: "dialogs messages"; //по какому шаблону расположить стр и колонки
+  grid-template-columns: 2fr 10fr; //две колонки
+  .dialogs {
+    // grid-area: dialogs;
+    
+    
+  }
+  .messages {
+    // grid-area: messages;
+
+  }
+}
