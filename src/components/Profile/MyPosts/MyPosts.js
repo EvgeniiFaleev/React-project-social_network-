@@ -3,6 +3,12 @@ import classes from "./MyPosts.module.scss";
 import Post from "./Post/Post";
 
 export default function MyPosts(props) {
+  // Convert posts to array with JSX elements
+  debugger;
+  let posts = props.posts.map((post) => (
+    <Post message={post.message} likeCount={post.likeCount} />
+  ));
+
   return (
     <div className={classes.myPosts}>
       <h3>{props.myPosts_head}</h3>
@@ -10,8 +16,7 @@ export default function MyPosts(props) {
         <textarea></textarea>
         <button>Написать</button>
       </div>
-      <Post message="Привет, как дела?" likeCount="2 лайка" />
-      <Post message="Не умри от коронавируса, друг" likeCount="5 лайков" />
+      {posts}
     </div>
   );
 }
