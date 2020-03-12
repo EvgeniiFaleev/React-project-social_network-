@@ -18,11 +18,17 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Nav />
+        <Nav state={props.state.friends} />
         <div className="app-wrapper-content">
           <Route
             path="/profile"
-            render={() => <Profile state={props.state.ProfilePage} />}
+            render={() => (
+              <Profile
+                state={props.state.ProfilePage}
+                addPost={props.addPost}
+                watch={props.watch}
+              />
+            )}
           />
           <Route
             path="/dialogs"

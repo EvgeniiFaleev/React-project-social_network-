@@ -1,0 +1,13 @@
+.friends {
+  margin: 25vh 0 0 0;
+  p {
+    text-align: center;
+  }
+  .allFriends {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

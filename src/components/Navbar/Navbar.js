@@ -1,8 +1,9 @@
 import React from "react";
 import classes from "./Navbar.module.scss";
 import { NavLink } from "react-router-dom";
+import Friends from "./Friends/Friends";
 
-export default function Nav() {
+export default function Nav(props) {
   return (
     <nav className={classes.nav}>
       <div className={classes.item}>
@@ -21,11 +22,16 @@ export default function Nav() {
         </NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/music" activeClassName={classes.activeLink}>Music</NavLink>
+        <NavLink to="/music" activeClassName={classes.activeLink}>
+          Music
+        </NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/settings" activeClassName={classes.activeLink}>Settings</NavLink>
+        <NavLink to="/settings" activeClassName={classes.activeLink}>
+          Settings
+        </NavLink>
       </div>
+      <Friends friends={props.state} />
     </nav>
   );
 }

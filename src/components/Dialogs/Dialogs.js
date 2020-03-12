@@ -5,7 +5,6 @@ import MessageItem from "./MessageItem/MessageItem";
 
 export default function Dialogs(props) {
   // Convert posts to array with JSX elements
-  debugger;
   let dialogs = props.state.enterDialogs.map(function(dialog) {
     return <DialogItem name={dialog.name} id={dialog.id} />;
   });
