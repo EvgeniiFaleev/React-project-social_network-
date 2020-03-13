@@ -14,25 +14,30 @@ import Settings from "./components/Settings/Settings";
 export default App;
 // ===================================
 function App(props) {
+  console.log(props);
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Nav state={props.state.friends} />
+        <Nav state={props.store.state.friends} />
         <div className="app-wrapper-content">
           <Route
             path="/profile"
             render={() => (
               <Profile
-                state={props.state.ProfilePage}
-                addPost={props.addPost}
-                watch={props.watch}
+                state={props.store.state.ProfilePage}
+                dispatch={props.store.dispatch.bind(props.store)}
               />
             )}
           />
           <Route
             path="/dialogs"
-            render={() => <Dialogs state={props.state.MessagesPage} />}
+            render={() => (
+              <Dialogs
+                state={props.store.state.MessagesPage}
+                dispatch={props.store.dispatch.bind(props.store)}
+              />
+            )}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

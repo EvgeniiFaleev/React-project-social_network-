@@ -15,8 +15,7 @@ export default function Profile(props) {
         myPosts_head="My wall"
         current={props.state.current}
         posts={props.state.enterPosts}
-        addPost={props.addPost}
-        watch={props.watch}
+        dispatch={props.dispatch}
       />
     </main>
   );

@@ -1,6 +1,10 @@
 import React from "react";
 import classes from "./MyPosts.module.scss";
 import Post from "./Post/Post";
+import {
+  addPostActionCreator,
+  updateNewPostActionCreator
+} from "../../../redux/state";
 
 export default function MyPosts(props) {
   // Convert posts to array with JSX elements
@@ -10,12 +14,10 @@ export default function MyPosts(props) {
   let area = React.createRef();
 
   function onButton() {
-    let value = area.current.value;
-    props.addPost();
-    props.watch("");
+    props.dispatch(addPostActionCreator());
   }
   function change() {
-    props.watch(area.current.value);
+    props.dispatch(updateNewPostActionCreator(area.current.value));
   }
   return (
     <div className={classes.myPosts}>
