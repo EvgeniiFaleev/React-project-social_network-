@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Friends.module.scss";
-import Friend from "./FriendItem/FrendItem";
+import Friend from "./FriendItem/FriendItem";
 
 export default function Friends(props) {
   let allFriends = props.friends.map((friend) => {

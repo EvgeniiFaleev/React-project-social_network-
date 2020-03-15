@@ -1,15 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.scss";
 // My components
 import Header from "./components/Header/Header";
 import Nav from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import { Route, BrowserRouter } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 // ===================================
 export default App;
 // ===================================
@@ -19,23 +18,23 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Nav state={props.store.state.friends} />
+        <Nav friends={props.state.friends} />
         <div className="app-wrapper-content">
           <Route
             path="/profile"
             render={() => (
               <Profile
-                state={props.store.state.ProfilePage}
-                dispatch={props.store.dispatch.bind(props.store)}
+                state={props.state.ProfilePage}
+                dispatch={props.dispatch}
               />
             )}
           />
           <Route
             path="/dialogs"
             render={() => (
-              <Dialogs
-                state={props.store.state.MessagesPage}
-                dispatch={props.store.dispatch.bind(props.store)}
+              <DialogsContainer
+                state={props.state.MessagesPage}
+                dispatch={props.dispatch}
               />
             )}
           />

@@ -1,5 +1,7 @@
 // Imagine  that we have response from server with posts
 
+import dialogsPageReducer from "./dialogs-reducer";
+import profilePageReducer from "./profile-reducer";
 const ADD_POST = "ADD-POST";
 const POST_WATCH = "POST-WATCH";
 const SUBSCRIBE = "SUBSCRIBE";
@@ -42,44 +44,21 @@ const store = {
     return this._state;
   },
 
-  _watch(value) {
-    this._state.ProfilePage.current = value;
-    console.log(this._state.ProfilePage.current);
-    // console.log(state.ProfilePage.current);
-    this._callSubscriber(this);
-  },
-  _addPost() {
-    let newPost = {
-      message: this._state.ProfilePage.current,
-      likeCount: "0"
-    };
-    this._state.ProfilePage.enterPosts.push(newPost);
-    this._callSubscriber(this);
-    this._watch(""); //обнуляем текстареа
-  },
-
-  _subscribe(observer) {
+  subscribe(observer) {
     this._callSubscriber = observer;
   },
   // Make one function for all
-  dispatch({ type, value }) {
-    if (type === ADD_POST) {
-      this._addPost();
-    } else if (type === POST_WATCH) {
-      this._watch(value);
-    } else if (type === SUBSCRIBE) {
-      this._subscribe(value);
-    } else if (type === UPDATE_NEW_MESSAGE) {
-      this._state.MessagesPage.current = value;
-      this._callSubscriber(this);
-    } else if (type === SEND_MESSAGE) {
-      let newMessage = {
-        message: this._state.MessagesPage.current,
-        id: 0
-      };
-      this._state.MessagesPage.enterMessages.push(newMessage);
-      this._callSubscriber(this);
-    }
+  dispatch(action) {
+    this._state.MessagesPage = dialogsPageReducer(
+      this._state.MessagesPage,
+      action
+    );
+    this._state.ProfilePage = profilePageReducer(
+      this._state.ProfilePage,
+      action
+    );
+
+    this._callSubscriber(this);
   }
 };
 export const addPostActionCreator = () => ({ type: ADD_POST });

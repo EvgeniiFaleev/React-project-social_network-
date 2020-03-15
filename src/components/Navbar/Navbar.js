@@ -31,7 +31,7 @@ export default function Nav(props) {
           Settings
         </NavLink>
       </div>
-      <Friends friends={props.state} />
+      <Friends friends={props.friends} />
     </nav>
   );
 }

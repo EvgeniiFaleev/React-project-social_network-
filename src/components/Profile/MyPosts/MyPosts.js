@@ -1,10 +1,6 @@
 import React from "react";
 import classes from "./MyPosts.module.scss";
 import Post from "./Post/Post";
-import {
-  addPostActionCreator,
-  updateNewPostActionCreator
-} from "../../../redux/state";
 
 export default function MyPosts(props) {
   // Convert posts to array with JSX elements
@@ -13,18 +9,23 @@ export default function MyPosts(props) {
   ));
   let area = React.createRef();
 
-  function onButton() {
-    props.dispatch(addPostActionCreator());
+  function onPost() {
+    props.post();
   }
-  function change() {
-    props.dispatch(updateNewPostActionCreator(area.current.value));
+  function onChange() {
+    let text = area.current.value;
+    props.change(text);
   }
   return (
     <div className={classes.myPosts}>
-      <h3>{props.myPosts_head}</h3>
+      <h3>My wall</h3>
       <div className={classes.area}>
-        <textarea ref={area} onChange={change} value={props.current}></textarea>
-        <button onClick={onButton}>Написать</button>
+        <textarea
+          ref={area}
+          onChange={onChange}
+          value={props.current}
+        ></textarea>
+        <button onClick={onPost}>Написать</button>
       </div>
       {posts}
     </div>

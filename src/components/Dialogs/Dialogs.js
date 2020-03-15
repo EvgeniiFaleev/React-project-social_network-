@@ -1,8 +1,4 @@
 import React from "react";
-import {
-  sendMessageActionCreator,
-  updateNewMessageActionCreator
-} from "../../redux/state";
 import DialogItem from "./DialogItem/DialogItem";
 import classes from "./Dialogs.module.scss";
 import MessageItem from "./MessageItem/MessageItem";
@@ -17,10 +13,10 @@ export default function Dialogs(props) {
   });
 
   function onSendMessage() {
-    props.dispatch(sendMessageActionCreator());
+    props.sendMessage();
   }
   function onNewMessageChange(e) {
-    props.dispatch(updateNewMessageActionCreator(e.target.value));
+    props.newMessageChange(e);
   }
   // ==================================================================
   return (
