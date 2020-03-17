@@ -4,10 +4,13 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/redux-store";
+import StoreContext from "./StoreContext";
 // ==============================
 function renderEntireTree(store) {
   ReactDOM.render(
-    <App state={store.getState()} dispatch={store.dispatch.bind(store)} />,
+    <StoreContext.Provider value={store}>
+      <App state={store.getState()} dispatch={store.dispatch.bind(store)} />,
+    </StoreContext.Provider>,
     document.getElementById("root")
   );
 }
