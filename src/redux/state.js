@@ -61,15 +61,3 @@ const store = {
     this._callSubscriber(this);
   }
 };
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostActionCreator = (value) => ({
-  type: POST_WATCH,
-  value: value
-});
-export const updateNewMessageActionCreator = (value) => ({
-  type: UPDATE_NEW_MESSAGE,
-  value: value
-});
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
-// export { state, addPost, watch, subscribe };
-export default store;

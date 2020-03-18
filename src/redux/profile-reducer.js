@@ -13,12 +13,17 @@ export default function profilePageReducer(state = initialState, action) {
       message: state.current,
       likeCount: "0"
     };
-    state.enterPosts.push(newPost);
-    state.current = "";
+    let stateCopy = { ...state };
+    stateCopy.enterPosts = [...state.enterPosts];
+    stateCopy.enterPosts.push(newPost);
+    stateCopy.current = "";
+    return stateCopy;
   } else if (action.type === POST_WATCH) {
-    state.current = action.value;
+    let stateCopy = { ...state };
+    stateCopy.current = action.value;
     console.log(state.current);
-    // console.log(state.ProfilePage.current);
+    return stateCopy;
+  } else {
+    return state;
   }
-  return state;
 }

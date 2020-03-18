@@ -15,13 +15,18 @@ let initialState = {
 };
 export default function dialogsPageReducer(state = initialState, action) {
   if (action.type === UPDATE_NEW_MESSAGE) {
-    state.current = action.value;
+    let stateCopy = { ...state };
+    stateCopy.current = action.value;
+    return stateCopy;
   } else if (action.type === SEND_MESSAGE) {
     let newMessage = {
       message: state.current,
       id: 0
     };
-    state.enterMessages.push(newMessage);
+    let stateCopy = { ...state };
+    stateCopy.enterMessages = [...state.enterMessages];
+    stateCopy.enterMessages.push(newMessage);
+  } else {
+    return state;
   }
-  return state;
 }

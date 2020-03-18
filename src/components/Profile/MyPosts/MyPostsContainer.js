@@ -1,46 +1,26 @@
-import React from "react";
-import MyPosts from "./MyPosts";
 import {
   addPostActionCreator,
   updateNewPostActionCreator
-} from "../../../redux/state";
-import StoreContext from "../../../StoreContext";
+} from "../../../redux/redux-store";
+import MyPosts from "./MyPosts";
+import { connect } from "react-redux";
 
-export default function MyPostsContainer(props) {
-  // Convert posts to array with JSX elements
+let MapStateToProps = (state) => {
+  return {
+    posts: state.ProfilePage.enterPosts,
+    current: state.ProfilePage.current
+  };
+};
+let MapDispatchToProps = (dispatch) => {
+  return {
+    post() {
+      dispatch(addPostActionCreator());
+    },
+    change(text) {
+      dispatch(updateNewPostActionCreator(text));
+    }
+  };
+};
+const MyPostsContainer = connect(MapStateToProps, MapDispatchToProps)(MyPosts);
 
-  // function post() {
-  //   props.dispatch(addPostActionCreator());
-  // }
-  // function change(text) {
-  //   props.dispatch(updateNewPostActionCreator(text));
-  // }
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        // Context===================
-        function change(text) {
-          store.dispatch(updateNewPostActionCreator(text));
-        }
-        function post() {
-          store.dispatch(addPostActionCreator());
-        }
-        return (
-          // <MyPosts
-          //   change={change}
-          //   posts={props.posts}
-          //   current={props.current}
-          //   post={post}
-          // />
-          // =========Using Context Api=======================
-          <MyPosts
-            change={change}
-            posts={store.getState().ProfilePage.enterPosts}
-            current={store.getState().ProfilePage.current}
-            post={post}
-          />
-        );
-      }}
-    </StoreContext.Consumer>
-  );
-}
+export default MyPostsContainer;

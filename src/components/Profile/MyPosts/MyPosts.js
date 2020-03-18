@@ -4,6 +4,7 @@ import Post from "./Post/Post";
 
 export default function MyPosts(props) {
   // Convert posts to array with JSX elements
+
   let posts = props.posts.map((post) => (
     <Post message={post.message} likeCount={post.likeCount} />
   ));
