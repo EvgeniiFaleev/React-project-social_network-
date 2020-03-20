@@ -18,17 +18,9 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Nav friends={props.state.friends} />
+        <Nav />
         <div className="app-wrapper-content">
-          <Route
-            path="/profile"
-            render={() => (
-              <Profile
-                state={props.state.ProfilePage}
-                dispatch={props.dispatch}
-              />
-            )}
-          />
+          <Route path="/profile" render={() => <Profile />} />
           <Route path="/dialogs" render={() => <DialogsContainer />} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
