@@ -12,12 +12,6 @@ export default function Dialogs(props) {
     return <MessageItem message={m.message} id={m.id} />;
   });
 
-  function onSendMessage() {
-    props.sendMessage();
-  }
-  function onNewMessageChange(e) {
-    props.newMessageChange(e);
-  }
   // ==================================================================
   return (
     <div className={classes.dialogs_wrapper}>
@@ -25,11 +19,12 @@ export default function Dialogs(props) {
       <div className={classes.messages}>{messages}</div>
       <div>
         <textarea
-          onChange={onNewMessageChange}
+          onChange={props.newMessageChange}
           name=""
+          value={props.MessagesPage.current}
           placeholder="enter new Message"
         ></textarea>
-        <button onClick={onSendMessage}>send</button>
+        <button onClick={props.sendMessage}>send</button>
       </div>
     </div>
   );

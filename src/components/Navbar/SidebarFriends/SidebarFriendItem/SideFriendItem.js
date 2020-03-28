@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./FriendItem.module.scss";
 
-export default function Friend(props) {
+export default function SideFriend(props) {
   return (
     <div className={classes.friend_item}>
       <img

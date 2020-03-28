@@ -17,6 +17,7 @@ export default function dialogsPageReducer(state = initialState, action) {
   if (action.type === UPDATE_NEW_MESSAGE) {
     let stateCopy = { ...state };
     stateCopy.current = action.value;
+    console.log(stateCopy.current);
     return stateCopy;
   } else if (action.type === SEND_MESSAGE) {
     let newMessage = {
@@ -25,8 +26,16 @@ export default function dialogsPageReducer(state = initialState, action) {
     };
     let stateCopy = { ...state };
     stateCopy.enterMessages = [...state.enterMessages];
+    stateCopy.current = "";
     stateCopy.enterMessages.push(newMessage);
+    return stateCopy;
   } else {
     return state;
   }
 }
+
+export const updateNewMessageActionCreator = (value) => ({
+  type: UPDATE_NEW_MESSAGE,
+  value: value
+});
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });

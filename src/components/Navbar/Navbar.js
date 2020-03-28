@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Navbar.module.scss";
 import { NavLink } from "react-router-dom";
-import FriendsContainer from "./Friends/FriendsContainer";
+import SidebarFriendsContainer from "./SidebarFriends/SidebarFriendsContainer";
 
 export default function Nav(props) {
   return (
@@ -31,7 +31,7 @@ export default function Nav(props) {
           Settings
         </NavLink>
       </div>
-      <FriendsContainer />
+      <SidebarFriendsContainer />
     </nav>
   );
 }

@@ -27,3 +27,9 @@ export default function profilePageReducer(state = initialState, action) {
     return state;
   }
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const updateNewPostActionCreator = (value) => ({
+  type: POST_WATCH,
+  value: value
+});
