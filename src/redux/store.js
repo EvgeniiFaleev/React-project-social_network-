@@ -9,6 +9,7 @@ const UPDATE_NEW_MESSAGE = "UPDATE_NEW_MESSAGE";
 const SEND_MESSAGE = "SEND_NEW_MESSAGE";
 
 const store = {
+  oldStore: true,
   _state: {
     ProfilePage: {
       enterPosts: [
@@ -61,3 +62,6 @@ const store = {
     this._callSubscriber(this);
   }
 };
+
+window.store=store;
+export default store;

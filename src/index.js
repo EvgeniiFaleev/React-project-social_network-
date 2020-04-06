@@ -4,13 +4,15 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/redux-store";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
+console.log(store);
 // ==============================
 // function renderEntireTree(store) {
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />,
-  </Provider>,
+    <App />
+   </Provider>,
   document.getElementById("root")
 );
 // }

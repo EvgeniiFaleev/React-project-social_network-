@@ -1,8 +1,15 @@
 .header {
-    grid-area: h;
-    background-color: #26cc87b9;
+  grid-area: h;
+  background-color: #26cc87b9;
 
-    img {
-        height: 100%;
-    }
+  img {
+    height: 100%;
+  }
+
+  .login_block {
+    float: right;
+    color: blanchedalmond;
+      margin-right: 20px;
+      margin-top: 20px;
+  }
 }

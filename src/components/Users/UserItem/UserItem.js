@@ -1,29 +1,39 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
+
+
 let User = (props) => {
   return (
     <div className="user" key={props.id}>
-      <img src="" alt="" />
-      {props.followed ? (
-        <button
-          onClick={() => {
-            props.unFollow(props.id);
-          }}
-        >
-          Unfollow
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            props.follow(props.id);
-          }}
-        >
-          Follow
-        </button>
-      )}
+      <NavLink to={`/profile/${props.id}`}>
+        <img src={props.photo} alt=""/>
+      </NavLink>
+      {props.followed ?
+        (
+
+          <button
+            onClick={() => {
+              props.onUnFollow(props.id);
+            }}
+          >
+            Unfollow
+          </button>
+        ) :
+        (
+          <button
+            onClick={() => {
+              props.onFollow(props.id);
+            }}
+          >
+            Follow
+          </button>
+        )}!
+
       <p>{props.fullName}</p>
       <p>{props.location}</p>
     </div>
   );
+
 };
 
 export default User;
