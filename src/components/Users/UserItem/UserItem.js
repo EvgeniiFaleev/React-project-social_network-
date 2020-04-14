@@ -8,26 +8,26 @@ let User = (props) => {
       <NavLink to={`/profile/${props.id}`}>
         <img src={props.photo} alt=""/>
       </NavLink>
-      {props.followed ?
-        (
+      {props.followed ? (
 
-          <button
-            onClick={() => {
-              props.onUnFollow(props.id);
-            }}
-          >
-            Unfollow
-          </button>
-        ) :
-        (
-          <button
-            onClick={() => {
-              props.onFollow(props.id);
-            }}
-          >
-            Follow
-          </button>
-        )}!
+        <button
+          disabled={props.isFollowing.some((id) => id === props.id)}
+          onClick={() => {
+            props.onUnFollow(props.id);
+          }}
+        >
+          Unfollow
+        </button>
+      ) : (
+        <button
+          disabled={props.isFollowing.some((id) => id === props.id)}
+          onClick={() => {
+            props.onFollow(props.id);
+          }}
+        >
+          Follow
+        </button>
+      )}!
 
       <p>{props.fullName}</p>
       <p>{props.location}</p>
