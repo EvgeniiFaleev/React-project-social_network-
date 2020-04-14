@@ -1,3 +1,6 @@
+import {usersAPI} from "../api/api";
+
+
 const ADD_POST = "ADD-POST";
 const POST_WATCH = "POST-WATCH";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
@@ -31,6 +34,7 @@ export default function profilePageReducer(state = initialState,
       return state;
   }
 }
+// ===============Action Creators====================
 export const addPostActionCreator = () => (
   {type: ADD_POST}
 );
@@ -44,4 +48,9 @@ export const setUsersProfile = (profile) => (
     type: SET_USERS_PROFILE, profile: profile
   }
 );
-
+// ====================Thunk Creatots===========================
+export const getUser = (userId) => (dispatch) => {
+  usersAPI.getUser(userId)
+    .then((data) =>
+      dispatch(setUsersProfile(data)));
+};
