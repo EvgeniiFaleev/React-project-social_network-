@@ -29,6 +29,6 @@ export const authUser = (user) => (
 
 export const login = () => (dispatch) => {
   authAPI.login().then((data) => {
-    if(data.messages.length === 0 )dispatch(authUser(data.data));
+    if(data.messages.length === 0 ) dispatch(authUser(data.data));
   });
 };

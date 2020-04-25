@@ -7,18 +7,14 @@ import {
 
 let MapStateToProps = (state) => {
   return {
-    posts: state.ProfilePage.enterPosts,
-    current: state.ProfilePage.current
+    posts: state.ProfilePage.enterPosts
   };
 };
 let MapDispatchToProps = (dispatch) => {
   return {
-    post() {
-      dispatch(addPostActionCreator());
+    post(newMessageBody) {
+      dispatch(addPostActionCreator(newMessageBody));
     },
-    change(text) {
-      dispatch(updateNewPostActionCreator(text));
-    }
   };
 };
 const MyPostsContainer = connect(MapStateToProps, MapDispatchToProps)(MyPosts);

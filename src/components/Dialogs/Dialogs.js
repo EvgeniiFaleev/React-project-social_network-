@@ -2,6 +2,7 @@ import React from "react";
 import DialogItem from "./DialogItem/DialogItem";
 import classes from "./Dialogs.module.scss";
 import MessageItem from "./MessageItem/MessageItem";
+import DialogsForm from "./DialogsForm/DialogsForm";
 
 
 export default function Dialogs(props) {
@@ -13,19 +14,16 @@ export default function Dialogs(props) {
     return <MessageItem message={m.message} id={m.id}/>;
   });
 
+let onSendMessage = (formData) =>{
+  props.sendMessage(formData.newMessageBody);
+};
   // ==================================================================
   return (
     <div className={classes.dialogs_wrapper}>
       <div className={classes.dialogs}>{dialogs}</div>
       <div className={classes.messages}>{messages}</div>
       <div>
-        <textarea
-          onChange={props.newMessageChange}
-          name=""
-          value={props.MessagesPage.current}
-          placeholder="enter new Message"
-        />
-        <button onClick={props.sendMessage}>send</button>
+        <DialogsForm onSubmit={onSendMessage}/>
       </div>
     </div>
   );

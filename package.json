@@ -15,7 +15,8 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "react-router": "latest",
-    "redux-thunk": "latest"
+    "redux-thunk": "latest",
+    "redux-form": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
