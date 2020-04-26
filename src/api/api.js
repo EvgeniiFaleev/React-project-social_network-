@@ -47,30 +47,53 @@ const usersAPI = {
 
 };
 const authAPI = {
-  login() {
+  me() {
     return instance
       .get(`auth/me`)
-      .then((response) => response.data);
+      .then((response) => {
+        if (response.data.resultCode === 0) return response.data
+      });
   },
-  auth({email, password}) {
-    return fetch("https://social-network.samuraijs.com/api/1.0/auth/login", {
-      method: "POST",
-      body: {email,password}
-    })
-      .then((response) => {
-       return response.json();
+  login(formData) {
+//     return instance.post("/auth/login", formData)
+//       .then((response) => console.log(response))
+// }
+    return fetch(
+      "https://social-network.samuraijs.com/api/1.0/auth/login",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+        credentials: "include",
+        headers: {
+          'Content-Type': 'application/json',
+          "API-KEY": "46252d8e-8243-4294-910b-e99470877fd5"
+        },
 
       })
       .then((response) => {
-        if (response.resultCode === 1){
-          return response
-        }else{
-          return "Неправильное имя или пароль.";
-        }          ;
+        return response.json();
+      })
+      .then((response) => {return  response
       })
 
+  },
+
+  logout() {
+    return fetch(
+      "https://social-network.samuraijs.com/api/1.0/auth/login",
+      {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "API-KEY": "46252d8e-8243-4294-910b-e99470877fd5"
+        },
+      })
+      .then((response) => {
+        if (response.json().resultCode === 0) return response.json;
+      })
   }
 };
+
 const profileAPI = {
   getUser(id) {
     return instance

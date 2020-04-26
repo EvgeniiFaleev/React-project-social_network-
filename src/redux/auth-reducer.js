@@ -1,18 +1,26 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 
 const AUTH_USER = "AUTH_USER";
 
 let initialState = {
   user: {
-    login: null, email: null, id: null, isAuth: false
+    me: null,
+    email: null,
+    id: null,
+    isAuth: false
   }
 };
 export default function authUserReducer(state = initialState, action) {
   switch (action.type) {
     case AUTH_USER:
       return {
-        ...state, user: {...action.user, isAuth: true}
+        ...state,
+        user: {
+          ...action.user,
+          isAuth: action.user.isAuth
+        }
       };
     default:
       return state;
@@ -20,15 +28,39 @@ export default function authUserReducer(state = initialState, action) {
   }
 }
 // ==========Action Creators======================
-export const authUser = (user) => (
+export const authUser = (user, isAuth) => (
   {
-    type: AUTH_USER, user
+    type: AUTH_USER,
+    user: {
+      ...user,
+      isAuth
+    }
   }
 );
 // =====================Thunk Creators====================
 
-export const login = () => (dispatch) => {
-  authAPI.login().then((data) => {
-    if(data.messages.length === 0 ) dispatch(authUser(data.data));
+export const me = (isAuth) => (dispatch) => {
+  return authAPI.me().then((data) => {
+    if (data) dispatch(authUser(data.data, isAuth));
+  });
+};
+export const login = (formData) => (dispatch) => {
+  authAPI.login(formData).then((response) => {
+    if (response.resultCode === 0) {
+      dispatch(me(true));
+    } else {
+      console.log(response);
+      let error = response.messages.length > 0 ? response.messages[0] :
+        "Unknown Error";
+      dispatch(stopSubmit("login", {
+        _error: error
+      }))
+    }
+  });
+};
+
+export const logout = () => (dispatch) => {
+  authAPI.logout().then(() => {
+    dispatch(authUser(false));
   });
 };

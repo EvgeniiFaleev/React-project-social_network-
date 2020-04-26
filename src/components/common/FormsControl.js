@@ -16,8 +16,9 @@ export const FormsControl = ({meta, input, ...props}) => {
 // =====================Wrapper==============
 export const Input = (props) => {
   return (
-    <FormsControl {...props}><input {...props.input}
-      className={props.meta.touched && props.meta.error ? classes.input_error : ""}
+    <FormsControl {...props}><input {...props.input} type={props.type}
+      className={props.meta.touched && props.meta.error ?
+        classes.input_error : ""}
       placeholder={props.placeholder}/></FormsControl>
   )
 };
