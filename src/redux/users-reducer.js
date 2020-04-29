@@ -11,16 +11,17 @@ const TOGGLE_IS_FOLLOWING = 'TOGGLE_IS_FOLLOWING';
 
 let initialState = {
   users: [],
-  pageSize: 10,
+  pageSize: 100,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
-  isFollowing: []
+  isFollowing: [],
 };
 
 const usersPageReducer = (state = initialState, action) => {
 
   switch (action.type) {
+    case "FAKE": return{...state, fake:state.fake+1};
     case FOLLOW:
       return {
         ...state, users: state.users.map((user, index, arr) => {
@@ -119,7 +120,7 @@ export const getUsers = (pageSize, currentPage) => {
     dispatch(toggleIsFetching(true));
     usersAPI.getUsers(pageSize, currentPage)
       .then((data) => {
-        if (currentPage != 1) dispatch(setCurrentPage(currentPage));
+        if (currentPage !== 1) dispatch(setCurrentPage(currentPage));
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.items));
         dispatch(setTotalCount(data.totalCount));

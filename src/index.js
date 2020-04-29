@@ -5,21 +5,14 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/redux-store";
 import {Provider} from "react-redux";
-console.log(store);
-// ==============================
-// function renderEntireTree(store) {
 
+// setInterval(()=>store.dispatch({type:"FAKE"}), 1000);
 ReactDOM.render(
   <Provider store={store}>
     <App />
    </Provider>,
   document.getElementById("root")
 );
-// }
 
-// renderEntireTree(store);
-// store.subscribe(() => renderEntireTree(store));
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();

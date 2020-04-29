@@ -6,11 +6,18 @@ import Users from "./Users";
 import {connect} from "react-redux";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {
+  getCurrentPage,
+  getIsFetching,
+  getIsFollowing,
+  getPageSize,
+  getTotalUsersCount,
+  getUsersSelector, getUsersWithPhotoSelector
+} from "../../redux/users-selectors";
 
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    console.log("DIDMOUNT");
     this.props.getUsers(this.props.pageSize, this.props.currentPage);
   }
 
@@ -30,7 +37,7 @@ class UsersContainer extends React.Component {
   };
 
   render() {
-    console.log(`render`);
+    console.log(`renderUsers`);
     return <Users
       onPageChanged={this.onPageChanged} {...this.props}
       onFollow={this.onFollow}
@@ -39,13 +46,14 @@ class UsersContainer extends React.Component {
 }
 
 let MapStateToProps = (state) => {
+  console.log("MAPSTATETOPROPS USERS")
   return {
-    users: state.UsersPage.users,
-    pageSize: state.UsersPage.pageSize,
-    totalUsersCount: state.UsersPage.totalUsersCount,
-    currentPage: state.UsersPage.currentPage,
-    isFetching: state.UsersPage.isFetching,
-    isFollowing: state.UsersPage.isFollowing
+    users: getUsersWithPhotoSelector(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage:getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    isFollowing: getIsFollowing(state)
   };
 };
 
