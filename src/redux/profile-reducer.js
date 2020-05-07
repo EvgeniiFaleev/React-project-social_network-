@@ -5,7 +5,7 @@ const ADD_POST = "ADD-POST";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
 const SET_STATUS = "SET_STATUS";
 
-let initialState = {
+export const initialState = {
   enterPosts: [{
     message: "Привет, как дела?",
     likeCount: "2 лайка"
@@ -63,21 +63,21 @@ export const setStatus = (status) => (
 );
 // ====================Thunk Creatots===========================
 export const getUser = (userId) => (dispatch) => {
-  usersAPI.getUser(userId)
+   return usersAPI.getUser(userId)
     .then((data) => {
-      console.log("getUser");
       dispatch(setUsersProfile(data));
     });
 };
 
 export const getStatus = (id) => (dispatch) => {
-  profileAPI.getStatus(id)
+ return profileAPI.getStatus(id)
     .then((status) => {
       dispatch(setStatus(status));
     });
 };
 
 export const updateStatus = (status) => (dispatch) => {
-  profileAPI.updateStatus(status)
-    .then((response) => dispatch(setStatus(status)));
+  return profileAPI.updateStatus(status)
+    .then((response) => {
+      dispatch(setStatus(status))});
 };

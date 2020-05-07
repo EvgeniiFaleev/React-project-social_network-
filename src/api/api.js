@@ -48,13 +48,27 @@ const usersAPI = {
 };
 const authAPI = {
   me() {
-    return instance
-      .get(`auth/me`)
-      .then((response) => {
-        if (response.data.resultCode === 0) return response.data
-      });
+    // return instance
+    //   .get(`auth/me`)
+    //   .then((response) => {
+    //     if (response.data.resultCode === 0) return response.data
+    //   });
+
+    return fetch("https://social-network.samuraijs.com/api/1.0/auth/me",
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          'Content-Type': 'application/json',
+          "API-KEY": "46252d8e-8243-4294-910b-e99470877fd5"
+        }
+      }).then((response) => response.json()).then((response) => {
+      if (response.resultCode === 0) return response.data
+    })
   },
+
   login(formData) {
+
 //     return instance.post("/auth/login", formData)
 //       .then((response) => console.log(response))
 // }
@@ -73,7 +87,8 @@ const authAPI = {
       .then((response) => {
         return response.json();
       })
-      .then((response) => {return  response
+      .then((response) => {
+        return response
       })
 
   },
@@ -89,6 +104,7 @@ const authAPI = {
         },
       })
       .then((response) => {
+        console.log(111);
         if (response.json().resultCode === 0) return response.json;
       })
   }

@@ -1,5 +1,5 @@
 const SEND_MESSAGE = "SEND_NEW_MESSAGE";
-let initialState = {
+export const initialState = {
   enterDialogs: [{
     name: "Jack",
     id: "1"

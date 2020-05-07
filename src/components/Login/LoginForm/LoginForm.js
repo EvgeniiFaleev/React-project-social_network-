@@ -11,7 +11,6 @@ let maxLength30 = maxLengthCreator(30);
 
 let LoginForm = (props) => {
   const {handleSubmit} = props;
-
 console.log(props);
   return (
     <form onSubmit={handleSubmit}>

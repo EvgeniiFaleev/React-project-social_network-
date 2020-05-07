@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ProfileInfo.module.scss";
 import ProfileStatus from "./ProfileStatus"
+import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 
 export default class ProfileInfo extends React.Component {
@@ -13,7 +14,7 @@ export default class ProfileInfo extends React.Component {
           <div
             className={classes.description}>{this.props.description}</div>
         </div>
-        <ProfileStatus updateStatus={this.props.updateStatus} id={this.props.id} getStatus={this.props.getStatus} setStatus={this.props.setStatus} status={this.props.status}/>
+        <ProfileStatusWithHooks updateStatus={this.props.updateStatus} id={this.props.id} getStatus={this.props.getStatus} setStatus={this.props.setStatus} status={this.props.status}/>
       </div>
     );
   }

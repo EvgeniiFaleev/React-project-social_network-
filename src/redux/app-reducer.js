@@ -3,7 +3,7 @@ import {me} from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
 
-let initialState = {
+export const initialState = {
   initialized: false
 
 };
@@ -28,6 +28,6 @@ export const initializedSuccess = () => (
 // =====================Thunk Creators====================
 
 export const initializeApp = () => (dispatch) => {
-  dispatch(me(true)).then(() => {
+ return  dispatch(me(true)).then(() => {
     dispatch(initializedSuccess())});
 };

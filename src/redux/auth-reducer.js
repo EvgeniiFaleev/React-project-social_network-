@@ -41,15 +41,14 @@ export const authUser = (user, isAuth) => (
 
 export const me = (isAuth) => (dispatch) => {
   return authAPI.me().then((data) => {
-    if (data) dispatch(authUser(data.data, isAuth));
+    if (data) dispatch(authUser(data, isAuth));
   });
 };
 export const login = (formData) => (dispatch) => {
-  authAPI.login(formData).then((response) => {
+  return authAPI.login(formData).then((response) => {
     if (response.resultCode === 0) {
       dispatch(me(true));
     } else {
-      console.log(response);
       let error = response.messages.length > 0 ? response.messages[0] :
         "Unknown Error";
       dispatch(stopSubmit("login", {
@@ -60,7 +59,7 @@ export const login = (formData) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  authAPI.logout().then(() => {
-    dispatch(authUser(false));
+  return authAPI.logout().then(() => {
+    dispatch(authUser(undefined, false));
   });
 };

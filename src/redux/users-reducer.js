@@ -9,7 +9,7 @@ const SET_TOTAL_COUNT = "SET_TOTAL_COUNT;";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING;";
 const TOGGLE_IS_FOLLOWING = 'TOGGLE_IS_FOLLOWING';
 
-let initialState = {
+ export const initialState = {
   users: [],
   pageSize: 100,
   totalUsersCount: 0,
@@ -21,7 +21,6 @@ let initialState = {
 const usersPageReducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case "FAKE": return{...state, fake:state.fake+1};
     case FOLLOW:
       return {
         ...state, users: state.users.map((user, index, arr) => {
@@ -71,8 +70,8 @@ const usersPageReducer = (state = initialState, action) => {
   }
 };
 
-// Action Creators===============================================
 export default usersPageReducer;
+// Action Creators===============================================
 
 export const follow = (userId) => (
   {
@@ -118,8 +117,8 @@ export const toggleFollowingUser = (id, isFetchingButton) => (
 export const getUsers = (pageSize, currentPage) => {
   return (dispatch) => {
     dispatch(toggleIsFetching(true));
-    usersAPI.getUsers(pageSize, currentPage)
-      .then((data) => {
+    return usersAPI.getUsers(pageSize, currentPage)
+      .then((data) => { debugger
         if (currentPage !== 1) dispatch(setCurrentPage(currentPage));
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.items));
@@ -131,7 +130,7 @@ export const getUsers = (pageSize, currentPage) => {
 export const followUser = (id) => {
   return (dispatch) => {
     dispatch(toggleFollowingUser(id, true));
-    usersAPI.followUser(id)
+   return  usersAPI.followUser(id)
       .then((data) => {
         if (data.resultCode === 0) {
           dispatch(toggleFollowingUser(id, false));
@@ -143,7 +142,7 @@ export const followUser = (id) => {
 export const unFollowUser = (id) => {
   return (dispatch) => {
     dispatch(toggleFollowingUser(id, true));
-    usersAPI.unFollowUser(id)
+    return usersAPI.unFollowUser(id)
       .then((data) => {
         if (data.resultCode === 0) {
           dispatch(toggleFollowingUser(id, false));

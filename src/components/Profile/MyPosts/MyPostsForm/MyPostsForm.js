@@ -12,6 +12,6 @@ let MyPostsForm = (props) => {
   )
 };
 
-MyPostsForm = reduxForm({form: 'M yPosts'})(MyPostsForm);
+MyPostsForm = reduxForm({form: 'MyPosts'})(MyPostsForm);
 
 export default MyPostsForm;

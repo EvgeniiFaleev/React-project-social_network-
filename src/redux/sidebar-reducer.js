@@ -1,4 +1,4 @@
-let initialState = [
+export const initialState = [
   { name: "Jack", id: "1", online: true },
   { name: "Lila", id: "2", online: true },
   { name: "Kirill", id: "3", online: false },
