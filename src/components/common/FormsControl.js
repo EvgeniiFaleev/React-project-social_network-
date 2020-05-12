@@ -2,14 +2,14 @@ import React from "react";
 import classes from "./FormsControl.module.scss";
 
 
-export const FormsControl = ({meta, input, ...props}) => {
+export const FormsControl = ({meta: {touched, error}, children}) => {
 
-  let error = meta.touched && meta.error ?
-    <p className={classes.error}>{meta.error}</p> : "";
+  let err = touched && error ?
+    <p className={classes.error}>{error}</p> : "";
   return (
     <>
-      {props.children}
-      {error}
+      {children}
+      {err}
     </>
   )
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./UserItem/UserItem";
-import classes from "./Users.module.scss";
 import Preloader from "../common/preloader/Preloader";
+import {Paginator} from "../common/Paginator/Paginator";
 
 
 let Users = (props) => {
@@ -22,30 +22,6 @@ let Users = (props) => {
       />
     );
   });
-  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-  let firstPages = [];
-  let lastPages = [];
-  for (let i = 1; i <= pagesCount; i++) {
-    if (i <= 3) {
-      firstPages.push(<span
-        onClick={(e) => {
-          props.onPageChanged(e);
-        }}
-        className={props.currentPage === i ? classes.selected : null}
-      >
-        {i + " "}
-      </span>);
-    } else if (i >= pagesCount - 3 && i < pagesCount) {
-      lastPages.push(<span
-        onClick={(e) => {
-          props.onPageChanged(e);
-        }}
-        className={props.currentPage === i ? classes.selected : null}
-      >
-        {i + " "}
-      </span>);
-    }
-  }
   return (
     <>
       {props.isFetching ? (
@@ -53,7 +29,7 @@ let Users = (props) => {
       ) : (
         <div className="users">
           {users}
-          {firstPages}...{lastPages}
+          <Paginator {...props}/>
         </div>
       )}
     </>

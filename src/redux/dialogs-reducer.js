@@ -32,6 +32,7 @@ export default function dialogsPageReducer(state = initialState,
           id: 0
         }]
       };
+
     default:
       return state;
   }

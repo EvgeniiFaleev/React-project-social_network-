@@ -2,17 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
 import store from "./redux/redux-store";
 import {Provider} from "react-redux";
 
-// setInterval(()=>store.dispatch({type:"FAKE"}), 1000);
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App store={store}/>
    </Provider>,
   document.getElementById("root")
 );
 
-
-serviceWorker.unregister();

@@ -22,8 +22,7 @@ class UsersContainer extends React.Component {
   }
 
 
-  onPageChanged = (e) => {
-    let pageNumber = e.target.textContent;
+  onPageChanged = (pageNumber) => {
     this.props.getUsers(this.props.pageSize, pageNumber);
 
   };
@@ -48,7 +47,7 @@ class UsersContainer extends React.Component {
 let MapStateToProps = (state) => {
   console.log("MAPSTATETOPROPS USERS")
   return {
-    users: getUsersWithPhotoSelector(state),
+    users: getUsersSelector(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage:getCurrentPage(state),

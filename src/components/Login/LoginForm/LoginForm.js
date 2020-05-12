@@ -3,15 +3,13 @@ import {Field, reduxForm} from 'redux-form';
 import {
   maxLengthCreator, required
 } from "../../../validate/validators";
-import {Input} from "../../common/FormsControl";
+import {createField, Input} from "../../common/FormsControl";
 import classes from "../../common/FormsControl.module.scss"
 
 
 let maxLength30 = maxLengthCreator(30);
 
-let LoginForm = (props) => {
-  const {handleSubmit} = props;
-console.log(props);
+let LoginForm = ({handleSubmit, error}) => {
   return (
     <form onSubmit={handleSubmit}>
       <div><Field name='email' validate={[required, maxLength30]}
@@ -25,7 +23,7 @@ console.log(props);
       /></div>
       <div><Field name='rememberMe' component='input' type="checkbox"/>
       </div>
-      <span className={classes.span_error}>{props.error}</span>
+      <span className={classes.span_error}>{error}</span>
       <div>
         <button>Login</button>
       </div>
