@@ -1,25 +1,45 @@
-import React from "react";
+import React, {useEffect} from "react";
 import classes from "./Profile.module.scss";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Preloader from "../common/preloader/Preloader";
-import {setStatus} from "../../redux/profile-reducer";
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import {getStatus, getUser} from "../../redux/profile-reducer";
+import MyPosts from "./MyPosts/MyPosts";
 
 
-export default function Profile(props) {
+export default function Profile({selectedId}) {
+
+const dispatch = useDispatch();
+
+  const {profile, authUserId} = useSelector((state) => (
+    {
+      profile: state.ProfilePage.profile,
+      authUserId: state.authUser.user.id
+    }
+  ),shallowEqual);
+
+  let userId = selectedId || authUserId;
+
+
+  useEffect(() => {
+    dispatch(getStatus(userId));
+    dispatch(getUser(userId));
+  }, [userId]);
+
+
   return (
     <>
-      {!props.profile ? (
+      {!profile ? (
         <Preloader/>
       ) : (
         <main className={classes.content}>
-          <ProfileInfo id={props.id} status={props.status} updateStatus={props.updateStatus} getStatus={props.getStatus} setStatus={props.setStatus}
-            description={props.profile.fullName}
+          <ProfileInfo profile={profile}
+            selectedId={selectedId}
             head_img="https://p.bigstockphoto.com/eIdTXLbqQilMs9xbjvcs_bigstock-Aerial-View-Of-Sandy-Beach-Wit-256330393.jpg"
-            myAva_img={props.profile.photos.small ||
+            myAva_img={profile.photos.small ||
             "https://chat.europnet.org/assets/plugins/avatar-undefined.jpg"}
           />
-          <MyPostsContainer/>
+          <MyPosts/>
         </main>
       )}
     </>

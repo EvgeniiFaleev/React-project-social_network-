@@ -1,16 +1,16 @@
 import React, {Component, Suspense} from "react";
 import "./App.scss";
-import {BrowserRouter, Route} from "react-router-dom";
+import {HashRouter, Route} from "react-router-dom";
 // My components
 import Nav from "./components/Navbar/Navbar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/preloader/Preloader";
-import {Switch} from "react-router";
+import {Redirect, Switch} from "react-router";
+import Profile from "./components/Profile/Profile";
 
 
 const Settings = React.lazy(() => import("./components/Settings/Settings"));
@@ -31,30 +31,36 @@ class App extends Component {
     if (!this.props.initialized) return <Preloader/>;
 
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="app-wrapper">
           <HeaderContainer/>
           <Nav/>
           <Suspense fallback={<Preloader/>}>
             <div className="app-wrapper-content">
-              <Route path={'/profile/:userId?'} render={(props) => {
-                return (
-                  <ProfileContainer
-                    key={props.match.params.userId}/>
-                )
-              }}/>
-              <Route path="/dialogs"
-                render={() => <DialogsContainer/>}/>
-              <Route path="/news"
-                component={News}/>
-              <Route path="/music" component={Music}/>
-              <Route path="/settings" component={Settings}/>
-              <Route path="/users" component={UsersContainer}/>
-              <Route path="/login" component={Login}/>
+              <Switch>
+
+                <Route path={'/profile/:userId?'} render={(props) => {
+                  return (
+                    <Profile
+                      key={props.match.params.userId} selectedId={props.match.params.userId}/>
+                  )
+                }}/>
+                <Route path="/dialogs"
+                  render={() => <DialogsContainer/>}/>
+                <Route path="/news"
+                  component={News}/>
+                <Route path="/music" component={Music}/>
+                <Route path="/settings" component={Settings}/>
+                <Route path="/users" component={UsersContainer}/>
+                <Route path="/login" component={Login}/>
+                <Redirect exact from="/" to="/profile/" />
+                <Route path="*" render={()=>(<div>404 NOT FOUND</div>)}/>
+
+              </Switch>
             </div>
           </Suspense>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

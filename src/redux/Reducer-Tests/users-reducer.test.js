@@ -40,11 +40,11 @@ describe('Test for Users_reducer', () => {
       "followed": false
     }];
 
-    test('Follow action', () => {
-      state = {
-        ...state,
-        users: someUsers
-      };
+      test('Follow action', () => {
+        state = {
+          ...state,
+          users: someUsers
+        };
 
       const expectedState = {
         ...state,

@@ -1,14 +1,23 @@
 import React, {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
+import {updateStatus} from "../../../redux/profile-reducer";
 
 
-export const ProfileStatusWithHooks = (props) => {
+export const ProfileStatusWithHooks = ({dispatch}) => {
+
+  const userStatus = useSelector((state) => (
+    state.ProfilePage.status
+  ));
+
   let [status, setStatus] = useState(null);
   let [editMode, setEditMode] = useState(false);
-  useEffect(() => {
-    setStatus(props.status)}, [props.status]);
 
-  const onStatusChange = (e) =>{
-    props.updateStatus(e.target.value);
+  useEffect(() => {
+    setStatus(userStatus)
+  }, [userStatus]);
+
+  const onStatusChange = (e) => {
+    dispatch(updateStatus(e.target.value));
     setEditMode(false);
   };
 
@@ -18,7 +27,7 @@ export const ProfileStatusWithHooks = (props) => {
           onChange={(e) => setStatus(e.target.value)}
           onBlur={onStatusChange}
           value={status}/> :
-        <p onClick={() => setEditMode(true)}>{props.status || "no-" +
+        <p onClick={() => setEditMode(true)}>{userStatus || "no-" +
         " status"}</p>}
     </div>
   )

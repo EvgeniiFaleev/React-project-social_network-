@@ -87,7 +87,7 @@ const authAPI = {
       .then((response) => {
         return response.json();
       })
-      .then((response) => {
+      .then((response) => { debugger
         return response
       })
 
@@ -104,9 +104,14 @@ const authAPI = {
         },
       })
       .then((response) => {
-        console.log(111);
         if (response.json().resultCode === 0) return response.json;
       })
+  },
+
+  getCaptcha(){
+    return instance.get("/security/get-captcha-url").then((response)=>{
+      return response.data.url;
+    })
   }
 };
 
@@ -115,7 +120,6 @@ const profileAPI = {
     return instance
       .get(`profile/${id}`)
       .then((response) => {
-        console.log(response);
         return response.data
       });
   },
@@ -136,12 +140,30 @@ const profileAPI = {
   updateStatus(status) {
     return instance.put("profile/status", {status})
       .then((response) => {
+        console.log(response);
         if (response.data.resultCode === 0) {
-          console.log(response);
+
           return response;
         }
       })
       .catch((e) => console.log("ОШИБКА " + e));
+  },
+  setPhoto(photoFile) {
+    const formData = new FormData();
+    formData.append("newPhoto", photoFile);
+    return instance.put('/profile/photo', formData)
+      .then((response) => {
+        debugger
+        if (response.data.resultCode === 0) {
+          console.log(response);
+          return response;
+        }
+      });
+  },
+  setProfile(profile) {
+    return instance.put('/profile/', profile).then((response) => {
+    return response;
+    })
   }
 };
 export {usersAPI, authAPI, profileAPI};

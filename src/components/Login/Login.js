@@ -5,7 +5,7 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router";
 
 
-let Login = ({login, isAuth}) => {
+let Login = ({login, isAuth,captchaUrl}) => {
   const onSubmit = (formData) => {
     // console.log(formData);я
     login(formData);
@@ -14,11 +14,12 @@ let Login = ({login, isAuth}) => {
    (
     <div>
       <h1>Login</h1>
-      <LoginForm onSubmit={onSubmit}/>
+      <LoginForm captchaUrl={captchaUrl}  onSubmit={onSubmit}/>
     </div>
   )
 };
 let MapStateToProps = (state) =>({
-  isAuth: state.authUser.user.isAuth
+  isAuth: state.authUser.user.isAuth,
+  captchaUrl: state.authUser.captchaUrl
 });
 export default connect(MapStateToProps,{login})(Login);

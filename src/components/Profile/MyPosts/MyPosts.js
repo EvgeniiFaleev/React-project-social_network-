@@ -2,17 +2,20 @@ import React from "react";
 import classes from "./MyPosts.module.scss";
 import Post from "./Post/Post";
 import MyPostsForm from "./MyPostsForm/MyPostsForm";
+import {useDispatch, useSelector} from "react-redux";
+import {addPostActionCreator} from "../../../redux/profile-reducer";
 
 
-export default function MyPosts(props) {
-  // Convert posts to array with JSX elements
+export default function MyPosts() {
 
-  let posts = props.posts.map((post) => (
+const enterPosts = useSelector((state) => state.ProfilePage.enterPosts);
+const dispatch = useDispatch();
+   const posts = enterPosts.map((post) => (
     <Post message={post.message} likeCount={post.likeCount}/>
   ));
 
   function onSubmit(formData) {
-    props.post(formData.newMessageBody);
+    dispatch(addPostActionCreator(formData.newMessageBody));
   }
 
   return (
