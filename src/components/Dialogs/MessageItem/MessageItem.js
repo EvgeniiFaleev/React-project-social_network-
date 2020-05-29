@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./MessageItem.module.scss";
 
-export default function MessageItem(props) {
-  return <div className={classes.message}>{props.message}</div>;
-}
+
+export const MessageItem = ({message}) => {
+  return <div className={classes.message}>{message}</div>;
+};

@@ -1,25 +1,24 @@
 import React from 'react';
-import LoginForm from "./LoginForm/LoginForm"
-import {connect} from "react-redux";
-import {login} from "../../redux/auth-reducer";
+import {useSelector} from "react-redux";
 import {Redirect} from "react-router";
+import {LoginForm} from "./LoginForm/LoginForm";
 
 
-let Login = ({login, isAuth,captchaUrl}) => {
-  const onSubmit = (formData) => {
-    // console.log(formData);я
-    login(formData);
-  };
+const Login = () => {
+  const {isAuth, captchaUrl} = useSelector((state) => (
+    {
+      isAuth: state.authUser.user.isAuth,
+      captchaUrl: state.authUser.captchaUrl
+    }
+  ));
+
   return isAuth ? <Redirect to={"/profile"}/> :
    (
     <div>
       <h1>Login</h1>
-      <LoginForm captchaUrl={captchaUrl}  onSubmit={onSubmit}/>
+      <LoginForm captchaUrl={captchaUrl} />
     </div>
   )
 };
-let MapStateToProps = (state) =>({
-  isAuth: state.authUser.user.isAuth,
-  captchaUrl: state.authUser.captchaUrl
-});
-export default connect(MapStateToProps,{login})(Login);
+
+ export default Login;

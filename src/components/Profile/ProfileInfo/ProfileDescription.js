@@ -15,9 +15,13 @@ export const ProfileDescription = ({profile, isOwner}) => {
     <>
       {isOwner && editMode ?
         <ProfileFormData profile={profile}
-          closeEditMode={() => setEditMode(false)}/> : <div>
-          <button onClick={onOpenEditMode}>Edit Profile</button>
-          <p>Looking for a Job: {profile.lookingForAJob ? "Yes" :
+          closeEditMode={() => setEditMode(false)}/> :
+        <div>
+          {isOwner ?
+            <button onClick={onOpenEditMode}>Edit Profile</button> :
+            ""}
+          <p>Looking for a Job: {profile.lookingForAJob ?
+            "Yes" :
             "Empty" + " Field"}</p>
           <p>Looking for a job
             description: {profile.lookingForAJobDescription ||

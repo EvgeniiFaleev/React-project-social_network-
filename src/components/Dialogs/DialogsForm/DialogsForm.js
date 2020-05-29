@@ -1,13 +1,24 @@
 import React from "react";
-import {Field, reduxForm} from 'redux-form';
+import {sendMessageActionCreator} from "../../../redux/dialogs-reducer";
+import {useDispatch} from "react-redux";
+import {useForm} from "react-hook-form";
 
 
-let DialogsForm = (props) => {
+export const DialogsForm = () => {
+
+  const {register,errors, handleSubmit} = useForm();
+  const dispatch=useDispatch();
+  let onSendMessage = (formData) => {
+    dispatch(sendMessageActionCreator(formData.newMessageBody));
+  };
+
   return (
-    <form onSubmit={props.handleSubmit}>
-      <div><Field name="newMessageBody"
-        placeholder="enter new Message" component='textarea'
-
+    <form onSubmit={ handleSubmit(onSendMessage)}>
+      <div><input ref={register({
+        required: true
+      })} name="newMessageBody"
+        placeholder="enter new Message"
+        onChange={()=>console.log(errors)}
       /></div>
       <div>
         <button>Send</button>
@@ -16,5 +27,4 @@ let DialogsForm = (props) => {
   )
 };
 
-DialogsForm = reduxForm({form: "DialogsForm"})(DialogsForm);
-export default DialogsForm;
+

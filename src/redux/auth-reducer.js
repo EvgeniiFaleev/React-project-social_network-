@@ -66,11 +66,9 @@ export const login = (formData) => (dispatch) => {
       if(response.resultCode === 10){
         dispatch(getCaptcha());
       }
-      let error = response.messages.length > 0 ? response.messages[0] :
+      const error = response.messages.length > 0 ? response.messages[0] :
         "Unknown Error";
-      dispatch(stopSubmit("login", {
-        _error: error
-      }))
+      return error;
     }
   });
 };

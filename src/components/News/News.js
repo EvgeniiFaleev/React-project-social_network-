@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./News.module.scss";
 
-export default function News(props) {
-  console.log(props);
+
+const News = () => {
   return <div className="">News</div>;
-}
+};
+export default News;

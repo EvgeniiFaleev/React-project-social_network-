@@ -1,20 +1,15 @@
 import React from "react";
 import classes from "./ProfileInfo.module.scss";
-import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+import {ProfileStatus} from "./ProfileStatus";
 import {ProfileDescription} from "./ProfileDescription";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {savePhoto} from "../../../redux/profile-reducer";
 
 
-export const ProfileInfo = ({selectedId, profile, ...props}) => {
-
-  const authUserId = useSelector((state) => (
-    state.authUser.user.id
-  ));
-
+export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
   const dispatch = useDispatch();
 
-  const isOwner = selectedId === authUserId;
+  const isOwner = userId === authUserId;
 
   const onSaveFile = (e) => {
     if (e.target.files.length) dispatch(savePhoto(e.target.files[0]));
@@ -30,8 +25,8 @@ export const ProfileInfo = ({selectedId, profile, ...props}) => {
       </div>
       {isOwner && <input onChange={onSaveFile}
         type="file"/>}
-      <ProfileStatusWithHooks dispatch={dispatch}
-        id={selectedId}/>
+      <ProfileStatus dispatch={dispatch} isOwner={isOwner}
+        userId={userId}/>
       <ProfileDescription profile={profile} isOwner={isOwner}/>
     </div>
   );

@@ -3,14 +3,14 @@ import "./App.scss";
 import {HashRouter, Route} from "react-router-dom";
 // My components
 import Nav from "./components/Navbar/Navbar";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
-import Preloader from "./components/common/preloader/Preloader";
+import {Preloader} from "./components/common/preloader/Preloader";
 import {Redirect, Switch} from "react-router";
-import Profile from "./components/Profile/Profile";
+import {Profile} from "./components/Profile/Profile";
+import {Users} from "./components/Users/Users";
+import {Dialogs} from "./components/Dialogs/Dialogs";
+import {Header} from "./components/Header/Header";
 
 
 const Settings = React.lazy(() => import("./components/Settings/Settings"));
@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <HashRouter>
         <div className="app-wrapper">
-          <HeaderContainer/>
+          <Header/>
           <Nav/>
           <Suspense fallback={<Preloader/>}>
             <div className="app-wrapper-content">
@@ -41,17 +41,16 @@ class App extends Component {
 
                 <Route path={'/profile/:userId?'} render={(props) => {
                   return (
-                    <Profile
-                      key={props.match.params.userId} selectedId={props.match.params.userId}/>
+                    <Profile selectedId={props.match.params.userId}/>
                   )
                 }}/>
                 <Route path="/dialogs"
-                  render={() => <DialogsContainer/>}/>
+                  component={Dialogs}/>
                 <Route path="/news"
                   component={News}/>
                 <Route path="/music" component={Music}/>
                 <Route path="/settings" component={Settings}/>
-                <Route path="/users" component={UsersContainer}/>
+                <Route path="/users" component={Users}/>
                 <Route path="/login" component={Login}/>
                 <Redirect exact from="/" to="/profile/" />
                 <Route path="*" render={()=>(<div>404 NOT FOUND</div>)}/>

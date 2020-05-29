@@ -1,49 +1,33 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
+import {updateStatus} from "../../../redux/profile-reducer";
 
 
-export default class ProfileStatus extends React.Component {
-  state = {
-    editMode: false,
-    status: this.props.status
+export const ProfileStatus = ({dispatch, isOwner}) => {
+
+  const userStatus = useSelector((state) => (
+    state.ProfilePage.status
+  ));
+
+  let [status, setStatus] = useState(null);
+  let [editMode, setEditMode] = useState(false);
+
+  useEffect(() => {
+    setStatus(userStatus)
+  }, []);
+
+  const onStatusChange = (e) => {
+    dispatch(updateStatus(e.target.value));
+    setEditMode(false);
   };
-
-
-componentDidUpdate(prevProps, prevState, snapshot) {
-  if(prevProps.status !== this.props.status){
-    this.setState({
-      status: this.props.status
-    })
-  }
-}
-
-  activateEditMode = () => {
-    this.setState({
-      editMode: true,
-    });
-  };
-
-  deActivateEditMode = (e) => {
-    this.setState({
-      editMode: false
-    });
-    this.props.updateStatus(e.currentTarget.value);
-  };
-
-  onStatusChange = (e) => {
-    this.setState({
-      status: e.target.value
-    })
-  };
-
-  render() {
-    return (
-      <div className="">
-        {this.state.editMode ? <textarea autoFocus={true}
-            onChange={this.onStatusChange}
-            onBlur={this.deActivateEditMode}
-            value={this.state.status}/> :
-          <p onClick={this.activateEditMode}>{this.props.status || "no- status"}</p>}
-      </div>
-    )
-  }
-}
+  return (
+    <div className="">
+      {isOwner && editMode ? <textarea autoFocus={true}
+          onChange={(e) => setStatus(e.target.value)}
+          onBlur={onStatusChange}
+          value={status}/> :
+        <p onClick={() => setEditMode(true)}>{userStatus || "no-" +
+        " status"}</p>}
+    </div>
+  )
+};

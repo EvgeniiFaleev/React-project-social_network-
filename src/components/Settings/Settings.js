@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Settings.module.scss";
 
-export default function Settings(props) {
+
+const Settings = () => {
   return <div className="">Settings</div>;
-}
+};
+export default Settings;

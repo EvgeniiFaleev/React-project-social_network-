@@ -39,9 +39,7 @@ export const ProfileFormData = ({
         name={"contacts." + item[0]}
         defaultValue={item[1]}/>
       <ErrorMessage errors={errors}
-        name={"contacts." + item[0]}>
-        {({message}) => <p className={classes.error}>{message}</p>}
-      </ErrorMessage>
+        name={"contacts." + item[0]} as="p" className={classes.error}/>
     </p>
   });
 
@@ -67,9 +65,7 @@ export const ProfileFormData = ({
         <input ref={register} name={"AboutMe"}
           defaultValue='About me'/>
       </p>
-      <ErrorMessage errors={errors} name="contactsErr">
-        {({message}) => <p className={classes.error}>{message}</p>}
-      </ErrorMessage>
+      <ErrorMessage errors={errors} name="contactsErr" className={classes.error} as="p"/>
       {contactItems}
       <input type="submit" value={"Save"}
       />

@@ -2,7 +2,7 @@ import {profileAPI, usersAPI} from "../api/api";
 
 
 const ADD_POST = "ADD-POST";
-const SET_USERS_PROFILE = "SET_USERS_PROFILE";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const UPDATE_PHOTO = "profile/UPDATE_PHOTO";
 
@@ -28,7 +28,7 @@ export default function profilePageReducer(state = initialState,
           likeCount: "0"
         }],
       };
-    case SET_USERS_PROFILE:
+    case SET_USER_PROFILE:
       return {
         ...state,
         profile: action.profile
@@ -55,9 +55,9 @@ export const addPostActionCreator = (newMessageBody) => (
   }
 );
 
-export const setUsersProfile = (profile) => (
+export const setUserProfile = (profile) => (
   {
-    type: SET_USERS_PROFILE,
+    type: SET_USER_PROFILE,
     profile: profile
   }
 );
@@ -78,7 +78,7 @@ export const updatePhoto = (photo) => (
 export const getUser = (userId) => (dispatch) => {
   return usersAPI.getUser(userId)
     .then((data) => {
-      dispatch(setUsersProfile(data));
+      dispatch(setUserProfile(data));
     });
 };
 
