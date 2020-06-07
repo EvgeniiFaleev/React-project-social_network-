@@ -1,23 +1,20 @@
-import React, {Component, Suspense} from "react";
+import React, {Component} from "react";
 import "./App.scss";
 import {HashRouter, Route} from "react-router-dom";
-// My components
-import Nav from "./components/Navbar/Navbar";
+// My ui
 import {connect} from "react-redux";
-import {initializeApp} from "./redux/app-reducer";
-import {Preloader} from "./components/common/preloader/Preloader";
 import {Redirect, Switch} from "react-router";
-import {Profile} from "./components/Profile/Profile";
-import {Users} from "./components/Users/Users";
-import {Dialogs} from "./components/Dialogs/Dialogs";
-import {Header} from "./components/Header/Header";
-
-
-const Settings = React.lazy(() => import("./components/Settings/Settings"));
-const Music = React.lazy(() => import("./components/Music/Music"));
-const News = React.lazy(() => import("./components/News/News"));
-const Login = React.lazy(() => import("./components/Login/Login"));
-// ===================================
+import {UsersPage} from "./pages/users";
+import {ProfilePage} from "./pages/profile";
+import {LoginPage} from "./pages/login";
+import {NewsPage} from "./pages/news";
+import {DialogsPage} from "./pages/dialogs";
+import {MusicPage} from "./pages/music";
+import {SettingsPage} from "./pages/settings";
+import {CommonTemplate, Preloader} from "./ui";
+import {initActions} from "./features/autnentification/modules/initialization/";
+import {useAuthRedirect} from "./utils/useAuthRedirect";
+import {Dialog} from "./features/dialogs/ui/organisms/Dialog";
 
 
 // ===================================
@@ -33,40 +30,36 @@ class App extends Component {
     return (
       <HashRouter>
         <div className="app-wrapper">
-          <Header/>
-          <Nav/>
-          <Suspense fallback={<Preloader/>}>
-            <div className="app-wrapper-content">
               <Switch>
-
                 <Route path={'/profile/:userId?'} render={(props) => {
                   return (
-                    <Profile selectedId={props.match.params.userId}/>
+                    <ProfilePage selectedId={props.match.params.userId}/>
                   )
                 }}/>
-                <Route path="/dialogs"
-                  component={Dialogs}/>
-                <Route path="/news"
-                  component={News}/>
-                <Route path="/music" component={Music}/>
-                <Route path="/settings" component={Settings}/>
-                <Route path="/users" component={Users}/>
-                <Route path="/login" component={Login}/>
-                <Redirect exact from="/" to="/profile/" />
-                <Route path="*" render={()=>(<div>404 NOT FOUND</div>)}/>
+                <Route   path="/dialogs" component={DialogsPage}/>
 
+                <Route path="/news" component={NewsPage}/>
+                <Route path="/music" component={MusicPage}/>
+                <Route path="/settings" component={SettingsPage}/>
+                <Route path="/users" component={UsersPage}/>
+                <Route path="/login" component={LoginPage}/>
+                <Redirect exact from="/" to="/profile/" />
+                <Route  render={()=>(<div>404 NOT FOUND</div>)}/>
               </Switch>
-            </div>
-          </Suspense>
         </div>
       </HashRouter>
     );
   }
 }
 
-let MapStateToProps = (state) => (
+const MapStateToProps = (state) => (
   {
-    initialized: state.app.initialized
+    initialized: state.init.initialized
+  });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    initializeApp: () => dispatch(initActions.initializeApp()),
   }
-);
-export default connect(MapStateToProps, {initializeApp})(App);
+};
+export default connect(MapStateToProps, mapDispatchToProps)(App);

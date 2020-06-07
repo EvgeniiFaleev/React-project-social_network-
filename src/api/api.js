@@ -1,5 +1,6 @@
 import * as axios from "axios";
 
+
 let instance = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
   withCredentials: true,
@@ -29,8 +30,7 @@ const usersAPI = {
   unFollowUser(id) {
     return instance.delete(`follow/${id}`)
       .then((response) => {
-        console.log(response);
-        return response.data
+        return response.data;
       });
   },
 };
@@ -112,4 +112,28 @@ const profileAPI = {
     })
   }
 };
-export {usersAPI, authAPI, profileAPI};
+
+const dialogsAPI = {
+
+  getDialogs() {
+    return instance.get("/dialogs")
+      .then((response) => { console.log(response);
+        return response.data});
+  },
+
+  startDialog(userId) {
+    return instance.put(`/dialogs/${userId}`)
+      .then((response) => response);
+  },
+
+  sendMessage(userId, message) {
+    return instance.post(`/dialogs/${userId}/messages`, {body: message})
+      .then((response) => response);
+  },
+
+  getDialog(id) {
+    return instance.get(`dialogs/${id}/messages`)
+      .then((response) => response.data.items);
+  }
+};
+export {usersAPI, authAPI, profileAPI, dialogsAPI};
