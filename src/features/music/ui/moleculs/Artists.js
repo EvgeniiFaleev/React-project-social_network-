@@ -1,15 +1,16 @@
 import classes from "../../Music.module.scss";
 import {Preloader} from "../../../../ui";
 import React from "react";
+import {Plate} from "../atoms/plate";
 
 
 export const Artists = ({artists}) => {
   
   const artistsElements = artists?.map((artist) =>
-    <section className={classes.artists_block} key={artist.id}>
-      <a href={artist.link}><img src={artist.picture_big} alt="artist"/></a>
-      <p>{artist.name}</p>
-    </section>
+    <Plate
+    id={artist.id} pictureLink={artist.link} picture={artist.picture_big}
+    artistName={artist.name}
+    />
   );
 
   return (

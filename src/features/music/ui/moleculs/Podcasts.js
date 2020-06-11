@@ -1,18 +1,21 @@
 import classes from "../../Music.module.scss";
 import {Preloader} from "../../../../ui";
 import React from "react";
+import {Plate} from "../atoms/plate";
 
 
 export const Podcasts = ({podcasts}) => {
 
-  const podcastsElements = podcasts?.map((podcast) =>
-    <section className={classes.artists_block} key={podcast.id}>
-      <a href={podcast.link}><img className={classes.podcast_img} src={podcast.picture_big}
-        alt="podcast"/></a>
-      <a href={podcast.link}><p>{podcast.title}</p></a>
-      <p className={classes.podcast_description}>{podcast.description}</p>
-    </section>
-  );
+  const podcastsElements = podcasts?.map((podcast) => {
+
+    return <Plate
+      id={podcast.id} pictureLink={podcast.link}
+      picture={podcast.picture_big}
+      title={podcast.title}>
+      <p
+        className={classes.podcast_description}>{podcast.description}</p>
+    </Plate>
+  });
 
   return (
     <>

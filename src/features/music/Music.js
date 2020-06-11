@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {musicActions} from "./";
 import {SearchResults} from "./ui/moleculs/SearchResults";
-import {Search} from "./ui/atoms/Search";
+import {Search} from "./ui/moleculs/Search";
 import {Chart} from "./ui/organisms/Chart";
 
 
