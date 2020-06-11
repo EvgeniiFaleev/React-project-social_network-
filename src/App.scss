@@ -1,6 +1,6 @@
 html,
 body {
-  width: 100;
+  width: 100%;
   background-color: #edf2f6;
 }
 
@@ -19,6 +19,7 @@ body {
   grid-gap: 10px;
   .app-wrapper-content {
     display: flex;
+    width: 100%;
     //justify-content: center;
     grid-area: m;
     background-color: rgb(188, 240, 212);

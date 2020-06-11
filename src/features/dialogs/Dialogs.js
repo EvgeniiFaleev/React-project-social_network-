@@ -1,9 +1,7 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React from "react";
 import {useAuthRedirect} from "../../utils/useAuthRedirect";
-import {dialogsActions} from "./modules/dialogs";
 import {Route, Switch} from "react-router";
-import {Dialog} from "./ui/organisms/Dialog";
+import {Dialog} from "./ui/molecules/Dialog";
 import {DialogsList} from "./ui/organisms/DialogsList";
 
 

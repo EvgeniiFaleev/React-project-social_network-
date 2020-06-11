@@ -1,13 +1,11 @@
 import React from "react";
 import classes from "./Dialog.module.scss";
-import {Link, Route, Switch} from "react-router-dom";
-import {CommonTemplate} from "../../../../../ui";
-import {Dialog} from "../../organisms/Dialog";
+import {Link} from "react-router-dom";
 
 
 export const DialogDescription = ({
   hasNewMessages, id, lastDialogActivityDate, lastUserActivityDate,
-  newMessagesCount, photos: {small: avatar}, userName, ...props
+  newMessagesCount, photos: {small: avatar}, userName
 }) => {
 
   return (

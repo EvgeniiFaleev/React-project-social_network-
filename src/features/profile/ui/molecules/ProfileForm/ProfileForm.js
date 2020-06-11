@@ -2,7 +2,7 @@ import React from "react";
 import {ErrorMessage, useForm} from "react-hook-form";
 import classes from '../../organisms/ProfileInfo/ProfileInfo.module.scss'
 import {useDispatch} from "react-redux";
-import {profileActions} from "../../../modules/profile";
+import  {profileActions} from "../../../modules/profile/";
 
 
 export const ProfileForm = ({

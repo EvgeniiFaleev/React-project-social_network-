@@ -11,10 +11,8 @@ import {NewsPage} from "./pages/news";
 import {DialogsPage} from "./pages/dialogs";
 import {MusicPage} from "./pages/music";
 import {SettingsPage} from "./pages/settings";
-import {CommonTemplate, Preloader} from "./ui";
+import {Preloader} from "./ui";
 import {initActions} from "./features/autnentification/modules/initialization/";
-import {useAuthRedirect} from "./utils/useAuthRedirect";
-import {Dialog} from "./features/dialogs/ui/organisms/Dialog";
 
 
 // ===================================

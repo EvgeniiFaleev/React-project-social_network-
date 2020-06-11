@@ -1,9 +1,9 @@
 import React from "react";
 import {ErrorMessage, useForm} from "react-hook-form";
-import {profileActions} from "../../../modules/profile";
 import {useDispatch} from "react-redux";
 import classes
   from "../../../../autnentification/ui/organisms/LoginForm/LoginForm.module.scss";
+import {profileActions} from "../../../modules/profile";
 
 
 export const MyPostsForm = () => {

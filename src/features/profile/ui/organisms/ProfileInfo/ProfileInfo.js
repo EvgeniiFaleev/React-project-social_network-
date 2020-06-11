@@ -3,7 +3,7 @@ import classes from "./ProfileInfo.module.scss";
 import {useDispatch} from "react-redux";
 import {ProfileEdit} from "../../molecules/ProfileEdit/ProfileEdit";
 import {ProfileStatus} from "../../atoms/ProfileStatus/ProfileStatus";
-import {profileActions} from "../../../modules/profile";
+import  {profileActions} from "../../../modules/profile";
 
 
 export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {

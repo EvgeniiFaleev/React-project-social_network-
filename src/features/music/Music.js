@@ -1,8 +1,31 @@
-import React from "react";
-// import classes from "./Music.module.scss";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {musicActions} from "./";
+import {SearchResults} from "./ui/moleculs/SearchResults";
+import {Search} from "./ui/atoms/Search";
+import {Chart} from "./ui/organisms/Chart";
 
 
 export const Music = () => {
-  return <div className="">Music</div>;
-};
 
+  const dispatch = useDispatch();
+
+  const searchResults = useSelector((state) => state.music?.searchResults?.data);
+
+  useEffect(() => {
+    dispatch(musicActions.setSearchResults(null));
+    dispatch(musicActions.getMusicChart())
+
+  }, [dispatch]);
+
+
+  return (
+    <>
+      <Search dispatch={dispatch}/>
+      {searchResults ?
+        <SearchResults searchResults={searchResults}
+          dispatch={dispatch}/> :
+        <Chart/>}
+    </>
+  )
+};

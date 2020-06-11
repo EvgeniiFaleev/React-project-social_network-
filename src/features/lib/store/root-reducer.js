@@ -4,6 +4,8 @@ import {usersReducer} from "../../users/";
 import {profileReducer} from "../../profile/";
 import {initReducer} from "../../autnentification/";
 import {dialogsReducer} from "../../dialogs/";
+import {newsReducer} from "../../news/";
+import {musicReducer} from "../../music/";
 
 
 export const rootReducer = combineReducers({
@@ -11,5 +13,7 @@ export const rootReducer = combineReducers({
   users: usersReducer,
   auth: authReducer,
   init: initReducer,
-  dialogs: dialogsReducer
+  dialogs: dialogsReducer,
+  news: newsReducer,
+  music: musicReducer
 });

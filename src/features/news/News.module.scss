@@ -1,0 +1,21 @@
+.news_wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.news{
+  display: flex;
+  flex-direction: column;
+  &_article{
+    margin:20px;
+    border: 1px solid royalblue;
+    padding: 10px;
+  }
+}
+.categories{
+  display: flex;
+  justify-content: space-around;
+&_category{
+  margin: 20px;
+  cursor: pointer;
+}
+}

@@ -1,8 +1,9 @@
 import classes from "../../Dialogs.module.scss";
 import React, {useEffect} from "react";
 import {DialogDescription} from "../molecules/DialogDescriprion/DialogDescription";
-import {useDispatch, useSelector} from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {dialogsActions} from "../../modules/dialogs";
+import {Preloader} from "../../../../ui";
 
 
 export const DialogsList = () => {
@@ -14,16 +15,25 @@ export const DialogsList = () => {
     dispatch(dialogsActions.getDialogs());
   }, [dispatch]);
 
-  let dialogs = useSelector((state) => state.dialogs.dialogs);
+  let {dialogs, isFetching} = useSelector((state) => (
+    {
+      dialogs: state.dialogs.dialogs,
+      isFetching: state.init.isFetching
+    }
+  ), shallowEqual);
   dialogs = dialogs?.map((dialog) => {
     return <DialogDescription key={dialog.id} {...dialog}/>;
   });
 
   return (
-    <div className={classes.dialogs_wrapper}>
-      {dialogs ?
-        dialogs :
-        <p>No Dialogs Here</p>}
-    </div>
+    <>
+      {isFetching ?
+        <Preloader/> :
+        <div className={classes.dialogs_wrapper}>
+          {dialogs ?
+            dialogs :
+            <p>No Dialogs Here</p>}
+        </div>}
+    </>
   )
 };

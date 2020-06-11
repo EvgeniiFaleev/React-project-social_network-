@@ -1,6 +1,6 @@
-import *as types from "./types"
 import {profileAPI} from "../../../../api/api";
 import {initActions} from "../../../autnentification/modules/initialization";
+import * as types from "./types";
 
 // ===============Action Creators====================
 export const addPostActionCreator = (newMessageBody) => (
@@ -48,7 +48,7 @@ export const getStatus = (id) => (dispatch) => {
 
 export const updateStatus = (status) => (dispatch) => {
   return profileAPI.updateStatus(status)
-    .then((response) => {
+    .then(() => {
       dispatch(setStatus(status))
     });
 };

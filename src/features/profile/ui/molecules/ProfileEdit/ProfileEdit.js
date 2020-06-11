@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {ProfileForm} from "../ProfileForm/ProfileFormData";
+import {ProfileForm} from "../ProfileForm/ProfileForm";
 import {Contacts} from "../Contacts/Contacts";
 
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {profileActions} from "../../../modules/profile";
+import {profileActions} from "../../../../profile/modules/profile";
 
 
 export const ProfileStatus = ({dispatch, isOwner}) => {

@@ -5,7 +5,8 @@ import {useAuthRedirect} from "../../utils/useAuthRedirect";
 import {Preloader} from "../../ui";
 import {ProfileInfo} from "./ui/organisms/ProfileInfo/ProfileInfo";
 import {MyPosts} from "./ui/organisms/MyPosts/MyPosts";
-import {profileActions} from "./modules/profile";
+import * as profileActions from "./modules/profile/actions";
+
 
 
 export const Profile = ({selectedId}) => {

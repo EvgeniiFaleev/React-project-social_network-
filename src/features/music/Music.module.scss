@@ -1,0 +1,33 @@
+.track_block{
+  display: flex;
+  span{
+    cursor: auto;
+  }
+}
+
+.music{
+  width: 100%;
+  .category_header{
+    text-align: left;
+    width: 100%;
+  }
+  &_tracks{
+    width: 90%;
+    margin: auto;
+  }
+  .artists_header{
+    text-align: center;
+  }
+  &_artists{
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+.podcast_description{
+  display: none;
+}
+

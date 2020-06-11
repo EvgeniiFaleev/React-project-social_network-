@@ -1,5 +1,7 @@
 import * as types from "./types"
 import {dialogsAPI} from "../../../../api/api";
+import {initActions} from "../../../autnentification/modules/initialization";
+import {toggleIsFetching} from "../../../autnentification/modules/initialization/actions";
 
 
 export const setDialog = (dialog) => (
@@ -17,8 +19,12 @@ export const setDialogs = (dialogs) => (
 );
 
 export const getDialogs = () => (dispatch) => {
+  dispatch(initActions.toggleIsFetching(true));
   dialogsAPI.getDialogs()
-    .then((dialogs) => dispatch(setDialogs(dialogs)));
+    .then((dialogs) => {
+      dispatch(setDialogs(dialogs));
+      dispatch(toggleIsFetching(false));
+    });
 };
 
 export const getDialog = (id) => (dispatch) => {
@@ -27,7 +33,7 @@ export const getDialog = (id) => (dispatch) => {
 };
 
 
-export const sendMessage = (userId, message) => async (dispatch) => {
+export const sendMessage = (userId, message) => async () => {
    await dialogsAPI.startDialog(userId);
   await dialogsAPI.sendMessage(userId, message);
 };

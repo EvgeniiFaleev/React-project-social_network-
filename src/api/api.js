@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 
-let instance = axios.create({
+const instance = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
   withCredentials: true,
   headers: {
@@ -49,7 +49,6 @@ const authAPI = {
 
     return instance.post("/auth/login", formData)
       .then((response) => {
-        console.log(response)
         return response.data;
       });
   },
