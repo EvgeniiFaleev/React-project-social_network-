@@ -1,22 +1,21 @@
 .header {
-  grid-area: h;
-  background-color: #26cc87b9;
+  background-color: #2b2728;
+  position: fixed;
+  z-index: 1;
+  top:0;
+  width: 100%;
+  color: white;
 
-  img {
-    height: 100%;
+  &_content {
+    width: 100%;
+    max-width: 1050px;
+    margin: auto;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
   }
 
-  .login_block {
-    float: right;
-    color: blanchedalmond;
-      margin-right: 20px;
-      margin-top: 20px;
-    .login_link{
-      color:white;
-      text-decoration: none;
-    }
-    .login_name{
-      padding-right: 10px;
-    }
+  &_logo {
+    width: 70px;
   }
 }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./App.scss";
+import "./App.module.scss";
 import {HashRouter, Route} from "react-router-dom";
 // My ui
 import {connect} from "react-redux";
@@ -13,7 +13,7 @@ import {MusicPage} from "./pages/music";
 import {SettingsPage} from "./pages/settings";
 import {Preloader} from "./ui";
 import {initActions} from "./features/autnentification/modules/initialization/";
-
+import classes from "./App.module.scss"
 
 // ===================================
 class App extends Component {
@@ -27,7 +27,6 @@ class App extends Component {
 
     return (
       <HashRouter>
-        <div className="app-wrapper">
               <Switch>
                 <Route path={'/profile/:userId?'} render={(props) => {
                   return (
@@ -44,7 +43,6 @@ class App extends Component {
                 <Redirect exact from="/" to="/profile/" />
                 <Route  render={()=>(<div>404 NOT FOUND</div>)}/>
               </Switch>
-        </div>
       </HashRouter>
     );
   }

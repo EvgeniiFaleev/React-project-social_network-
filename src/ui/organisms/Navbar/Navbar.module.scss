@@ -1,15 +1,36 @@
 .nav {
-  background-color: #26cc87b9;
-  padding: 20px;
-  color: #f1f1f0;
+  background-color: #FFFFFF;
+
+  padding: 0 15px 0 0;
+  flex-basis: 15%;
+  margin-top: 5%;
   .item {
-    // color: #f1f1f0;
+    position: relative;
+    padding: 15px 0  15px 15px;
+    display: flex;
+    align-items: flex-start;
     a {
       text-decoration: none;
-      color: rgb(235, 235, 235);
+      color: #6d6e71;
     }
     a.activeLink {
-      color: gold;
+      color: #27aae1;
     }
+
   }
+  .item::after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #f1f2f2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+}
+.icon{
+  width: 25px;
+  padding-right: 10px;
 }

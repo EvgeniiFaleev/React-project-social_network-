@@ -8,7 +8,6 @@ export const reducer = (state = initialState,
   action) => {
   switch (action.type) {
     case types.SET_NEWS:
-      debugger
       return {
         ...state,
        articles: action.articles
