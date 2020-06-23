@@ -6,7 +6,8 @@ import {Preloader} from "../../ui";
 import {ProfileInfo} from "./ui/organisms/ProfileInfo/ProfileInfo";
 import {MyPosts} from "./ui/organisms/MyPosts/MyPosts";
 import * as profileActions from "./modules/profile/actions";
-
+import profileCommon from "./ui/assets/profileCommon.jpg";
+import avatarUndefined from "./ui/assets/avatar-undefined.jpg"
 
 
 export const Profile = ({selectedId}) => {
@@ -34,15 +35,14 @@ export const Profile = ({selectedId}) => {
 
   return (
     <>
-      { isFetching || !profile ?
-          <Preloader/> :
+      {isFetching || !profile ?
+        <Preloader/> :
         (
           <main className={classes.content}>
             <ProfileInfo authUserId={authUserId} profile={profile}
               userId={userId}
-              head_img="https://p.bigstockphoto.com/eIdTXLbqQilMs9xbjvcs_bigstock-Aerial-View-Of-Sandy-Beach-Wit-256330393.jpg"
-              myAva_img={profile.photos.small ||
-              "https://chat.europnet.org/assets/plugins/avatar-undefined.jpg"}
+              head_img={profileCommon}
+              myAva_img={profile.photos.small || avatarUndefined}
             />
             <MyPosts/>
           </main>

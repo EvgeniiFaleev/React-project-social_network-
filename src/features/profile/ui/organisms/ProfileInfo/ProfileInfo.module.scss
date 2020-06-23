@@ -1,14 +1,20 @@
 .profileInfo {
-  .head_image {
-    height: 150px;
-    width: 100%;
-    object-fit: cover;
-  }
   .bio {
+    background-image: url("../../assets/profileCommon.jpg");
+    min-height: 250px;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
-    .myAva {
-      width: 120px;
-      height: 120px;
+    align-items: flex-end;
+    padding-left: 10px;
+    .userPhoto {
+      border: 8px solid  white;
+      border-radius: 50%;
+      width: 150px;
+      margin-bottom: -20px;
+    }
+    .ownerPhoto{
+      cursor: pointer;
     }
     .description {
       padding: 10px;
