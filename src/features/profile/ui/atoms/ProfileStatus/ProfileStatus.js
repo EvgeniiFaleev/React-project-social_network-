@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {profileActions} from "../../../../profile/modules/profile";
-
+import classes from "./ProfileStatus.module.scss";
 
 export const ProfileStatus = ({dispatch, isOwner}) => {
 
@@ -21,8 +21,10 @@ export const ProfileStatus = ({dispatch, isOwner}) => {
     setEditMode(false);
   };
   return (
-    <div className="">
-      {isOwner && editMode ? <textarea autoFocus={true}
+    <div className={classes.profileStatus}>
+      {isOwner && editMode ?
+        <textarea
+          className={classes.profileStatus_textarea} autoFocus={true}
           onChange={(e) => setStatus(e.target.value)}
           onBlur={onStatusChange}
           value={status}/> :

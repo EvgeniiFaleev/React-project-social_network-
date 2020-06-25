@@ -1,0 +1,25 @@
+.profileStatus {
+  font-size: 15px;
+  color: #939598;
+  margin-top: 10px;
+  text-align: left;
+  line-height: 23px;
+  cursor: pointer;
+  position: relative;
+  word-wrap: break-word;
+
+  &_textarea {
+    outline: 0;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #27aae1;
+    border-radius: 0;
+    box-sizing: content-box;
+    background-color: transparent;
+    overflow-y: hidden;
+    padding: 1.5rem 0;
+    -moz-appearance: none;
+    position: absolute;
+    color: #939598;
+  }
+}

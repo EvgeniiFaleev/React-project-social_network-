@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ProfileInfo.module.scss";
 import {useDispatch} from "react-redux";
-import {ProfileEdit} from "../../molecules/ProfileEdit/ProfileEdit";
+import {ProfileDescription} from "../../molecules/ProfileDescription/ProfileDescription";
 import {ProfileStatus} from "../../atoms/ProfileStatus/ProfileStatus";
 import {profileActions} from "../../../modules/profile";
 
@@ -16,23 +16,28 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
   };
 
   return (
-    <div className={classes.profileInfo}>
-      <div className={classes.bio}>
+    <div className={classes.profileInfo_wrapper}>
+
+      <div className={classes.userPhoto_block}>
         <label>
           <img alt="avatar"
             className={`${classes.userPhoto} ${isOwner &&
             classes.ownerPhoto}`} src={props.myAva_img}/>
           {isOwner &&
-          <input name="cnangePhoto" hidden onChange={onSaveFile}
-            type="file"/>}
+          <input hidden onChange={onSaveFile} type="file"/>}
         </label>
       </div>
 
-      <div
-        className={classes.description}>{profile.fullName}</div>
-      <ProfileStatus dispatch={dispatch} isOwner={isOwner}
-        userId={userId}/>
-      <ProfileEdit profile={profile} isOwner={isOwner}/>
+      <section className={classes.profileInfo}>
+        <div className={classes.userName_container}>
+          <p className={classes.userName}>{profile.fullName}</p>
+          <ProfileStatus dispatch={dispatch} isOwner={isOwner}
+            userId={userId}/>
+        </div>
+        <ProfileDescription profile={profile} isOwner={isOwner}/>
+      </section>
+
+
     </div>
   );
 };

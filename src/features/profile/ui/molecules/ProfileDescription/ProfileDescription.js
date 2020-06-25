@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {ProfileForm} from "../ProfileForm/ProfileForm";
 import {Contacts} from "../Contacts/Contacts";
+import classes from "./ProfileDescription.module.scss"
 
-
-export const ProfileEdit = ({profile, isOwner}) => {
+export const ProfileDescription = ({profile, isOwner}) => {
 
   const [editMode, setEditMode] = useState(false);
 
@@ -12,22 +12,25 @@ export const ProfileEdit = ({profile, isOwner}) => {
     setEditMode(true);
   };
   return (
-    <>
+    <div className={classes.profileDescription}>
       {isOwner && editMode ?
         <ProfileForm profile={profile}
           closeEditMode={() => setEditMode(false)}/> :
         <div>
-          {isOwner ?
-            <button onClick={onOpenEditMode}>Edit Profile</button> :
-            ""}
-          <p>Looking for a Job: {profile.lookingForAJob ?
+          <section className={classes.about}>
+            <h3 className={classes.about_header}>About</h3>
+            <p className={classes.about_item}>Looking for a Job: {profile.lookingForAJob ?
             "Yes" :
             "Empty Field"}</p>
-          <p>Looking for a job
+            <p className={classes.about_item}>Looking for a job
             description: {profile.lookingForAJobDescription ||
             "Empty Field"} </p>
+          </section>
           <Contacts contacts={profile.contacts}/>
+           {isOwner ?
+            <button className={classes.editProfile_btn} onClick={onOpenEditMode}>Edit Profile</button> :
+            ""}
         </div>}
-    </>
+    </div>
   )
 };

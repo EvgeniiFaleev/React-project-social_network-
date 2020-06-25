@@ -1,10 +1,10 @@
 import React from "react";
-
+import classes from "./Followbtn.module.scss"
 
 export const FollowBtn = ({followed, isFollowing, id, onUnFollow, onFollow}) =>{
   return  (
      followed ? (
-      <button
+      <button className={classes.followBtn}
         disabled={isFollowing.some((item) => item === id)}
         onClick={() => {
           onUnFollow(id);
@@ -12,7 +12,7 @@ export const FollowBtn = ({followed, isFollowing, id, onUnFollow, onFollow}) =>{
         Unfollow
       </button>
     ) : (
-      <button
+      <button  className={classes.followBtn}
         disabled={isFollowing.some((item) => item === id)}
         onClick={() => {
           onFollow(id);

@@ -38,14 +38,13 @@ export const Profile = ({selectedId}) => {
       {isFetching || !profile ?
         <Preloader/> :
         (
-          <main className={classes.content}>
+          <>
             <ProfileInfo authUserId={authUserId} profile={profile}
               userId={userId}
               head_img={profileCommon}
               myAva_img={profile.photos.small || avatarUndefined}
             />
-            <MyPosts/>
-          </main>
+          </>
         )}
     </>
   );

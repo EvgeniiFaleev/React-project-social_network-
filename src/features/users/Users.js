@@ -5,6 +5,7 @@ import {usersActions, usersSelectors} from "./modules/users/";
 import {User} from "./ui/organisms/User/User";
 import {Preloader} from "../../ui/atoms/preloader/Preloader";
 import {Paginator} from "../../ui/organisms/Paginator/Paginator";
+import classes from "./Users.module.scss"
 
 
 export const Users = () => {
@@ -48,7 +49,7 @@ const users = usersList.map((user) => {
     return (
       <User key={user.id} isAuth={isAuth}
         photo={user.photos.small}
-        location={user.location}
+        status={user.status}
         status={user.status}
         id={user.id}
         followed={user.followed}
@@ -65,11 +66,11 @@ const users = usersList.map((user) => {
       {isFetching ?
         <Preloader/> :
         (
-          <div className="users">
+          <div className={classes.users}>
             {users}
-            <Paginator totalUsersCount={totalUsersCount}
-              pageSize={pageSize} currentPage={currentPage}
-              onPageChanged={onPageChanged}/>
+            {/*<Paginator totalUsersCount={totalUsersCount}*/}
+            {/*  pageSize={pageSize} currentPage={currentPage}*/}
+            {/*  onPageChanged={onPageChanged}/>*/}
           </div>
         )}
     </>

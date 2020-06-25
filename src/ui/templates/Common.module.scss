@@ -1,13 +1,19 @@
-.main_wrapper {
+.app_wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content_wrapper {
+  flex: 1 0 auto;
   display: flex;
   flex-direction: row;
   width: 100%;
   max-width: 1050px;
   margin: 70px auto 0;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .app_content {
   flex:1;
-  background-color: rgb(188, 240, 212);
 }

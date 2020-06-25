@@ -1,8 +1,8 @@
 import React from "react";
 import {ErrorMessage, useForm} from "react-hook-form";
-import classes from '../../organisms/ProfileInfo/ProfileInfo.module.scss'
 import {useDispatch} from "react-redux";
 import  {profileActions} from "../../../modules/profile/";
+import classes from "./ProfileForm.module.scss"
 
 
 export const ProfileForm = ({
@@ -28,8 +28,9 @@ export const ProfileForm = ({
 
   const contactItems = Object.entries(contacts).map((item) => {
 
-    return <p>{item[0]}:
-      <input onChange={() => triggerValidation("contacts." + item[0])}
+    return <p className={classes.contacts_item}>{
+      item[0].charAt(0).toUpperCase() + item[0].slice(1)}:
+      <input className={classes.contacts_input} onChange={() => triggerValidation("contacts." + item[0])}
         ref={register({
           maxLength: {
             value: 20,
@@ -45,18 +46,22 @@ export const ProfileForm = ({
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <p>Full Name:
-        <input ref={register} name={"FullName"}
+    <form className={classes.profileForm} onSubmit={handleSubmit(onSubmit)}>
+      <section className={classes.name_wrapper}><p>Full Name:
+        <input ref={register} placeholder={"Full Name"}
+          name={"FullName"}
           defaultValue={fullName}/>
       </p>
-      <p>Looking for a Job:
-        <select ref={register} name="lookingForAJob"
-          defaultValue={lookingForAJob ? "yes" : "no"}>
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
-        </select>
-      </p>
+        <p>Looking for a Job:
+          <select ref={register} name="lookingForAJob"
+            defaultValue={lookingForAJob ?
+              "yes" :
+              "no"}>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select>
+        </p>
+      </section>
       <p>My professional skills:
         <input ref={register} name={"LookingForAJobDescription"}
           defaultValue={lookingForAJobDescription}/>
@@ -66,9 +71,9 @@ export const ProfileForm = ({
           defaultValue='About me'/>
       </p>
       <ErrorMessage errors={errors} name="contactsErr" className={classes.error} as="p"/>
-      {contactItems}
-      <input type="submit" value={"Save"}
-      />
+      <div className={classes.info_box}>{contactItems}</div>
+      <button className={classes.editProfile_btn}>Save</button>
+
     </form>
   )
 };
