@@ -2,7 +2,7 @@ import classes from "../../News.module.scss";
 import React from "react";
 import {Preloader} from "../../../../ui";
 import {useSelector} from "react-redux";
-import {Article} from "../moleculs/Article";
+import {Article} from "../moleculs/Article/Article";
 
 
 export const Articles = () => {

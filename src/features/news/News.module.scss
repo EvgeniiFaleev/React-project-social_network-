@@ -5,11 +5,7 @@
 .news{
   display: flex;
   flex-direction: column;
-  &_article{
-    margin:20px;
-    border: 1px solid royalblue;
-    padding: 10px;
-  }
+
 }
 .categories{
   display: flex;

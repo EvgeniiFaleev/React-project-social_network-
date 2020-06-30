@@ -132,7 +132,9 @@ const dialogsAPI = {
 
   getDialog(id) {
     return instance.get(`dialogs/${id}/messages`)
-      .then((response) => response.data.items);
+      .then((response) =>{console.log(response.data.items);
+        return response.data.items
+      } );
   }
 };
 export {usersAPI, authAPI, profileAPI, dialogsAPI};

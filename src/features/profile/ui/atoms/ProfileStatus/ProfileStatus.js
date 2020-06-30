@@ -28,7 +28,7 @@ export const ProfileStatus = ({dispatch, isOwner}) => {
           onChange={(e) => setStatus(e.target.value)}
           onBlur={onStatusChange}
           value={status}/> :
-        <p onClick={() => setEditMode(true)}>{userStatus || "no-" +
+        <p style={isOwner ? {cursor: "pointer"} : {cursor: ""}} onClick={() => setEditMode(true)}>{userStatus || "no-" +
         " status"}</p>}
     </div>
   )

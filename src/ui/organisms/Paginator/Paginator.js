@@ -38,17 +38,34 @@ export const Paginator = ({
         }}>{p}</span>
     });
 
+  const onPortionNumber = (e,k) => {
+    const arrow = e.target;
+    setPortionNumber(portionNumber + k);
+  };
+
+
   return (
-    <div className={classes.paginator}>
+    <div className={classes.paginator_wrapper}>
 
-      {portionNumber > 1 && <button onClick={() => {
-        setPortionNumber(portionNumber - 1)
-      }}>PREV</button>}
+      <div className={classes.paginator}>
+        {portionNumber > 1 &&
+        <div onClick={(e)  => onPortionNumber(e,-1)}
+          className={`${classes.icon} ${classes.left}`}>
+          <div  className={classes.arrow}></div>
+        </div>
+        }
 
-      {currentPages}
-      {portionCount > portionNumber && <button onClick={() => {
-        setPortionNumber(portionNumber + 1)
-      }}>NEXT</button>}
+        {currentPages}
+        {portionCount > portionNumber &&
+        <div onClick={(e)  => onPortionNumber(e,+1)}
+             className={classes.icon}>
+          <div  className={classes.arrow}></div>
+        </div>
+        // <button onClick={() => {
+        //   setPortionNumber(portionNumber + 1)
+        // }}>NEXT</button>
+        }
+        </div>
 
     </div>
   )

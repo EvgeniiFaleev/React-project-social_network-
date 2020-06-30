@@ -1,0 +1,39 @@
+.wrapper{
+  border-top: 1px solid #dddddd;
+  padding: 20px;
+  textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+    border: 1px solid #dddddd;
+    padding: 10px 10px 20px 10px;
+    color: #6d6e71;
+    font-size: 1rem;
+    overflow: hidden;
+
+  }
+  textarea:focus {
+    border: 1px solid #149AC9;
+    outline: none;
+    border-radius: 4px;
+  }
+  button{
+    width: 200px;
+    float:right;
+    background: #27aae1;
+    padding: 10px 10px;
+    font-weight: 600;
+    color: white;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+  }
+  .button_wrapper{
+    padding: 20px 0  20px;
+    button:hover{
+      background: #149AC9;
+      transition: all 1s;
+    }
+  }
+ }

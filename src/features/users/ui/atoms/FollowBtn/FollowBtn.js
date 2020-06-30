@@ -1,7 +1,19 @@
 import React from "react";
 import classes from "./Followbtn.module.scss"
+import {usersActions} from "../../../modules/users";
+import {useDispatch} from "react-redux";
 
-export const FollowBtn = ({followed, isFollowing, id, onUnFollow, onFollow}) =>{
+export const FollowBtn = ({followed, isFollowing, id}) =>{
+
+  const dispatch = useDispatch();
+
+  const onFollow = (id) => {
+    dispatch(usersActions.followUser(id));
+  };
+
+  const onUnFollow = (id) => {
+    dispatch(usersActions.unFollowUser(id));
+  };
   return  (
      followed ? (
       <button className={classes.followBtn}

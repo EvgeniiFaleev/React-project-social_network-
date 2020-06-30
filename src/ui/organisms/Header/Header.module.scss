@@ -5,7 +5,9 @@
   top:0;
   width: 100%;
   color: white;
-
+  a{
+    color:white;
+  }
   &_content {
     width: 100%;
     max-width: 1050px;
@@ -16,7 +18,7 @@
   }
 
   &_logo {
-    margin-left: 10px;
+    margin-left: 30px;
     width: 70px;
   }
 }

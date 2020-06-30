@@ -7,7 +7,7 @@ import {LoginForm} from "./ui/organisms/LoginForm/LoginForm";
 export const Login = () => {
   const {isAuth, captchaUrl} = useSelector((state) => (
     {
-      isAuth: state.auth.user.isAuth,
+      isAuth: state.auth.isAuth,
       captchaUrl: state.auth.captchaUrl
     }
   ));

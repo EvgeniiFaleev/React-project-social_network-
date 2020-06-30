@@ -1,11 +1,11 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {FollowBtn} from "../../atoms/FollowBtn/FollowBtn";
 import classes from "./User.module.scss"
 
 
 export const User = ({status,
-  isAuth, id, photo, fullName, followed, isFollowing, onUnFollow, onFollow
+  isAuth, id, photo, fullName, followed, isFollowing
 }) => {
   return (
     <div className={classes.user} key={id}>
@@ -16,6 +16,9 @@ export const User = ({status,
         "https://chat.europnet.org/assets/plugins/avatar-undefined.jpg"}
           alt="avatar"/>
       </NavLink>
+        <Link to={`/dialogs/${id}`}>
+          <button className={classes.sendMsg_btn}>Send Message</button>
+        </Link>
       </div>
 
       <div className={classes.user_info}>
@@ -24,8 +27,9 @@ export const User = ({status,
         {isAuth ?
           <FollowBtn followed={followed} isFollowing={isFollowing}
             id={id}
-            onFollow={onFollow} onUnFollow={onUnFollow}/> :
+            /> :
           ""}
+
       </div>
 
     </div>

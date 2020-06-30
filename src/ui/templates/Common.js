@@ -3,12 +3,15 @@ import {Navbar} from "../organisms/Navbar/Navbar";
 import React from "react";
 import classes from "./Common.module.scss"
 import {Footer} from "../organisms/Footer/Footer";
+import {UserAuthInfo} from "../../features/autnentification/";
 
 
 export const CommonTemplate = ({children}) => {
   return (
     <>
-      <Header/>
+      <Header>
+        <UserAuthInfo/>
+      </Header>
       <div className={classes.app_wrapper}>
         <div className={classes.content_wrapper}>
           <Navbar/>

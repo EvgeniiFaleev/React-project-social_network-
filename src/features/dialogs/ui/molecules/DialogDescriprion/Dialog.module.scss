@@ -1,8 +1,34 @@
 .dialog {
   padding: 10px 0 10px 40px;
   display: flex;
+  justify-content: stretch;
   margin-bottom: 10px;
-  border: 1px  solid #5d4277;
+
   width: 100%;
   box-sizing: border-box;
+  img{
+    width: 100px;
+    border-radius: 50%;
+  }
+  .messageInfo{
+    border-bottom: 1px  solid #edeeee;
+    flex: 1;
+    padding: 0 40px;
+    span{
+      color: #6d6e71;
+    }
+    .userName{
+      color: #27aae1;
+      padding-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .metaInfo{
+      padding-top: 10px;
+      color: #6d6e71;
+    }
+  }
+}
+.dialog:hover{
+  background-color: #eaebee;
+  transition: all 1s;
 }

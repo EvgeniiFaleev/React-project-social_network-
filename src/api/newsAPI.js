@@ -9,7 +9,7 @@ export const newsAPI = {
     category = "&category=general", query=""}) {
     return instance.get(`/${type}?${country}${category}${query}&apiKey=9f6b4297388249849db6c199fd357b24`)
       .then((response) => {
-        if (response.data.status === "ok") {
+        if (response.data.status === "ok") { debugger
           console.log(response.data.articles);
           return response.data.articles
         } else {

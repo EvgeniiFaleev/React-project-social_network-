@@ -1,19 +1,78 @@
-span {
-  //cursor: pointer;
-}
-img {
-   //display: block;
-   width: 100px;
- }
-.paginator {
-  margin: 10px;
+
+.paginator_wrapper {
+  margin-bottom: 40px;
+  .paginator{
+    display: flex;
+    justify-content: center;
+  }
 }
 .pageNumber {
-  padding: 2px;
-  border: 1px solid grey;
-}
+   padding: 5px 10px;
+   font-size: 1.1rem;
+  cursor: pointer;
+  color: #6d6e71;
+ }
+.pageNumber:hover {
+  background: #149AC9;
+  color: white;
+  transition: all 1s;
+  }
 
 .pageNumber.selectedPage {
   font-weight: bold;
   border-color: black;
+  background: #27aae1;
+  color: white;
+}
+
+.icon {
+  box-sizing: border-box;
+  position: relative;
+  //transform: translate(-50%,-50%);
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left:30%;
+  width: 34.7%;
+  height: 4px;
+  background-color: #6d6e71;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+  animation: arrow 700ms linear infinite;
+}
+
+
+.arrow::after, .arrow::before {
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 4px;
+  right: -7px;
+  background-color: #6d6e71;
+}
+
+.arrow::after {
+  top: -5px;
+  transform: rotate(45deg);
+}
+
+.arrow::before {
+  top: 5px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+  transform: rotate(-45deg);
+}
+.left .arrow::after, .left .arrow::before {
+  left: -7px;
+  right: 0;
+}
+.left .arrow::after {
+  transform: rotate(-45deg);
+}
+
+.left .arrow::before {
+  transform: rotate(45deg);
 }

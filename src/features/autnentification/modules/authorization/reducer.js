@@ -5,8 +5,8 @@ const initialState = {
     me: null,
     email: null,
     id: null,
-    isAuth: false,
   },
+  isAuth: false,
   captchaUrl: null
 };
 export const reducer = (state = initialState, action) => {
@@ -16,8 +16,8 @@ export const reducer = (state = initialState, action) => {
         ...state,
         user: {
           ...action.user,
-          isAuth: action.user.isAuth
-        }
+        },
+        isAuth: action.isAuth
       };
     case types.GET_CAPTCHA_URL_SUCCESS:
       return {

@@ -1,0 +1,48 @@
+.dialog_container{
+  padding: 20px 0;
+  background-color: #f8f8f8;
+  height: 100%;
+  margin: 0 90px;
+  overflow: hidden;
+  box-sizing: border-box;
+  .userInfo{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dddddd;
+    padding: 0 5px 15px 40px  ;
+    span{
+      padding-left: 20px;
+      font-size: 1.2rem;
+      color: #27aae1;
+    }
+  }
+  .dialog{
+    height: 66vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+  .dialog::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  .dialog::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  .dialog::-webkit-scrollbar-thumb {
+    background: #dddddd;
+    height: 10px;
+  }
+
+  /* Handle on hover */
+  .dialog::-webkit-scrollbar-thumb:hover {
+    background: #6d6e71;
+  }
+   img{
+    width: 50px;
+     border-radius: 50%;
+  }
+}

@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import {ProfileDescription} from "../../molecules/ProfileDescription/ProfileDescription";
 import {ProfileStatus} from "../../atoms/ProfileStatus/ProfileStatus";
 import {profileActions} from "../../../modules/profile";
+import {Link} from "react-router-dom";
 
 
 export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
@@ -33,6 +34,8 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
           <p className={classes.userName}>{profile.fullName}</p>
           <ProfileStatus dispatch={dispatch} isOwner={isOwner}
             userId={userId}/>
+          {isOwner || <Link to={`/dialogs/${userId}`}><button> Send
+         message</button></Link>}
         </div>
         <ProfileDescription profile={profile} isOwner={isOwner}/>
       </section>

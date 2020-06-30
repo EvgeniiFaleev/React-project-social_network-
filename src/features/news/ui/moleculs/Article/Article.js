@@ -1,9 +1,9 @@
-import classes from "../../News.module.scss";
 import React from "react";
+import classes from "./Article.module.scss"
 
 
 export const Article =
-  ({title, urlToImage, description, content, author, url, source}) => {
+  ({title, urlToImage, description, content, author, url, source, publishedAt}) => {
 
   return <article className={classes.news_article}
     key={url}>

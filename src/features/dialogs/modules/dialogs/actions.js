@@ -28,7 +28,7 @@ export const getDialogs = () => (dispatch) => {
 };
 
 export const getDialog = (id) => (dispatch) => {
-  dialogsAPI.getDialog(id)
+  return dialogsAPI.getDialog(id)
     .then((dialog) =>  dispatch(setDialog(dialog)));
 };
 
