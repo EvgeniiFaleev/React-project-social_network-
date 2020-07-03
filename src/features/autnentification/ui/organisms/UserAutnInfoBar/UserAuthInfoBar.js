@@ -11,7 +11,7 @@ export const UserAuthInfoBar = React.forwardRef(({onDropdown, children},
     {
       isAuth: state.auth.isAuth,
       userName: state.auth.user.fullName,
-      userPhoto: state.auth.user.photos.small
+      userPhoto: state.auth.user.photos?.small
     }
   ), shallowEqual);
 

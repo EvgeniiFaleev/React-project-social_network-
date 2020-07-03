@@ -14,6 +14,7 @@ import {SettingsPage} from "./pages/settings";
 import {Preloader} from "./ui";
 import {initActions} from "./features/autnentification/modules/initialization/";
 import classes from "./App.module.scss"
+import {Routes} from "./Routes";
 
 // ===================================
 class App extends Component {
@@ -27,22 +28,7 @@ class App extends Component {
 
     return (
       <HashRouter>
-              <Switch>
-                <Route path={'/profile/:userId?'} render={(props) => {
-                  return (
-                    <ProfilePage selectedId={props.match.params.userId}/>
-                  )
-                }}/>
-                <Route   path="/dialogs" component={DialogsPage}/>
-
-                <Route path="/news" component={NewsPage}/>
-                <Route path="/music" component={MusicPage}/>
-                <Route path="/settings" component={SettingsPage}/>
-                <Route path="/users" component={UsersPage}/>
-                <Route path="/login" component={LoginPage}/>
-                <Redirect exact from="/" to="/profile/" />
-                <Route  render={()=>(<div>404 NOT FOUND</div>)}/>
-              </Switch>
+           <Routes/>
       </HashRouter>
     );
   }

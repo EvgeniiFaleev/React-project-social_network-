@@ -1,41 +1,61 @@
 import React from "react";
-import classes from "./Navbar.module.scss";
-import {NavLink} from "react-router-dom";
+import styles from "./Navbar.module.scss";
+import {Link, NavLink} from "react-router-dom";
+import icon from "../../assets/icons/message-group.png"
 
 
 export const Navbar = () => {
   return (
-    <nav className={classes.nav}>
-      <div className={classes.item}>
-        <img className={classes.icon} src="https://img.icons8.com/nolan/64/user.png"/>
-        <NavLink to="/profile/" activeClassName={classes.activeLink}>
-          Profile
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <img className={classes.icon} src="https://img.icons8.com/nolan/64/conference.png"/>
-        <NavLink to="/users" activeClassName={classes.activeLink}>
-          Users
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <img className={classes.icon} src="https://img.icons8.com/nolan/64/message-group.png"/>
-        <NavLink to="/dialogs" activeClassName={classes.activeLink}>
-          Messages
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <img className={classes.icon} src="https://img.icons8.com/nolan/64/google-news.png"/>
-        <NavLink to="/news" activeClassName={classes.activeLink}>
-          News
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <img className={classes.icon} src="https://img.icons8.com/nolan/64/music-record.png"/>
-        <NavLink to="/music" activeClassName={classes.activeLink}>
-          Music
-        </NavLink>
-      </div>
-    </nav>
+    <div className={styles.container}>
+      <nav>
+        <ul className={styles["mcd-menu"]}>
+
+            <li>
+              <NavLink to="/profile" activeClassName={styles.active}>
+                <i src={icon} className={styles["fa fa-home"]}></i>
+                <strong>Profile</strong>
+                <small>your story</small>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/users" activeClassName={styles.active}>
+                <i className={styles["fa fa-edit"]}></i>
+                <strong>Users</strong>
+                <small>our developers</small>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/dialogs" activeClassName={styles.active}>
+                <i className={styles["fa fa-gift"]}></i>
+                <strong>Dialogs</strong>
+                <small>your dialogs</small>
+              </NavLink>
+            </li>
+
+
+            <li>
+              <NavLink to="/news" activeClassName={styles.active}>
+                <i className={styles["fa fa-globe"]}></i>
+                <strong>News</strong>
+                <small>breaking news</small>
+              </NavLink>
+            </li>
+
+
+            <li>
+              <NavLink to="/music" activeClassName={styles.active}>
+                <i className={styles["fa fa-comments-o"]}></i>
+                <strong>Music</strong>
+                <small>deezer chart</small>
+              </NavLink>
+
+            </li>
+
+
+        </ul>
+      </nav>
+    </div>
   );
-}
+};
+

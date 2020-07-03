@@ -1,21 +1,22 @@
 import React from "react";
 import classes from "./Article.module.scss"
+import mockImg from "../../assets/categories/news.jpg"
 
 
 export const Article =
   ({title, urlToImage, description, content, author, url, source, publishedAt}) => {
 
-  return <article className={classes.news_article}
+  return <article className={classes.news_article} style={{backgroundImage: `url(${urlToImage || mockImg})`}}
     key={url}>
-    <h3 className={classes.news_article_tile}>{title}</h3>
-    <p className={classes.news_article_photo}><img
-      src={urlToImage} alt="img_News"/></p>
+    <a href={url}>
+    <h3 className={classes.news_article_title}>{title}</h3>
     <p
       className={classes.news_article_description}>{description}</p>
     <p className={classes.news_article_content}>{content}</p>
+    </a>
     <p className={classes.news_article_author}>{author}</p>
     <p
-      className={classes.news_article_src}>Source{source.name}</p>
-    <a href={url}>Link</a>
+      className={classes.news_article_src}>{source.name}</p>
+
   </article>
 };
