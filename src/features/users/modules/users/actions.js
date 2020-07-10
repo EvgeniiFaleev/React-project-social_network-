@@ -1,6 +1,7 @@
 import * as types from "./types"
 import {usersAPI} from "../../../../api/api";
 import {initActions} from "../../../autnentification/modules/initialization";
+import {usersActions} from "./index";
 
 // Action Creators===============================================
 
@@ -24,6 +25,12 @@ export const setUsers = (users) => (
     users
   }
 );
+export const setFriends = (friends) => (
+  {
+    type: types.SET_FRIENDS,
+    friends
+  }
+);
 
 export const setCurrentPage = (pageNumber) => (
   {
@@ -39,6 +46,7 @@ export const setTotalCount = (totalCount) => (
   }
 );
 
+
 export const toggleFollowingUser = (id, isFetchingButton) => (
   {
     type: types.TOGGLE_IS_FOLLOWING,
@@ -48,15 +56,44 @@ export const toggleFollowingUser = (id, isFetchingButton) => (
 );
 // ============================Thunk Creators====================
 
-export const getUsers = (pageSize, currentPage) => {
+export const getUsers = (pageSize,
+  currentPage,
+  isFriend = false,
+  term) => {
   return (dispatch) => {
     dispatch(initActions.toggleIsFetching(true));
-    return usersAPI.getUsers(pageSize, currentPage)
+    return usersAPI.getUsers(pageSize, currentPage, isFriend, term)
       .then((data) => {
         if (currentPage !== 1) dispatch(setCurrentPage(currentPage));
         dispatch(initActions.toggleIsFetching(false));
         dispatch(setUsers(data.items));
         dispatch(setTotalCount(data.totalCount));
+      });
+  };
+};
+export const search = (term) => async (dispatch, getState) => {
+  dispatch(initActions.toggleIsFetching(true));
+  const friendsPortion = await usersAPI.getUsers(getState().users.pageSize,
+    getState().users.currentPage / 2,
+    true,
+    term);
+  const usersPortion = await usersAPI.getUsers(getState().users.pageSize,
+    getState().users.currentPage / 2,
+    false,
+    term);
+  const allUsers = [...friendsPortion.items, ...usersPortion.items];
+  dispatch(setUsers(allUsers));
+  dispatch(setTotalCount(allUsers.length));
+  dispatch(initActions.toggleIsFetching(false));
+};
+
+export const getFriendsDemo = (pageSize,
+  currentPage,
+  isFriend = true) => {
+  return (dispatch) => {
+    return usersAPI.getUsers(pageSize, currentPage, isFriend)
+      .then((data) => {
+        dispatch(setFriends(data.items));
       });
   };
 };
@@ -69,6 +106,7 @@ export const folowUnfollowFlow = (dispatch,
   return apiMethod(id)
     .then((data) => {
       if (data.resultCode === 0) {
+        dispatch(usersActions.getFriendsDemo(6, 1));
         dispatch(toggleFollowingUser(id, false));
         dispatch(actionCreator(id));
       }

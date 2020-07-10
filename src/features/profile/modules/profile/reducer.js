@@ -1,15 +1,8 @@
 import  * as types from "./types"
 
 export const initialState = {
-  enterPosts: [{
-    message: "Привет, как дела?",
-    likeCount: "2 лайка",
-    id: 1
-  }, {
-    message: "Не умри от коронавируса",
-    likeCount: "5 лайков",
-    id:2
-  }],
+  isFollowing: false,
+  followed:false,
   profile: null,
   status: "Статус Редакса"
 };
@@ -39,6 +32,16 @@ export const reducer = (state = initialState,
       return {
         ...state,
         profile: {...state.profile, photos: action.photo}
+      };
+    case types.TOGGLE_IS_FOLLOWING:
+      return{
+        ...state,
+        isFollowing: action.isFollowing
+      };
+      case types.IS_FOLLOWED:
+      return{
+        ...state,
+        followed: action.isFollowed
       };
     default:
       return state;

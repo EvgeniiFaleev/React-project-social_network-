@@ -3,26 +3,39 @@ import {ProfilePage} from "./pages/profile";
 import {DialogsPage} from "./pages/dialogs";
 import {NewsPage} from "./pages/news";
 import {MusicPage} from "./pages/music";
-import {SettingsPage} from "./pages/settings";
 import {UsersPage} from "./pages/users";
 import {LoginPage} from "./pages/login";
 import React from "react";
+import {FriendsPage} from "./pages/friends";
+import {SearchPage} from "./pages/search";
 
 
 export const Routes = () => {
   return <Switch>
-    <Route path={'/profile/:userId?'} render={(props) => {
-      return (
-        <ProfilePage selectedId={props.match.params.userId}/>
-      )
-    }}/>
-    <Route path="/dialogs" component={DialogsPage}/>
-
-    <Route path="/news" component={NewsPage}/>
-    <Route path="/music" component={MusicPage}/>
-    <Route path="/settings" component={SettingsPage}/>
-    <Route path="/users" component={UsersPage}/>
-    <Route path="/login" component={LoginPage}/>
+    <Route path={'/profile/:userId?'}>
+      <ProfilePage/>
+    </Route>
+    <Route path="/dialogs">
+      <DialogsPage/>
+    </Route>
+    <Route path="/news">
+      <NewsPage/>
+    </Route>
+    <Route path="/music">
+      <MusicPage/>
+    </Route>
+    <Route path="/users/">
+      <UsersPage/>
+    </Route>
+    <Route path="/friends">
+      <FriendsPage/>
+    </Route>
+    <Route path="/search/:term?">
+      <SearchPage/>
+    </Route>
+    <Route path="/login">
+      <LoginPage/>
+    </Route>
     <Redirect exact from="/" to="/profile/"/>
     <Route render={() => (
       <div>404 NOT FOUND</div>

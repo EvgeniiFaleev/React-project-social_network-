@@ -1,6 +1,7 @@
-import {profileAPI} from "../../../../api/api";
+import {profileAPI, usersAPI} from "../../../../api/api";
 import {initActions} from "../../../autnentification/modules/initialization";
 import * as types from "./types";
+import {usersActions} from "../../../users/modules/users";
 
 // ===============Action Creators====================
 export const addPostActionCreator = (newMessageBody) => (
@@ -29,7 +30,47 @@ export const updatePhoto = (photo) => (
     photo
   }
 );
+
+export const toggleIsFollowing = (isFollowing) => (
+  {
+    type: types.TOGGLE_IS_FOLLOWING,
+    isFollowing
+  }
+);
+export const isFollowed = (isFollowed) => (
+  {
+    type: types.IS_FOLLOWED,
+    isFollowed
+  }
+);
+
 // ====================Thunk Creatots===========================
+
+export const followUser = () => (dispatch, getState) => {
+  dispatch(toggleIsFollowing(true));
+  usersAPI.followUser(getState().profile.profile.userId)
+    .then(() => {
+      dispatch(isFollowed(true));
+      dispatch(toggleIsFollowing(false));
+      dispatch(usersActions.getFriendsDemo(6, 1));
+    });
+};
+
+export const unFollowUser = () => (dispatch, getState) => {
+  dispatch(toggleIsFollowing(true));
+  usersAPI.unFollowUser(getState().profile.profile.userId)
+    .then(() => {
+      dispatch(isFollowed(false));
+      dispatch(toggleIsFollowing(false));
+      dispatch(usersActions.getFriendsDemo(6, 1));
+    });
+};
+
+export const isUserFollowed = (userId) => (dispatch) => {
+  usersAPI.isFollowed(userId)
+    .then((response) => dispatch(isFollowed(response)))
+};
+
 export const getUser = (userId) => (dispatch) => {
   dispatch(initActions.toggleIsFetching(true));
   return profileAPI.getUser(userId)

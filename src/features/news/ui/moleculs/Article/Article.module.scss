@@ -19,7 +19,7 @@
     font-size: 1.3rem;
     text-align: left;
     padding: 20px;
-    color: rgba(39, 170, 225, 0.76);
+    color: rgba(39, 170, 225, 0.66);
   }
   p{
     font-size: 1.1rem;
@@ -36,9 +36,9 @@
   content: "";
   height: 100%;
   width: 100%;
-  opacity: 0.7;
+  opacity: 0.9;
   left: 0;
   top: 0;
   z-index: -1;
-  background: #0d131b;
+  background: rgb(13, 19, 27);
 }

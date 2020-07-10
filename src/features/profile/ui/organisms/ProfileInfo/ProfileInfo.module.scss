@@ -7,30 +7,46 @@
     display: flex;
     align-items: flex-end;
     padding-left: 10px;
+
     .userPhoto {
-      border: 8px solid  white;
+      border: 8px solid white;
       border-radius: 50%;
       width: 150px;
       margin-bottom: -20px;
     }
-    .ownerPhoto{
+
+    .ownerPhoto {
       cursor: pointer;
     }
   }
-  .profileInfo{
+
+  .profileInfo {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding: 20px 0 50px 0;
-    .userName_container{
-      margin-left: 20px;
-      text-align: center;
-       .userName{
-         color: #27aae1;
-         font-size: 24px;
-       }
-      button{
+    padding: 30px 0 50px 0;
+
+    .userName_container {
+      width: 40%;
+      margin-left: 10px;
+      text-align: left;
+
+      .userName {
+        padding-left: 30px ;
+        color: #27aae1;
+        font-size: 24px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      button {
+        outline: none;
         margin-top: 20px;
+        margin-right: 10px;
         background: #27aae1;
         padding: 15px 30px;
         font-weight: 600;
@@ -39,15 +55,22 @@
         border: 0;
         cursor: pointer;
       }
-      button:hover{
+
+      button:hover {
         background: #149AC9;
         transition: all 1s;
       }
+
+      button:disabled {
+        background: #9a9b9e;
+      }
     }
+
     .userName {
     }
   }
-  .error{
+
+  .error {
     color: mediumvioletred;
   }
 

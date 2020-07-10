@@ -7,13 +7,13 @@ export const Tracks = ({tracks}) => {
 
 
   const tracksElements = tracks?.map((track) =>
-    <section key={track.id} className={classes.track_block}>
+    <div key={track.id} className={classes.track_block}>
       <a href={track.artist.link}>
         <img alt="artist_image" src={track.album.cover_small}/>
       </a>
       <span>{track.artist.name} - {track.title}</span>
-      <audio controls  src={track.preview}/>
-    </section>);
+      <audio controls  src={track.preview} preload="none"/>
+    </div>);
 
   return (
     <div className={classes.music_tracks}>

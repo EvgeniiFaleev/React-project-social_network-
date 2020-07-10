@@ -3,10 +3,10 @@ import React from "react";
 import {Profile} from "../../features/profile";
 
 
-export const ProfilePage = ({selectedId}) => {
-  return(
+export const ProfilePage = () => {
+  return (
     <CommonTemplate>
-      <Profile selectedId={selectedId}/>
+      <Profile/>
     </CommonTemplate>
   )
 };

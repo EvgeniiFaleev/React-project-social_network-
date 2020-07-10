@@ -11,9 +11,9 @@
     border-radius: 50%;
   }
   .messageInfo{
-    border-bottom: 1px  solid #edeeee;
+    border-bottom: 1px  solid #d7d8d8;
     flex: 1;
-    padding: 0 40px;
+    padding:  10px 40px;
     span{
       color: #6d6e71;
     }
@@ -29,6 +29,6 @@
   }
 }
 .dialog:hover{
-  background-color: #eaebee;
+  background-color: #dcdde0;
   transition: all 1s;
 }

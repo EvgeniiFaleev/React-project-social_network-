@@ -1,7 +1,7 @@
 import classes from "../../Music.module.scss";
 import {Preloader} from "../../../../ui";
 import React from "react";
-import {Plate} from "../atoms/plate";
+import {Plate} from "../atoms/Plate";
 
 
 export const Podcasts = ({podcasts}) => {

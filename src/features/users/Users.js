@@ -5,11 +5,21 @@ import {User} from "./ui/organisms/User/User";
 import {Preloader} from "../../ui/atoms/preloader/Preloader";
 import classes from "./Users.module.scss"
 import {Paginator} from "../../ui";
+import {useLocation, useParams} from "react-router";
 
+
+function isEmpty(obj) {
+  for (let key in obj) {
+
+    return false;
+  }
+  return true;
+}
 
 export const Users = () => {
-
-
+  const path = useLocation().pathname;
+  const isFriends = path === "/friends";
+  const searchTerm = useParams().term;
   const {
     users: usersList, pageSize, totalUsersCount, currentPage, isFetching, isFollowing, isAuth
   } = useSelector((state) => (
@@ -27,13 +37,17 @@ export const Users = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(usersActions.getUsers(pageSize, currentPage));
-
-  }, [currentPage, pageSize, dispatch]);
+    if (path.startsWith("/search/")) {
+      dispatch(usersActions.search(searchTerm));
+    } else {
+      dispatch(usersActions.getUsers(pageSize,
+        currentPage,
+        isFriends));
+    }
+  }, [currentPage, pageSize, dispatch, path, isFriends, searchTerm]);
 
   const onPageChanged = (pageNumber) => {
-    dispatch(usersActions.getUsers(pageSize, pageNumber));
-
+    dispatch(usersActions.setCurrentPage(pageNumber))
   };
 
 
@@ -59,7 +73,8 @@ export const Users = () => {
         (
           <>
             <div className={classes.users}>
-              {users}
+              {isEmpty(users) ? <p className={classes.users_notFound}>Sorry, nothing found</p> : users }
+
             </div>
             <Paginator totalUsersCount={totalUsersCount}
               pageSize={pageSize} currentPage={currentPage}

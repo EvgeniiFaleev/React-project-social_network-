@@ -1,7 +1,7 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import {musicActions} from "../../modules/music";
-
+import {musicActions} from "../../../modules/music";
+import styles from "./Search.module.scss"
 
 export const Search = ({dispatch}) => {
 
@@ -11,11 +11,11 @@ export const Search = ({dispatch}) => {
   };
 
 return(
-  <div className="search">
+  <div className={styles.search}>
     <form onSubmit={handleSubmit(onSearch)}>
-      <input ref={register({required: true})} name="query"
+      <input autoComplete="off" ref={register({required: true})} name="query"
         type="text"/>
-      <button>search</button>
+      <i className="fa fa-search"></i>
     </form>
   </div>
 )

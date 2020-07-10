@@ -1,19 +1,21 @@
 import {updateArrayOfItemsWithId} from "../../../../utils/obj-helpers";
 import * as types from "./types"
 
+
 const initialState = {
+  friends: [],
   users: [],
   pageSize: 20,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
-  isFollowing: [],
+  isFollowing: []
 };
 
 export const reducer = (state = initialState, action) => {
 
   switch (action.type) {
-        case types.FOLLOW:
+    case types.FOLLOW:
       return {
         ...state,
         users: updateArrayOfItemsWithId(state.users,
@@ -32,6 +34,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         users: [...action.users]
       };
+    case types.SET_FRIENDS:
+      return {
+        ...state,
+        friends: [...action.friends]
+      };
     case types.SET_CURRENT_PAGE:
       return {
         ...state,
@@ -41,6 +48,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         totalUsersCount: action.totalCount
+      };
+    case types.SET_FRIENDS_COUNT:
+      return {
+        ...state,
+        friendsCount: action.friendsCount
       };
     case types.TOGGLE_IS_FOLLOWING:
       return {

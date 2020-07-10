@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import classes from "./ProfileInfo.module.scss";
-import {useDispatch} from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {ProfileDescription} from "../../molecules/ProfileDescription/ProfileDescription";
 import {ProfileStatus} from "../../atoms/ProfileStatus/ProfileStatus";
 import {profileActions} from "../../../modules/profile";
@@ -11,10 +11,19 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
   const dispatch = useDispatch();
 
   const isOwner = userId === authUserId;
-
+  const {followed, isFollowing} = useSelector((state) => (
+    {
+      followed: state.profile.followed,
+      isFollowing: state.profile.isFollowing
+    }
+  ), shallowEqual);
   const onSaveFile = (e) => {
     if (e.target.files.length) dispatch(profileActions.savePhoto(e.target.files[0]));
   };
+
+  useEffect(() => {
+    dispatch(profileActions.isUserFollowed(userId));
+  }, [dispatch, userId]);
 
   return (
     <div className={classes.profileInfo_wrapper}>
@@ -34,8 +43,21 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
           <p className={classes.userName}>{profile.fullName}</p>
           <ProfileStatus dispatch={dispatch} isOwner={isOwner}
             userId={userId}/>
-          {isOwner || <Link to={`/dialogs/${userId}`}><button> Send
-         message</button></Link>}
+
+          <div className={classes.buttons}>
+            {isOwner || <Link to={`/dialogs/${userId}`}>
+            <button> Send
+              message
+            </button>
+          </Link>}
+            {isOwner || (
+              followed ?
+                <button disabled={isFollowing}
+                  onClick={() => dispatch(profileActions.unFollowUser())}>Unfollow</button> :
+                <button disabled={isFollowing}
+                  onClick={() => dispatch(profileActions.followUser())}>Follow</button>
+            )}
+          </div>
         </div>
         <ProfileDescription profile={profile} isOwner={isOwner}/>
       </section>

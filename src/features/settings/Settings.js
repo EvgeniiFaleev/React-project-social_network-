@@ -1,7 +1,0 @@
-import React from "react";
-// import classes from "./Settings.module.scss";
-
-
-export const Settings = () => {
-  return <div className="">Settings</div>;
-};

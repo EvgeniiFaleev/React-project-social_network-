@@ -7,12 +7,13 @@ import * as profileActions from "./modules/profile/actions";
 import profileCommon from "./ui/assets/profileCommon.jpg";
 import avatarUndefined
   from "../../ui/assets/images/avatar-undefined.jpg"
+import {useParams} from "react-router";
 
 
-export const Profile = ({selectedId}) => {
+export const Profile = () => {
 
   useAuthRedirect();
-
+  const selectedId = useParams().userId;
   const dispatch = useDispatch();
   const {profile, authUserId, isFetching} = useSelector((state) => {
     return {

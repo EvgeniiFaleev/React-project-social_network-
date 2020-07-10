@@ -7,12 +7,16 @@ import {UserAuthInfo} from "../../../features/autnentification/UserAuthInfo";
 
 export const Header = ({children}) => {
 
+  console.log(children)
   return (
     <header className={classes.header}>
       <div className={classes.header_content}>
-        <img className={classes.header_logo} alt="logo"
+        <div className={classes.logo_wrapper} >
+          <img className={classes.header_logo} alt="logo"
           src={logo}/>
-     {children}
+          {children[0]}
+        </div>
+     {children[1]}
       </div>
      </header>
 

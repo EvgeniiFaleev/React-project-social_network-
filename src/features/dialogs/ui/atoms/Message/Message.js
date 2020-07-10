@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./MessageItem.module.scss";
+import classes from "./Message.module.scss";
 
 
 export const Message = React.forwardRef(({message, isOwner} ,ref) => {

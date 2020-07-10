@@ -1,0 +1,25 @@
+.usersSearch{
+  display: flex;
+  align-items: center;
+  justify-self: self-start;
+  input{
+    padding: 5px 15px 5px 40px;
+    color: #dadada;
+    background: #403c3d;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+  }
+  input::placeholder{
+    color: #dadada;
+  }
+  p {
+    position: relative;
+  }
+  p i {
+    color: #dadada;
+    top:12%;
+    left:5%;
+    position: absolute;
+  }
+}
