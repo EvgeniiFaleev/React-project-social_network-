@@ -20,7 +20,7 @@ export const Search = ({dispatch}) => {
       <form onSubmit={onSearch} autoComplete="off">
         <div className={classes.search_block}>
           <div className={classes.search_query}>
-          <input name={classes.search_query}  placeholder="Search..." type="text"/>
+          <input className={classes.search_query}  name="search_query" placeholder="Search..." type="text"/>
           </div>
           <div className={classes.search_btn} id={classes['s-cover']}>
           <button type="submit">

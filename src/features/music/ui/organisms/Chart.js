@@ -1,5 +1,5 @@
 import classes from "../../Music.module.scss";
-import {Tracks} from "../moleculs/Tracks";
+import {Tracks} from "../moleculs/Tracks/Tracks";
 import {Artists} from "../moleculs/Artists";
 import {Albums} from "../moleculs/Albums";
 import {Podcasts} from "../moleculs/Podcasts";
