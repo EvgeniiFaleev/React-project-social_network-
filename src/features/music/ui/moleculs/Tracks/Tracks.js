@@ -225,29 +225,38 @@ export const Tracks = ({tracks}) => {
   };
 
 
-  const tracksElements = tracks?.map((track, index) => <div
-    key={track.id}
-    className={styles.track_block}>
+  const tracksElements = tracks?.map((track, index) => {
+    let playing;
+    if (state.currentNumber === index) {
+      playing = styles.track_album_playing;
+    } else {
+      playing = "";
+    }
 
-    <div
-      data-url_track={track.preview}
-      data-track_number={index}
-      data-album_photo={track.album.cover_small}
-      data-bg_photo={track.artist.picture_xl}
-      data-track_title={track.title}
-      data-artist_name={track.artist.name}
-      onClick={initPlayer}
-      className={ styles.track_album + styles.playing}>{index}
-      <img
-        alt="artist_image" src={track.album.cover_small}/>
-      <i className="fa fa-play"/>
-      <i className="fa fa-pause"/>
+    return <div key={track.id} className={styles.track_container}>
+      <div
+        data-url_track={track.preview}
+        data-track_number={index}
+        data-album_photo={track.album.cover_small}
+        data-bg_photo={track.artist.picture_xl}
+        data-track_title={track.title}
+        data-artist_name={track.artist.name}
+        onClick={initPlayer}
+        className={styles.track_album + " " + playing}>
+        <img
+          alt="artist_image" src={track.album.cover_small}/>
+        <i className="fa fa-play"/>
+      </div>
+      <div className={styles.track_title}>
+        <a href={track.artist.link}>
+          <span>{track.artist.name} - {track.title}</span>
+        </a>
+        <small
+          className={styles.track_title_duration}>{converter(track.duration)}
+        </small>
+      </div>
     </div>
-
-    <a href={track.artist.link}>
-      <span>{track.artist.name} - {track.title}</span>
-    </a>
-  </div>);
+  });
 
 
   const calculateProgress = (mouseX, progressElement) => {
@@ -306,8 +315,7 @@ export const Tracks = ({tracks}) => {
 
   return (
     <>
-      <div className={styles.player}
-      >
+      <div className={styles.player}>
         <audio ref={trackRef} onTimeUpdate={playingProgress}
           onLoadedData={() => {
             dispatch(setDuration(converter(trackRef.current.duration)))
@@ -338,22 +346,23 @@ export const Tracks = ({tracks}) => {
               "/" + state.duration :
               "/0 : 00"} </small>
           </div>
-          <progress onClick={seekProgress} max="100"
-            onMouseMove={showHint} onMouseLeave={closeHint}
-            value={state.progress}>
+          <div className={styles.progress_wrapper}>
+            <progress onClick={seekProgress} max="100"
+              onMouseMove={showHint} onMouseLeave={closeHint}
+              value={state.progress}>
+            </progress>
 
-          </progress>
-
-          <div ref={hintRef}
-            className={styles.hint}>{state.hintTime}</div>
+            <small ref={hintRef}
+              className={styles.hint}>{state.hintTime}
+            </small>
+          </div>
         </div>
 
 
         <div className={styles.volume}>
           {state.volume > 0 ?
             <i className="fa fa-volume-up" aria-hidden="true"/> :
-            <i className="fa fa-volume-off" aria-hidden="true"/>
-          }
+            <i className="fa fa-volume-off" aria-hidden="true"/>}
           <input type="range" onChange={onVolume}
             value={state.volume}/>
         </div>

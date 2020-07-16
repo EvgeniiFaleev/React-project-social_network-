@@ -1,0 +1,23 @@
+.cards_header{
+  margin-top: 50px;
+    font-size:2rem;
+    text-transform: capitalize;
+    text-align: center;
+    width: 100%;
+    color:#27AAE1;
+    padding-bottom: 20px;
+}
+.cards{
+  margin: auto;
+  width: 100%;
+  //background: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.cards section:nth-child(3n+2){
+  padding: 10px 10px;
+}
+

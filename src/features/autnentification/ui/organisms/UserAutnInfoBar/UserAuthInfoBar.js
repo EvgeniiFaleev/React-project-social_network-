@@ -2,6 +2,7 @@ import classes from "./UserAuthInfoBar.module.scss";
 import {NavLink} from "react-router-dom";
 import React from "react";
 import {shallowEqual, useSelector} from "react-redux";
+import {SignIn} from "../../atoms/SIgnIn";
 
 
 export const UserAuthInfoBar = React.forwardRef(({onDropdown, children},
@@ -27,7 +28,7 @@ export const UserAuthInfoBar = React.forwardRef(({onDropdown, children},
         </div>
         {children}
       </div> :
-      <NavLink className={classes.login_link}
-        to={"/login"}>Login</NavLink>}
+      <SignIn/>
+      }
   </>
 });

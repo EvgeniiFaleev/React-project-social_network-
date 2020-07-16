@@ -21,7 +21,6 @@ export const Chart = () => {
       }
     ),
     shallowEqual);
-
 return(
   <div className={classes.music}>
     <Tracks tracks={tracks}/>
