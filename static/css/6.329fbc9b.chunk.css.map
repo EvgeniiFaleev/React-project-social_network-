@@ -1,1 +1,0 @@
-{"version":3,"sources":["FormsControl.module.scss"],"names":[],"mappings":"AAAA,iCACE,oBAAqB,CACtB,2BAEC,SAAS,CACV,gCAEC,aAAgB","file":"6.329fbc9b.chunk.css","sourcesContent":[".input_error{\r\n  border: 1px solid red;\r\n}\r\n.error{\r\n  color:red;\r\n}\r\n.span_error{\r\n  color: firebrick;\r\n}"]}
