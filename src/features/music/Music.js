@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {musicActions} from "./";
 import {SearchResults} from "./ui/moleculs/SearchResults";
@@ -14,7 +14,7 @@ export const Music = () => {
 
   useEffect(() => {
     dispatch(musicActions.setSearchResults(null));
-    dispatch(musicActions.getMusicChart())
+    dispatch(musicActions.getMusicChart());
 
   }, [dispatch]);
 
