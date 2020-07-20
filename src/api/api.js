@@ -129,6 +129,13 @@ const profileAPI = {
 
 const dialogsAPI = {
 
+  getNewMessagesCount() {
+    return instance.get("/dialogs/messages/new/count").then((response)=>{
+     return  response.data
+    }).catch((e)=>console.log("Ошибка " + e));
+  },
+
+
   getDialogs() {
     return instance.get("/dialogs")
       .then((response) => {
@@ -149,10 +156,10 @@ const dialogsAPI = {
   },
 
   getDialog(id) {
-    return instance.get(`dialogs/${id}/messages`)
+    return instance.get(`dialogs/${id}/messages/new?newerThen=2020-02-04T16:01:53.417`)
       .then((response) => {
         console.log(response.data.items);
-        return response.data.items
+        return response.data
       });
   }
 };

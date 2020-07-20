@@ -28,6 +28,7 @@ export const Dialog = () => {
 
   const messages = dialog?.map((message, index,arr) => {
     return <Message message={message}
+
       ref={arr.length -1 === index  ?
         ref :
         null}
@@ -39,11 +40,13 @@ export const Dialog = () => {
 
 
   useEffect(() => {
+
     dispatch(profileActions.getUser(id));
     const timerId = setInterval(() => {
       dispatch(dialogsActions.getDialog(id))
         .then((data) => {
-          if(dialog) ref.current.scrollIntoView();
+
+          if(data) ref.current.scrollIntoView();
           }
         );
     }, 10000);

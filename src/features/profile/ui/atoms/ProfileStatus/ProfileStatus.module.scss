@@ -1,5 +1,5 @@
 .profileStatus {
-  font-size: 15px;
+  font-size: 1.2rem;
   color: #939598;
   margin-top: 10px;
   line-height: 23px;
@@ -7,8 +7,12 @@
   word-wrap: break-word;
   text-align: left;
   padding-left: 20px;
+  p{
+    padding-right: 20px;
+  }
 
   &_textarea {
+    font-size: 1.2rem;
     outline: 0;
     box-shadow: none;
     border: none;

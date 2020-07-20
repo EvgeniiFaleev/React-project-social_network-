@@ -17,23 +17,39 @@ export const setDialogs = (dialogs) => (
     dialogs
   }
 );
+export const setNewMessages = (payload) => (
+  {
+    type: types.SET_NEW_MESSAGES,
+    payload
+  }
+);
+
+export const getNewMessagesCount = () => (dispatch) => {
+  dialogsAPI.getNewMessagesCount()
+    .then((count) => dispatch(setNewMessages(count)));
+};
 
 export const getDialogs = () => (dispatch) => {
   dispatch(initActions.toggleIsFetching(true));
   dialogsAPI.getDialogs()
     .then((dialogs) => {
-      dispatch(setDialogs(dialogs));
+      const sortedDialogs = dialogs.sort((a, b) => b.newMessagesCount - a.newMessagesCount);
+      dispatch(setDialogs(sortedDialogs));
       dispatch(toggleIsFetching(false));
     });
 };
 
 export const getDialog = (id) => (dispatch) => {
   return dialogsAPI.getDialog(id)
-    .then((dialog) =>  dispatch(setDialog(dialog)));
+    .then((dialog) => {
+      dispatch(setDialog(dialog))
+        return(dialog);
+      }
+    );
 };
 
 
 export const sendMessage = (userId, message) => async () => {
-   await dialogsAPI.startDialog(userId);
+  await dialogsAPI.startDialog(userId);
   await dialogsAPI.sendMessage(userId, message);
 };

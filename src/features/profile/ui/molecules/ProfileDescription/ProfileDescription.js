@@ -16,15 +16,15 @@ export const ProfileDescription = ({profile, isOwner}) => {
       {isOwner && editMode ?
         <ProfileForm profile={profile}
           closeEditMode={() => setEditMode(false)}/> :
-        <div>
+        <div className={classes.about_wrapper}>
           <section className={classes.about}>
             <h3 className={classes.about_header}>About</h3>
             <p className={classes.about_item}>Looking for a Job: {profile.lookingForAJob ?
             "Yes" :
-            "Empty Field"}</p>
+            "No"}</p>
             <p className={classes.about_item}>Looking for a job
             description: {profile.lookingForAJobDescription ||
-            "Empty Field"} </p>
+            "..."} </p>
           </section>
           <Contacts contacts={profile.contacts}/>
            {isOwner ?

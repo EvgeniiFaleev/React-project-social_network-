@@ -21,8 +21,13 @@ box-sizing: border-box;
   align-items: center;
   justify-content: flex-start;
   background: #FFFFFF;
-  position: relative;
+  //position: relative;
   overflow: hidden;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top:7%;
+  z-index: 100;
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.11);
 
   .arrows {
     flex-basis: 5%;
@@ -36,6 +41,7 @@ box-sizing: border-box;
   .play_block {
     box-sizing: border-box;
     position: relative;
+    cursor: pointer;
 
     img {
     }
@@ -223,7 +229,10 @@ display: flex;
   }
 }
 
-
+.track_container:hover{
+  background: rgba(39, 170, 225, 0.18);
+  transition: all 0.5s;
+}
 .track_container {
   display: flex;
   background: #FFFFFF;
@@ -233,6 +242,7 @@ display: flex;
   align-items: center;
 
   .track_album {
+    cursor: pointer;
     position: relative;
     img {
       z-index: 0;

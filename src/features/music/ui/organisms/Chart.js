@@ -23,7 +23,7 @@ export const Chart = () => {
     shallowEqual);
 return(
   <div className={classes.music}>
-    <Tracks tracks={tracks}/>
+    <Tracks tracks={tracks} children={"Top Tracks"}/>
     <Artists artists={artists}/>
     <Albums albums={albums}/>
     <Podcasts podcasts={podcasts}/>

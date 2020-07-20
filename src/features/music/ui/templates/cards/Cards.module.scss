@@ -10,12 +10,13 @@
 .cards{
   margin: auto;
   width: 100%;
-  //background: #FFFFFF;
+  //background: #FFFFFF;bv
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-items: flex-end;
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.11);
 }
 .cards section:nth-child(3n+2){
   padding: 10px 10px;

@@ -135,7 +135,7 @@ const initialState = {
   title: "",
 };
 
-export const Tracks = ({tracks}) => {
+export const Tracks = ({tracks, children}) => {
   const trackRef = useRef();
   const hintRef = useRef();
 
@@ -189,7 +189,7 @@ export const Tracks = ({tracks}) => {
   }, [state.currentNumber]);
 
 
-  const onForward = (e) => {
+  const onForward = () => {
     if (state.currentNumber >= 9) {
       console.log(state.currentNumber);
       return
@@ -284,8 +284,8 @@ export const Tracks = ({tracks}) => {
     dispatch(setProgress({
       progress: trackRef.current.currentTime / duration * 100,
       currentSecond: currentSecond
-    }))
-
+    }));
+    if (trackRef.current.ended) onForward();
   };
   useEffect(() => {
     trackRef.current.volume = state.volume / 100;
@@ -368,7 +368,7 @@ export const Tracks = ({tracks}) => {
         </div>
       </div>
       <div className={styles.music_tracks}>
-        <h3 className={styles.category_header}>Top tracks</h3>
+        <h3 className={styles.category_header}>{children}</h3>
         {tracksElements || <Preloader/>}
       </div>
     </>

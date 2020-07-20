@@ -39,10 +39,10 @@
     border: 0;
     background-color: transparent;
   }
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active  {
+  .search_query:-webkit-autofill,
+  .search_query:-webkit-autofill:hover,
+  .search_query:-webkit-autofill:focus,
+  .search_query:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px #fff inset !important;
     -webkit-text-fill-color: #fff !important;
     -webkit-transition-delay: 9999s;
@@ -58,6 +58,7 @@
     //width: 84px;
     //height: 25px;
     cursor: pointer;
+    outline: none;
   }
   input[type="text"]
   {

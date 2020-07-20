@@ -2,10 +2,34 @@
   padding-top: 20px;
   font-size: 1.1rem;
   width: 100%;
+  position: relative;
+&_close{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+ &_close i {
+    color: #27AAE1;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
 
-  .name_wrapper{
+  &_close small{
+  display: none;
+    position: absolute;
+    top:-2px;
+  }
+  &_close:hover small {
+    color: #27AAE1;
+    display: block;
+    position: absolute;
+    top: -100%;
+  }
+
+  .name_wrapper {
     display: flex;
   }
+
   & input, select {
     color: #6d6e71;
     box-sizing: border-box;
@@ -21,18 +45,26 @@
     margin-bottom: 10px;
     font-size: 1rem;
   }
-  & select{
+
+  input:focus {
+    background: #27aae1;
+    color: white;
+  }
+
+  & select {
     padding-top: 5px;
   }
 
   & p {
     padding-bottom: 10px;
   }
-  .info_box{
+
+  .info_box {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    .contacts_item{
+
+    .contacts_item {
       flex-basis: 40%;
     }
   }
@@ -55,6 +87,7 @@
     transition: all 1s;
   }
 }
-.error{
+
+.error {
   color: #ff8967;
 }
