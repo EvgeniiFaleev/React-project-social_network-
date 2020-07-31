@@ -55,7 +55,9 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
                 <button disabled={isFollowing}
                   onClick={() => dispatch(profileActions.unFollowUser())}>Unfollow</button> :
                 <button disabled={isFollowing}
-                  onClick={() => dispatch(profileActions.followUser())}>Follow</button>
+                  onClick={() => {
+                    dispatch(profileActions.followUser())
+                  }}>Follow</button>
             )}
           </div>
         </div>

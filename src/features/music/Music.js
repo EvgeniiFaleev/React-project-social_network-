@@ -1,8 +1,8 @@
 import React, {useEffect, useMemo} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {musicActions} from "./";
-import {SearchResults} from "./ui/moleculs/SearchResults";
-import {Search} from "./ui/moleculs/Search/Search";
+import {SearchResults} from "./ui/organisms/SearchResults";
+import {Search} from "./ui/organisms/Search/Search";
 import {Chart} from "./ui/organisms/Chart";
 import styles from"./Music.module.scss"
 

@@ -1,9 +1,9 @@
 import classes from "../../Music.module.scss";
-import {Tracks} from "../moleculs/Tracks/Tracks";
-import {Artists} from "../moleculs/Artists";
-import {Albums} from "../moleculs/Albums";
-import {Podcasts} from "../moleculs/Podcasts";
-import {Playlists} from "../moleculs/Playlists";
+import {Tracks} from "./Tracks/Tracks";
+import {Artists} from "./Artists";
+import {Albums} from "./Albums";
+import {Podcasts} from "./Podcasts";
+import {Playlists} from "./Playlists";
 import React from "react";
 import {shallowEqual, useSelector} from "react-redux";
 
