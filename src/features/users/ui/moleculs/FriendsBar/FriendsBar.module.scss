@@ -86,3 +86,8 @@
   border-bottom: 5px solid transparent;
   /* == */
 }
+@media (max-width: 860px) {
+  .friendsBar{
+    display: none;
+  }
+}

@@ -42,8 +42,8 @@ export const getDialogs = () => (dispatch) => {
 export const getDialog = (id) => (dispatch) => {
   return dialogsAPI.getDialog(id)
     .then((dialog) => {
-      dispatch(setDialog(dialog))
-        return(dialog);
+      dispatch(setDialog(dialog));
+        return dialog;
       }
     );
 };

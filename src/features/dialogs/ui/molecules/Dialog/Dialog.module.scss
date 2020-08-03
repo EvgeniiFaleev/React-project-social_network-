@@ -1,3 +1,34 @@
+
+@keyframes twitch_owner {
+   0%{
+     right:0;
+   }
+   50%{
+     right:50px;
+   }
+   100%{
+     right: 0;
+   }
+ }
+@keyframes twitch_other {
+  0%{
+    left:0;
+  }
+  50%{
+    left:50px;
+  }
+  100%{
+    left: 0;
+  }
+}
+.new_owner {
+  animation-name: twitch_owner;
+  animation-duration: 1s;
+}
+.new_other{
+  animation-name: twitch_other;
+  animation-duration: 1s;
+}
 .dialog_container{
   padding: 20px 0;
   background-color: #f8f8f8;

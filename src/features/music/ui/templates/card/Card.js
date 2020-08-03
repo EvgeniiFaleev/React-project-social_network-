@@ -7,7 +7,7 @@ export const Card = ({id, link, artistName, title, picture, font_size}) => {
     <section className={styles.card} key={id}>
       {title || artistName ?
         <p style={{
-          "font-size": font_size
+          "fontSize": font_size
         }} className={styles.card_name}><a
           href={link}>{title || artistName}
         </a>

@@ -7,6 +7,7 @@
     display: flex;
     align-items: flex-end;
     padding-left: 10px;
+    box-sizing: border-box;
 
     .userPhoto {
       border: 8px solid white;
@@ -75,4 +76,25 @@
     color: mediumvioletred;
   }
 
+}
+@media (max-width: 860px){
+  .userPhoto_block{
+    width: 100vw !important;
+    margin-left: -30px;
+
+  }
+
+}
+
+@media (max-width: 620px) {
+  .profileInfo{
+    flex-direction: column !important;
+  }
+  .userPhoto_block{
+    padding: 0 !important;
+    justify-content: center;
+  }
+  .userName_container{
+    align-self: center;
+  }
 }

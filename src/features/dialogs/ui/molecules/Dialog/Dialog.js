@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {DialogsForm} from "../DialogsForm/DialogsForm";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
@@ -7,13 +7,16 @@ import {profileActions} from "../../../../profile/modules/profile";
 import {Preloader} from "../../../../../ui";
 import {Message} from "../../atoms/Message/Message";
 import classes from "./Dialog.module.scss"
-import no_avatar from "../../../../../ui/assets/images/avatar-undefined.jpg"
+import no_avatar
+  from "../../../../../ui/assets/images/avatar-undefined.jpg";
+import msgClasses from "../../atoms/Message/Message.module.scss"
 
 
 export const Dialog = () => {
 
   const {id} = useParams();
   const dispatch = useDispatch();
+  const [renderCount, setCount] = useState(0);
 
   const {userName, userPhoto, dialog, authUserId} = useSelector((state) => (
     {
@@ -24,31 +27,26 @@ export const Dialog = () => {
 
     }
   ), shallowEqual);
+
   const ref = useRef();
 
-  const messages = dialog?.map((message, index,arr) => {
+  const messages = dialog?.map((message, index, arr) => {
     return <Message message={message}
 
-      ref={arr.length -1 === index  ?
+      ref={arr.length - 1 === index ?
         ref :
         null}
       isOwner={message.senderId === authUserId}/>
   });
 
-  const avatar = userPhoto ||
-    no_avatar;
+  const avatar = userPhoto || no_avatar;
 
 
   useEffect(() => {
 
     dispatch(profileActions.getUser(id));
     const timerId = setInterval(() => {
-      dispatch(dialogsActions.getDialog(id))
-        .then((data) => {
-
-          if(data) ref.current.scrollIntoView();
-          }
-        );
+      dispatch(dialogsActions.getDialog(id));
     }, 10000);
 
     return () => {
@@ -57,6 +55,18 @@ export const Dialog = () => {
     }
   }, [id, dispatch]);
 
+  useEffect(() => {
+    if (ref.current) ref.current.scrollIntoView();
+
+    if (renderCount > 1) {
+      if(ref.current.classList.contains(msgClasses.owner)){
+        ref.current.classList.add(classes.new_owner);
+      } else{
+        ref.current.classList.add(classes.new_other)
+      }
+    }
+    setCount((prevState) => prevState + 1);
+  }, [dialog?.length]);
 
   return (
     <>

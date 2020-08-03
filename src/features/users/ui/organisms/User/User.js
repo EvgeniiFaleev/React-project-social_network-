@@ -9,6 +9,9 @@ import ava_undefined
 export const User = ({
   status, isAuth, id, photo, fullName, followed, isFollowing
 }) => {
+  if(status && status.length > 30  ) {
+    status = status.trim().substr(0, 30) + ". . .";
+  }
   return (
     <div className={classes.user} key={id}>
 

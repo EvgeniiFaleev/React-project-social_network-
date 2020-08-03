@@ -5,6 +5,8 @@ import icon from "../../assets/icons/message-group.png"
 
 
 export const Navbar = ({children, clearPage, clearMusicSearch, messagesCount}) => {
+
+  const isMobile = document.documentElement.clientWidth <= 860
   return (
     <div className={styles.container}>
       <nav>
@@ -18,7 +20,7 @@ export const Navbar = ({children, clearPage, clearMusicSearch, messagesCount}) =
             </NavLink>
           </li>
           <li onClick={clearPage}>
-            <NavLink to="/users" activeClassName={styles.active}>
+            <NavLink to={isMobile ? "/friends" : "/users" } activeClassName={styles.active}>
               <i className="fa fa-users"/>
               <strong>Users</strong>
               <small>our developers</small>

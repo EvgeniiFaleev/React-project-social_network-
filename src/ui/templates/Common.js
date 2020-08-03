@@ -8,8 +8,7 @@ import {Friends} from "../../features/users/Friends";
 import {useDispatch} from "react-redux";
 import {usersActions} from "../../features/users/modules/users";
 import {Search} from "../../features/users";
-import {NewMessagesCount} from "../../features/dialogs/ui/atoms/NewMessagesCount/NewMessagesCount";
-
+import {NewMessagesCount} from "../../features/dialogs";
 
 
 export const CommonTemplate = ({children, clearMusicSearch}) => {
@@ -18,15 +17,17 @@ export const CommonTemplate = ({children, clearMusicSearch}) => {
     dispatch(usersActions.setCurrentPage(1));
   };
   return (
-      <>
+    <>
       <Header>
         <Search/>
         <UserAuthInfo/>
       </Header>
       <div className={classes.app_wrapper}>
-        <div className={classes.content_wrapper} messagesCount={<NewMessagesCount/>}>
-          <Navbar clearPage = {clearPage} messagesCount={<NewMessagesCount/>} clearMusicSearch={clearMusicSearch}>
-            <Friends clearPage = {clearPage}/>
+        <div className={classes.content_wrapper}>
+          <Navbar clearPage={clearPage}
+            messagesCount={<NewMessagesCount/>}
+            clearMusicSearch={clearMusicSearch}>
+            <Friends clearPage={clearPage}/>
           </Navbar>
           <main className={classes.app_content}>
             {children}

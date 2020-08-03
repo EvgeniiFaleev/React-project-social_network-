@@ -1,9 +1,13 @@
+
 .message {
   margin-bottom: 30px;
   padding: 10px 20px;
   color: white;
   max-width: 50%;
   word-break: break-word;
+  position: relative;
+  right: 0;
+
   &_text{
     font-size: 1.1rem;
     padding-bottom: 5px;
