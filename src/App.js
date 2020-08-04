@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./App.module.scss";
-import {HashRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 // My ui
 import {connect} from "react-redux";
 import {Preloader} from "./ui";
@@ -17,9 +17,9 @@ class App extends Component {
     if (!this.props.initialized) return <Preloader/>;
 
     return (
-      <HashRouter>
+      <BrowserRouter>
            <Routes/>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
