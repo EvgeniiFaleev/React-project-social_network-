@@ -1,18 +1,19 @@
 .profileStatus {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #939598;
   margin-top: 10px;
   line-height: 23px;
   position: relative;
   word-wrap: break-word;
   text-align: left;
-  padding-left: 20px;
+  //width: ;
+  //padding-left: 20px;
   p{
     padding-right: 20px;
   }
 
   &_textarea {
-    font-size: 1.2rem;
+    font-size: 1rem;
     outline: 0;
     box-shadow: none;
     border: none;
@@ -21,9 +22,16 @@
     box-sizing: content-box;
     background-color: transparent;
     overflow-y: hidden;
-    padding: 1.5rem 0;
+    padding: 0.8rem 0;
     -moz-appearance: none;
     position: absolute;
     color: #939598;
   }
+}
+@media (max-width: 860px){
+  .userPhoto_block{
+    width: 100vw !important;
+    margin-left: -30px;
+  }
+
 }

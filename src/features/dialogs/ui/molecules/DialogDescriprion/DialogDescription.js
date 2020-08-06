@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Dialog.module.scss";
+import classes from "./DialogDescription.module.scss";
 import {Link} from "react-router-dom";
 import no_img from "../../../../../ui/assets/images/avatar-undefined.jpg"
 
@@ -20,13 +20,12 @@ export const DialogDescription = ({
       <div className={classes.messageInfo}>
         <p  className={classes.userName}>{userName}</p>
         {hasNewMessages ?
-          <span>You have a {newMessagesCount} new  message(s)</span> :
-          <span>You have no new messages</span>}
-
-          <p className={classes.metaInfo}>
-            Last message was:  {lastDialogActivityDate} <br/>
-            Last seen at:  {lastUserActivityDate}
-          </p>
+          <small>You have a {newMessagesCount} new  message(s)</small> :
+          <small>You have no new messages</small>}
+        <br/>
+          <small className={classes.metaInfo}>
+            Last seen:  {lastUserActivityDate}
+          </small>
 
       </div>
     </section>

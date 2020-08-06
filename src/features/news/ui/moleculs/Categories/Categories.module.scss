@@ -58,3 +58,12 @@
     font-size: 1rem;
   }
 }
+@media (max-width: 400px) {
+ .categories{
+   flex-wrap: wrap;
+   &_category{
+     flex-basis: 33.3333%;
+   }
+ }
+}
+

@@ -2,12 +2,17 @@ import React, {useCallback, useRef, useState} from "react";
 import {Dropdown} from "./ui/molecules/Dropdown/Dropdown";
 import {UserAuthInfoBar} from "./ui/organisms/UserAutnInfoBar/UserAuthInfoBar";
 import dropClass from "./ui/molecules/Dropdown/Dropdown.module.scss";
+import {useSelector} from "react-redux";
+import {SignIn} from "./ui/atoms/SIgnIn";
 
 
 export const UserAuthInfo = () => {
 
+
+
   const [isDropped, setDropdown] = useState(false);
 
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const userInfoRef = useRef();
   const dropRef = useRef();
 
@@ -30,9 +35,11 @@ export const UserAuthInfo = () => {
   }, []);
 
 
-  return (
-    <UserAuthInfoBar ref={userInfoRef} onDropdown={onDropdown}>
-      <Dropdown isVisible={isDropped} ref={dropRef}/>
-    </UserAuthInfoBar>
-  )
+  return ( <>
+    {isAuth ?
+      <UserAuthInfoBar ref={userInfoRef} onDropdown={onDropdown}>
+        <Dropdown isVisible={isDropped} ref={dropRef}/>
+      </UserAuthInfoBar> :
+      <SignIn/>}
+  </>)
 };

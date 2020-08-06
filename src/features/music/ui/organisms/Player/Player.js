@@ -112,9 +112,9 @@ return(
       <div className={styles.title_info}>
             <span
               className={styles.title}>{state.artist} - {state.title}</span>
-        <small>{state.currentSecond}{state.duration ?
-          "/" + state.duration :
-          "/0 : 00"} </small>
+        <small>{state.currentSecond}
+        {/*{state.duration ? "/" + state.duration : "/0 : 00"}*/}
+        </small>
       </div>
       <div className={styles.progress_wrapper}>
         <progress onClick={seekProgress} max="100"

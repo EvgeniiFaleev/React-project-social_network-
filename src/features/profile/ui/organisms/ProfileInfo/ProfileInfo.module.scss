@@ -28,12 +28,13 @@
     padding: 30px 0 50px 0;
 
     .userName_container {
+      box-sizing: border-box;
       width: 40%;
-      margin-left: 10px;
+      padding-left: 30px;
       text-align: left;
 
       .userName {
-        padding-left: 30px ;
+        //padding-left: 30px ;
         color: #27aae1;
         font-size: 2rem;
         //font-weight: bold;
@@ -81,7 +82,21 @@
   .userPhoto_block{
     width: 100vw !important;
     margin-left: -30px;
+  }
 
+}
+
+@media (max-width: 860px) and(min-width: 620px){
+
+  .userName_container{
+    padding-left: 10px !important;
+  }
+
+}
+@media (max-width: 360px){
+
+  .userName_container{
+    padding-left: 10px !important;
   }
 
 }
@@ -96,5 +111,23 @@
   }
   .userName_container{
     align-self: center;
+  }
+
+}
+@media (max-width: 480px) {
+  .userPhoto_block{
+    margin: 0;
+  }
+  .profileInfo{
+    padding-left: 20px !important;
+  }
+}
+@media (max-width: 400px) {
+  .userPhoto_block{
+    margin: 0;
+  }
+  .userName_container{
+    width: 50% !important;
+
   }
 }

@@ -48,7 +48,7 @@
     }
   }
   .dialog{
-    height: 66vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -76,4 +76,31 @@
     width: 50px;
      border-radius: 50%;
   }
+}
+@media (max-width: 600px){
+  .dialog{
+    padding:  0 5px;
+  }
+  .dialog_container{
+    margin: 0;
+
+  }
+}
+@media (max-width: 480px){
+  .dialog_container{
+    box-sizing: border-box;
+    padding-top: 0;
+    position: fixed;
+    width: 100%;
+    bottom: 44px;
+    top:50px;
+
+  }
+  .dialog{
+    //height: auto !important;
+    height: 65% !important;
+  }
+.userInfo{
+  padding: 5px !important;
+}
 }

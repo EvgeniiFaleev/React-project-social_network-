@@ -45,5 +45,12 @@
   .profileDescription{
     margin-top: 4vw;
   }
+}
 
+@media (max-width: 620px)  {
+  .profileDescription button.editProfile_btn{
+    display: block;
+    width: 50%;
+    margin: 20px auto;
+  }
 }

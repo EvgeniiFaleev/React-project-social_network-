@@ -39,7 +39,7 @@
       text-align: center;
       background: white;
       border-radius: 50%;
-      left: 30%;
+      left: 25%;
       top: 25%;
       font-size: 0.9rem;
       color: #27AAE1;
@@ -75,10 +75,37 @@
 }
 .track_title{
   flex-grow: 1;
+  flex-shrink: 1;
   display: flex;
   margin-left: 3vw;
   color: #6d6e71;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   justify-content: space-between;
+  a{
+   flex: 1 1 70%;
+    margin-right: 7px !important;
+  ;
+  }
 }
+}
+
+@media (max-width: 560px) {
+  .track_title{
+    font-size: 0.9rem !important;
+  }
+  .track_container{
+    padding-right: 20px;
+  }
+  .track_album{
+    flex-shrink: 0;
+    width: 50px;
+    img{
+
+    }
+  }
+}
+@media (max-width: 640px) {
+  .category_header{
+    font-size: 1.7rem;
+  }
 }

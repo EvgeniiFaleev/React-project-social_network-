@@ -19,3 +19,8 @@ flex: 0 1 28%;
     transition: all 1s;
   }
 }
+@media (max-width: 640px) {
+  .card_name{
+    font-size: 1.1rem !important;
+  }
+}

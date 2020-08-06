@@ -1,23 +1,21 @@
 import classes from "./UserAuthInfoBar.module.scss";
-import {NavLink} from "react-router-dom";
 import React from "react";
 import {shallowEqual, useSelector} from "react-redux";
-import {SignIn} from "../../atoms/SIgnIn";
+import {Logout} from "../../atoms/Logout/Logout";
 
 
 export const UserAuthInfoBar = React.forwardRef(({onDropdown, children},
  ref) => {
 
-  const {isAuth, userName, userPhoto} = useSelector((state) => (
+  const { userName, userPhoto} = useSelector((state) => (
     {
-      isAuth: state.auth.isAuth,
       userName: state.auth.user.fullName,
       userPhoto: state.auth.user.photos?.small
     }
   ), shallowEqual);
-
+  const isMobile = document.documentElement.clientWidth <= 480;
   return <>
-    {isAuth ?
+    {!isMobile ?
       <div ref={ref} className={classes.userInfo}
         onClick={onDropdown}>
         <span
@@ -28,7 +26,7 @@ export const UserAuthInfoBar = React.forwardRef(({onDropdown, children},
         </div>
         {children}
       </div> :
-      <SignIn/>
+      <Logout isMobile={isMobile}/>
       }
   </>
 });

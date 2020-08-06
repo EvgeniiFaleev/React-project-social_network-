@@ -37,3 +37,16 @@
     }
   }
  }
+@media (max-width: 480px){
+  .wrapper{
+    padding: 10px;
+    textarea{
+      padding: 5px;
+      height: 30px!important;
+      border-radius: 15px;
+    }
+    .button_wrapper{
+      display: none;
+    }
+  }
+}
