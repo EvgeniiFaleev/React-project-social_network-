@@ -1,5 +1,5 @@
 import {Redirect, Route, Switch} from "react-router";
-import {ProfilePage} from "./pages/profile";
+// import {ProfilePage} from "./pages/profile";
 import {DialogsPage} from "./pages/dialogs";
 import {NewsPage} from "./pages/news";
 import {MusicPage} from "./pages/music";
@@ -8,6 +8,13 @@ import {LoginPage} from "./pages/login";
 import React from "react";
 import {FriendsPage} from "./pages/friends";
 import {SearchPage} from "./pages/search";
+import loadable from '@loadable/component'
+
+
+const ProfilePage = loadable(() => import( /* webpackChunkName:
+ "profile" */'./pages/profile'), {
+  resolveComponent: (components) => components.ProfilePage,
+});
 
 
 export const Routes = () => {
