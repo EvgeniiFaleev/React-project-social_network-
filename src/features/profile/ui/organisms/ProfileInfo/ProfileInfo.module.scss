@@ -51,12 +51,13 @@
         margin-top: 20px;
         margin-right: 10px;
         background: #27aae1;
-        padding: 15px 30px;
+        padding: 10px 10px;
         font-weight: 600;
         color: white;
         border-radius: 30px;
         border: 0;
         cursor: pointer;
+        white-space: nowrap;
       }
 
       button:hover {
@@ -104,6 +105,10 @@
 @media (max-width: 620px) {
   .profileInfo{
     flex-direction: column !important;
+    padding-right: 25px !important;
+    .userName{
+      text-align: center;
+    }
   }
   .userPhoto_block{
     padding: 0 !important;
@@ -111,6 +116,14 @@
   }
   .userName_container{
     align-self: center;
+    padding-left: 0 !important;
+    margin-left: -30px;
+    .buttons{
+      justify-content: center !important;
+    }
+    .buttons button:nth-child(2){
+      margin-right: 0 !important;
+    }
   }
 
 }
@@ -121,13 +134,14 @@
   .profileInfo{
     padding-left: 20px !important;
   }
+  .userName_container{
+    //align-self: flex-start;
+    //margin-left: 0;
+  }
 }
 @media (max-width: 400px) {
   .userPhoto_block{
     margin: 0;
   }
-  .userName_container{
-    width: 50% !important;
 
-  }
 }
