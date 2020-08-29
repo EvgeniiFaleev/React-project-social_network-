@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/React-project-social_network-/static/css/main.9eb4bc64.chunk.css",
-    "main.js": "/React-project-social_network-/static/js/main.8ac39428.chunk.js",
-    "main.js.map": "/React-project-social_network-/static/js/main.8ac39428.chunk.js.map",
+    "main.css": "/React-project-social_network-/static/css/main.add68683.chunk.css",
+    "main.js": "/React-project-social_network-/static/js/main.9ab04cc7.chunk.js",
+    "main.js.map": "/React-project-social_network-/static/js/main.9ab04cc7.chunk.js.map",
     "profile.js": "/React-project-social_network-/static/js/profile.9fa8a2a8.chunk.js",
     "profile.js.map": "/React-project-social_network-/static/js/profile.9fa8a2a8.chunk.js.map",
     "runtime-main.js": "/React-project-social_network-/static/js/runtime-main.f3b68b23.js",
@@ -10,9 +10,9 @@
     "static/js/3.337bd860.chunk.js": "/React-project-social_network-/static/js/3.337bd860.chunk.js",
     "static/js/3.337bd860.chunk.js.map": "/React-project-social_network-/static/js/3.337bd860.chunk.js.map",
     "index.html": "/React-project-social_network-/index.html",
-    "precache-manifest.befb488603f0a15b6c5fe469fc7afb6f.js": "/React-project-social_network-/precache-manifest.befb488603f0a15b6c5fe469fc7afb6f.js",
+    "precache-manifest.1e58b661c34534b1e8478319c175cbcb.js": "/React-project-social_network-/precache-manifest.1e58b661c34534b1e8478319c175cbcb.js",
     "service-worker.js": "/React-project-social_network-/service-worker.js",
-    "static/css/main.9eb4bc64.chunk.css.map": "/React-project-social_network-/static/css/main.9eb4bc64.chunk.css.map",
+    "static/css/main.add68683.chunk.css.map": "/React-project-social_network-/static/css/main.add68683.chunk.css.map",
     "static/js/3.337bd860.chunk.js.LICENSE.txt": "/React-project-social_network-/static/js/3.337bd860.chunk.js.LICENSE.txt",
     "static/media/Free Watercolor Logos_6.png": "/React-project-social_network-/static/media/Free Watercolor Logos_6.9671fa20.png",
     "static/media/avatar-undefined.jpg": "/React-project-social_network-/static/media/avatar-undefined.54c6edcf.jpg",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.f3b68b23.js",
     "static/js/3.337bd860.chunk.js",
-    "static/css/main.9eb4bc64.chunk.css",
-    "static/js/main.8ac39428.chunk.js"
+    "static/css/main.add68683.chunk.css",
+    "static/js/main.9ab04cc7.chunk.js"
   ]
 }
