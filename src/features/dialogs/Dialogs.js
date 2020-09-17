@@ -1,8 +1,8 @@
 import React from "react";
-import {useAuthRedirect} from "../../utils/useAuthRedirect";
+import {useAuthRedirect} from "@auth/hooks/useAuthRedirect";
 import {Route, Switch} from "react-router";
-import {Dialog} from "./ui/molecules/Dialog/Dialog";
-import {DialogsList} from "./ui/organisms/DialogsList";
+import {Dialog} from "@dialogs/ui/molecules/Dialog/Dialog";
+import {DialogsList} from "@dialogs/ui/organisms/DialogsList";
 
 
 export const Dialogs = () => {

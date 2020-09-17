@@ -1,4 +1,4 @@
-import {updateArrayOfItemsWithId} from "../../../../utils/obj-helpers";
+import {updateArrayOfItemsWithId} from "@utils/obj-helpers";
 import * as types from "./types"
 
 

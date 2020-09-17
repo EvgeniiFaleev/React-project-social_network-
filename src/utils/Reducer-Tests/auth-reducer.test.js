@@ -3,7 +3,7 @@ import authUserReducer, {
 } from "../auth-reducer";
 import thunk from "redux-thunk";
 import configureMockStore from 'redux-mock-store'
-import {authAPI} from "../../api/api";
+import {authAPI} from "../../api/socialAPI";
 
 
 describe('Test for auth_reducer', function () {

@@ -1,12 +1,12 @@
 import React, {useEffect} from "react";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
-import {useAuthRedirect} from "../../utils/useAuthRedirect";
-import {Preloader} from "../../ui";
-import {ProfileInfo} from "./ui/organisms/ProfileInfo/ProfileInfo";
-import * as profileActions from "./modules/profile/actions";
-import profileCommon from "./ui/assets/profileCommon.jpg";
+import {useAuthRedirect} from "@auth/hooks/useAuthRedirect";
+import {Preloader} from "@ui";
+import {ProfileInfo} from "@profile/ui/organisms/ProfileInfo/ProfileInfo";
+import * as profileActions from "@profile/modules/profile/actions";
+import profileCommon from "@profile/ui/assets/profileCommon.jpg";
 import avatarUndefined
-  from "../../ui/assets/images/avatar-undefined.jpg"
+  from "@ui/assets/images/avatar-undefined.jpg"
 import {useParams} from "react-router";
 
 

@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {usersActions, usersSelectors} from "./modules/users/";
-import {User} from "./ui/organisms/User/User";
-import {Preloader} from "../../ui/atoms/preloader/Preloader";
+import {User} from "@users/ui/organisms/User/User";
+import {Preloader} from "@ui";
 import classes from "./Users.module.scss"
-import {Paginator} from "../../ui";
+import {Paginator} from "@ui";
 import {useLocation, useParams} from "react-router";
 
 

@@ -1,5 +1,5 @@
 import styles from "./Cards.module.scss";
-import {Preloader} from "../../../../../ui";
+import {Preloader} from "@ui";
 import React from "react";
 
 

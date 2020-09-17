@@ -1,7 +1,7 @@
-import {profileAPI, usersAPI} from "../../../../api/api";
-import {initActions} from "../../../autnentification/modules/initialization";
+import {profileAPI, usersAPI} from "@api/socialAPI";
+import {initActions} from "@auth/modules/initialization";
 import * as types from "./types";
-import {usersActions} from "../../../users/modules/users";
+import {usersActions} from "@users/modules/users";
 
 // ===============Action Creators====================
 export const addPostActionCreator = (newMessageBody) => (

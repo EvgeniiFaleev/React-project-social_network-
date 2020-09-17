@@ -1,7 +1,7 @@
 import classes from "../../Music.module.scss";
 import React from "react";
-import {Card} from "../templates/card/Card";
-import {Cards} from "../templates/cards/Cards";
+import {Card} from "@music/ui/templates/card/Card";
+import {Cards} from "@music/ui/templates/cards/Cards";
 
 
 export const Podcasts = ({podcasts}) => {
@@ -10,9 +10,7 @@ export const Podcasts = ({podcasts}) => {
 
     return <Card
       id={podcast.id} pictureLink={podcast.link}
-      picture={podcast.picture_big}
-      // title={podcast.title}
-    >
+      picture={podcast.picture_big}>
       <p
         className={classes.podcast_description}>{podcast.description}</p>
     </Card>

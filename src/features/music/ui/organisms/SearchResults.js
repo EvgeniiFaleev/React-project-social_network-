@@ -1,7 +1,7 @@
 import React from "react";
-import {musicActions} from "../../modules/music";
-import {Tracks} from "./Tracks/Tracks";
-import {Arrow} from "../../../../ui/atoms/Arrow/Arrow";
+import {musicActions} from "@music/modules/music";
+import {Tracks} from "@music/ui//moleculs/Tracks/Tracks";
+import {Arrow} from "@ui/atoms/Arrow/Arrow";
 
 
 export const SearchResults = ({searchResults, dispatch}) => {

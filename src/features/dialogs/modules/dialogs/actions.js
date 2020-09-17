@@ -1,7 +1,6 @@
 import * as types from "./types"
-import {dialogsAPI} from "../../../../api/api";
-import {initActions} from "../../../autnentification/modules/initialization";
-import {toggleIsFetching} from "../../../autnentification/modules/initialization/actions";
+import {dialogsAPI} from "@api/socialAPI";
+import {initActions} from "@auth/modules/initialization";
 
 
 export const setDialog = (dialog) => (
@@ -35,7 +34,7 @@ export const getDialogs = () => (dispatch) => {
     .then((dialogs) => {
       const sortedDialogs = dialogs.sort((a, b) => b.newMessagesCount - a.newMessagesCount);
       dispatch(setDialogs(sortedDialogs));
-      dispatch(toggleIsFetching(false));
+      dispatch(initActions.toggleIsFetching(false));
     });
 };
 

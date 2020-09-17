@@ -1,13 +1,13 @@
 import classes from "./UserAuthInfoBar.module.scss";
 import React from "react";
 import {shallowEqual, useSelector} from "react-redux";
-import {Logout} from "../../atoms/Logout/Logout";
+import {Logout} from "@auth/ui/atoms/Logout/Logout";
 
 
 export const UserAuthInfoBar = React.forwardRef(({onDropdown, children},
- ref) => {
+  ref) => {
 
-  const { userName, userPhoto} = useSelector((state) => (
+  const {userName, userPhoto} = useSelector((state) => (
     {
       userName: state.auth.user.fullName,
       userPhoto: state.auth.user.photos?.small
@@ -26,7 +26,6 @@ export const UserAuthInfoBar = React.forwardRef(({onDropdown, children},
         </div>
         {children}
       </div> :
-      <Logout isMobile={isMobile}/>
-      }
+      <Logout isMobile={isMobile}/>}
   </>
 });

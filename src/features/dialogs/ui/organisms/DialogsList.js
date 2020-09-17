@@ -1,9 +1,9 @@
-import classes from "../../Dialogs.module.scss";
+import classes from "@dialogs/Dialogs.module.scss";
 import React, {useEffect} from "react";
-import {DialogDescription} from "../molecules/DialogDescriprion/DialogDescription";
+import {DialogDescription} from "@dialogs/ui/molecules/DialogDescriprion/DialogDescription";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
-import {dialogsActions} from "../../modules/dialogs";
-import {Preloader} from "../../../../ui";
+import {dialogsActions} from "@dialogs/modules/dialogs";
+import {Preloader} from "@ui";
 
 
 export const DialogsList = () => {

@@ -1,6 +1,6 @@
-import {CommonTemplate} from "../../ui/templates/Common";
+import {CommonTemplate} from "@ui/templates/Common";
 import React from "react";
-import {Dialogs} from "../../features/dialogs";
+import {Dialogs} from "@dialogs";
 
 
 export const DialogsPage = () => {

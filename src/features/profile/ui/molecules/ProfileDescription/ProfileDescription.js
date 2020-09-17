@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {ProfileForm} from "../ProfileForm/ProfileForm";
-import {Contacts} from "../Contacts/Contacts";
+import {ProfileForm} from "@profile/ui/molecules/ProfileForm/ProfileForm";
+import {Contacts} from "@profile/ui/molecules/Contacts/Contacts";
 import classes from "./ProfileDescription.module.scss"
 
 export const ProfileDescription = ({profile, isOwner}) => {

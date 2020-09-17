@@ -1,5 +1,5 @@
 export {Dialogs} from "./Dialogs";
-export {NewMessagesCount} from "./ui/atoms/NewMessagesCount/NewMessagesCount"
+export {NewMessagesCount} from "@dialogs/ui/atoms/NewMessagesCount/NewMessagesCount"
 export {
   dialogsReducer, dialogsActions, dialogsTypes
-}from './modules/dialogs/'
+}from '@dialogs/modules/dialogs/'

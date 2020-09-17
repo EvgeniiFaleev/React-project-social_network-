@@ -1,19 +1,16 @@
-import classes from "../../Music.module.scss";
-import {Preloader} from "../../../../ui";
 import React from "react";
-import {Card} from "../templates/card/Card";
-import {Cards} from "../templates/cards/Cards";
+import {Card} from "@music/ui/templates/card/Card";
+import {Cards} from "@music/ui/templates/cards/Cards";
 
 
 export const Albums = ({albums}) => {
 
-  const albumsElements = albums?.map((album) =>
-    <Card
+  const albumsElements = albums?.map((album) => <Card
     id={album.id} picture={album.cover_big}
     artistName={album.artist.name}
     title={album.title}
     link={album.link}
-      font_size="1rem"
+    font_size="1rem"
   />);
 
   return (

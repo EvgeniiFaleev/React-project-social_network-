@@ -1,6 +1,6 @@
 import styles from "./Categories.module.scss";
 import React from "react";
-import {newsActions} from "../../../modules/news";
+import {newsActions} from "@news/modules/news";
 
 
 export const Categories = ({dispatch}) => {

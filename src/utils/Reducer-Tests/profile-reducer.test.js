@@ -8,7 +8,7 @@ import profilePageReducer, {
 } from "../profile-reducer";
 import thunk from "redux-thunk";
 import configureMockStore from 'redux-mock-store'
-import {profileAPI, usersAPI} from "../../api/api";
+import {profileAPI, usersAPI} from "../../api/socialAPI";
 
 
 describe('Test for profile_reducer', () => {

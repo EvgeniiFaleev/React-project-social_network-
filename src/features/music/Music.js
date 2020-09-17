@@ -1,10 +1,11 @@
-import React, {useEffect, useMemo} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {musicActions} from "./";
-import {SearchResults} from "./ui/organisms/SearchResults";
-import {Search} from "./ui/organisms/Search/Search";
-import {Chart} from "./ui/organisms/Chart";
-import styles from"./Music.module.scss"
+import {musicActions} from "@music/modules/music";
+import {SearchResults} from "@music/ui/organisms/SearchResults";
+import {Search} from "@music/ui/organisms/Search/Search";
+import {Chart} from "@music/ui/organisms/Chart";
+import styles from "./Music.module.scss"
+
 
 export const Music = () => {
 

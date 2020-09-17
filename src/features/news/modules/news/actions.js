@@ -1,5 +1,5 @@
 import * as types from "./types"
-import {newsAPI} from "../../../../api/newsAPI";
+import {newsAPI} from "@api/newsAPI";
 
 
 export const setNews = (articles) => (

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./DialogDescription.module.scss";
 import {Link} from "react-router-dom";
-import no_img from "../../../../../ui/assets/images/avatar-undefined.jpg"
+import no_img from "@images/avatar-undefined.jpg"
 
 
 export const DialogDescription = ({

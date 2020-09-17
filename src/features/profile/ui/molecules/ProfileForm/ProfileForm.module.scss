@@ -1,12 +1,12 @@
 .profileForm {
   padding-top: 20px;
   font-size: 1.1rem;
-  width: 80%;
   margin-left: -50px;
   position: relative;
+  padding-right: 30px;
 &_close{
   position: absolute;
-  right: 0;
+  right: 30px;
   top: 0;
 }
  &_close i {
@@ -91,6 +91,12 @@
 
 .error {
   color: #ff8967;
+}
+@media (max-width:630px) {
+ .profileForm{
+   margin-left: 0;
+   padding-right:20px;
+ }
 }
 @media (max-width:480px) {
 .name_wrapper{

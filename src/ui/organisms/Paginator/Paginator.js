@@ -5,7 +5,8 @@ import classes from "./Paginator.module.scss"
 export const Paginator = ({
   portionSize = 10, totalUsersCount, pageSize, currentPage, onPageChanged
 }) => {
-
+  const isMobile = document.documentElement.clientWidth <= 480;
+  if (isMobile) portionSize = 5;
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
   let pages = [];
@@ -38,7 +39,7 @@ export const Paginator = ({
         }}>{p}</span>
     });
 
-  const onPortionNumber = (e,k) => {
+  const onPortionNumber = (e, k) => {
     const arrow = e.target;
     setPortionNumber(portionNumber + k);
   };
@@ -49,23 +50,22 @@ export const Paginator = ({
 
       <div className={classes.paginator}>
         {portionNumber > 1 &&
-        <div onClick={(e)  => onPortionNumber(e,-1)}
+        <div onClick={(e) => onPortionNumber(e, -1)}
           className={`${classes.icon} ${classes.left}`}>
-          <div  className={classes.arrow}></div>
-        </div>
-        }
+          <div className={classes.arrow}></div>
+        </div>}
 
         {currentPages}
         {portionCount > portionNumber &&
-        <div onClick={(e)  => onPortionNumber(e,+1)}
-             className={classes.icon}>
-          <div  className={classes.arrow}></div>
+        <div onClick={(e) => onPortionNumber(e, +1)}
+          className={classes.icon}>
+          <div className={classes.arrow}></div>
         </div>
-        // <button onClick={() => {
-        //   setPortionNumber(portionNumber + 1)
-        // }}>NEXT</button>
+          // <button onClick={() => {
+          //   setPortionNumber(portionNumber + 1)
+          // }}>NEXT</button>
         }
-        </div>
+      </div>
 
     </div>
   )

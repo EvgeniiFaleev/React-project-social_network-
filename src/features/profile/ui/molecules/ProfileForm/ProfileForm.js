@@ -1,7 +1,7 @@
 import React from "react";
 import {ErrorMessage, useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
-import {profileActions} from "../../../modules/profile/";
+import {profileActions} from "@profile/modules/profile/";
 import classes from "./ProfileForm.module.scss"
 
 

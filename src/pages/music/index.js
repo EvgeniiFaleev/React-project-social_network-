@@ -1,6 +1,6 @@
-import {CommonTemplate} from "../../ui/templates/Common";
+import {CommonTemplate} from "@ui/templates/Common";
 import React from "react";
-import {Music, musicActions} from "../../features/music";
+import {Music, musicActions} from "@music";
 import {useDispatch} from "react-redux";
 
 

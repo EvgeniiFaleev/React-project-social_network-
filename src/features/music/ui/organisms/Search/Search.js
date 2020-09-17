@@ -1,6 +1,6 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import {musicActions} from "../../../modules/music";
+import {musicActions} from "@music/modules/music";
 import styles from "./Search.module.scss"
 
 export const Search = ({dispatch}) => {

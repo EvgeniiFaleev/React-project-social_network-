@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./MyPosts.module.scss";
 import {useSelector} from "react-redux";
-import Post from "../../atoms/Post/Post";
-import {MyPostsForm} from "../../molecules/MyPostsForm/MyPostsForm";
+import Post from "@profile/ui/atoms/Post/Post";
+import {MyPostsForm} from "@profile/ui/molecules/MyPostsForm/MyPostsForm";
 
 
 export const MyPosts = () => {

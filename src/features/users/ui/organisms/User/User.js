@@ -1,9 +1,9 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
-import {FollowBtn} from "../../atoms/FollowBtn/FollowBtn";
+import {FollowBtn} from "@users/ui/atoms/FollowBtn/FollowBtn";
 import classes from "./User.module.scss"
 import ava_undefined
-  from "../../../../../ui/assets/images/avatar-undefined.jpg"
+  from "@ui/assets/images/avatar-undefined.jpg"
 
 
 export const User = ({

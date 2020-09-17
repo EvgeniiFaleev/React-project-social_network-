@@ -1,10 +1,11 @@
 import React, {useEffect, useRef} from "react";
 import styles from "./Player.module.scss";
-import {calculateProgress, converter} from "../../../utils";
-import {playerActions} from "../../../modules/player";
+import {calculateProgress, converter} from "@music/utils";
+import {playerActions} from "@music/modules/player";
 
 
-export const Player = React.forwardRef(({dispatch,state,initPlayer,...props},ref) => {
+export const Player = React.forwardRef(({dispatch, state, initPlayer, ...props},
+  ref) => {
   const trackRef = ref;
   const hintRef = useRef();
 
@@ -86,55 +87,55 @@ export const Player = React.forwardRef(({dispatch,state,initPlayer,...props},ref
     trackRef.current.volume = state.volume / 100;
   }, [state.volume]);
 
-return(
-  <div className={styles.player}>
-    <audio ref={trackRef} onTimeUpdate={playingProgress}
-      onLoadedData={() => {
-        dispatch(playerActions.setDuration(converter(trackRef.current.duration)))
-      }}
-      src={state.currentSrc}
-      preload="none" data-track_number={state.currentNumber}/>
-    <div onClick={initPlayer} className={styles.play_block}>
-      <img
-        src={state.currentAlbum} alt="player_album"/>
-      {state.isPlaying ?
-        <i className={"fa fa-pause" + " " + styles.pause}/> :
-        <i className={"fa fa-play" + " " + styles.play}/>}
+  return (
+    <div className={styles.player}>
+      <audio ref={trackRef} onTimeUpdate={playingProgress}
+        onLoadedData={() => {
+          dispatch(playerActions.setDuration(converter(trackRef.current.duration)))
+        }}
+        src={state.currentSrc}
+        preload="none" data-track_number={state.currentNumber}/>
+      <div onClick={initPlayer} className={styles.play_block}>
+        <img
+          src={state.currentAlbum} alt="player_album"/>
+        {state.isPlaying ?
+          <i className={"fa fa-pause" + " " + styles.pause}/> :
+          <i className={"fa fa-play" + " " + styles.play}/>}
 
-    </div>
-    <div className={styles.arrows}>
-      <i className="fa fa-step-backward" onClick={onBackward}
-        aria-hidden="true"/>
-      <i className="fa fa-step-forward" onClick={onForward}
-        aria-hidden="true"/>
-    </div>
-    <div className={styles.progress_bar}>
-      <div className={styles.title_info}>
+      </div>
+      <div className={styles.arrows}>
+        <i className="fa fa-step-backward" onClick={onBackward}
+          aria-hidden="true"/>
+        <i className="fa fa-step-forward" onClick={onForward}
+          aria-hidden="true"/>
+      </div>
+      <div className={styles.progress_bar}>
+        <div className={styles.title_info}>
             <span
               className={styles.title}>{state.artist} - {state.title}</span>
-        <small>{state.currentSecond}
-        {/*{state.duration ? "/" + state.duration : "/0 : 00"}*/}
-        </small>
-      </div>
-      <div className={styles.progress_wrapper}>
-        <progress onClick={seekProgress} max="100"
-          onMouseMove={showHint} onMouseLeave={closeHint}
-          value={state.progress}>
-        </progress>
+          <small>{state.currentSecond}
+            {/*{state.duration ? "/" + state.duration : "/0 : 00"}*/}
+          </small>
+        </div>
+        <div className={styles.progress_wrapper}>
+          <progress onClick={seekProgress} max="100"
+            onMouseMove={showHint} onMouseLeave={closeHint}
+            value={state.progress}>
+          </progress>
 
-        <small ref={hintRef}
-          className={styles.hint}>{state.hintTime}
-        </small>
+          <small ref={hintRef}
+            className={styles.hint}>{state.hintTime}
+          </small>
+        </div>
+      </div>
+
+      <div className={styles.volume}>
+        {state.volume > 0 ?
+          <i className="fa fa-volume-up" aria-hidden="true"/> :
+          <i className="fa fa-volume-off" aria-hidden="true"/>}
+        <input type="range" onChange={onVolume}
+          value={state.volume}/>
       </div>
     </div>
-
-    <div className={styles.volume}>
-      {state.volume > 0 ?
-        <i className="fa fa-volume-up" aria-hidden="true"/> :
-        <i className="fa fa-volume-off" aria-hidden="true"/>}
-      <input type="range" onChange={onVolume}
-        value={state.volume}/>
-    </div>
-  </div>
-)
+  )
 });

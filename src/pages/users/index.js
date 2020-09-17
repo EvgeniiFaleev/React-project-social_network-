@@ -1,7 +1,6 @@
-import {CommonTemplate} from "../../ui/templates/Common";
-import {Users, usersActions} from "../../features/users";
+import {CommonTemplate} from "@ui/templates/Common";
+import {Users} from "@users";
 import React from "react";
-import {useDispatch} from "react-redux";
 
 
 export const UsersPage =  () => {

@@ -1,8 +1,8 @@
 import classes from "../../News.module.scss";
 import React from "react";
-import {Preloader} from "../../../../ui";
+import {Preloader} from "@ui";
 import {useSelector} from "react-redux";
-import {Article} from "../moleculs/Article/Article";
+import {Article} from "@news/ui/moleculs/Article/Article";
 
 
 export const Articles = () => {

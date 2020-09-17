@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
 import classes from "./News.module.scss";
-import {newsActions} from "./"
+import {newsActions} from "@news/modules/news"
 import {useDispatch} from "react-redux";
-import {Categories} from "./ui/moleculs/Categories/Categories";
-import {Articles} from "./ui/Organisms/Articles";
-import {Search} from "./ui/moleculs/Search/Search";
+import {Categories} from "@news/ui/moleculs/Categories/Categories";
+import {Articles} from "@news/ui/Organisms/Articles";
+import {Search} from "@news/ui/moleculs/Search/Search";
 
 
 export const News = () => {

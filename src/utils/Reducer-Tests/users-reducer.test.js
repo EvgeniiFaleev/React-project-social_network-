@@ -12,7 +12,7 @@ import usersPageReducer, {
   toggleIsFetching,
   unFollow, unFollowUser
 } from "../users-reducer";
-import {usersAPI} from "../../api/api";
+import {usersAPI} from "../../api/socialAPI";
 
 
 describe('Test for Users_reducer', () => {

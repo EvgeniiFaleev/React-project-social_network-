@@ -29,7 +29,7 @@
   box-sizing: border-box;
   position: relative;
   //transform: translate(-50%,-50%);
-  width: 80px;
+  width: 60px;
   height: 30px;
   cursor: pointer;
 }
@@ -51,22 +51,22 @@
   position: absolute;
   width: 70%;
   height: 4px;
-  right: -7px;
+  right: -6px;
   background-color: #6d6e71;
 }
 
 .arrow::after {
-  top: -5px;
+  top: -4px;
   transform: rotate(45deg);
 }
 
 .arrow::before {
-  top: 5px;
+  top: 4px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
   transform: rotate(-45deg);
 }
 .left .arrow::after, .left .arrow::before {
-  left: -7px;
+  left: -6px;
   right: 0;
 }
 .left .arrow::after {
@@ -75,4 +75,43 @@
 
 .left .arrow::before {
   transform: rotate(45deg);
+}
+@media (max-width: 630px) {
+  .pageNumber{
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageNumber {
+    padding: 4px;
+  }
+  .icon {
+    width: 40px;
+  }
+  .left .arrow{
+    left: 50% !important;
+  }
+  .paginator:last-child.arrow{
+    left: 20%;
+  }
+  .arrow::after, .arrow::before{
+    right: -4px;
+  }
+  .arrow::after {
+    top: -3px;
+  }
+
+  .arrow::before {
+    top: 3px;
+  }
+  .left .arrow::after,  .left  .arrow::before{
+    left: -4px !important;
+  }
+  .left .arrow::after {
+    top: -3px;
+  }
+  .left  .arrow::before {
+    top: 3px;
+  }
 }

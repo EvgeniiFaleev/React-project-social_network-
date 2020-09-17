@@ -1,14 +1,12 @@
-import {Header} from "../organisms/Header/Header";
-import {Navbar} from "../organisms/Navbar/Navbar";
+import {Header} from "@ui/organisms/Header/Header";
+import {Navbar} from "@ui/organisms/Navbar/Navbar";
+import {Footer} from "@ui/organisms/Footer/Footer";
 import React from "react";
 import classes from "./Common.module.scss"
-import {Footer} from "../organisms/Footer/Footer";
-import {UserAuthInfo} from "../../features/autnentification/";
-import {Friends} from "../../features/users/Friends";
+import {UserAuthInfo} from "@auth";
+import {Friends, usersActions, Search} from "@users";
 import {useDispatch} from "react-redux";
-import {usersActions} from "../../features/users/modules/users";
-import {Search} from "../../features/users";
-import {NewMessagesCount} from "../../features/dialogs";
+import {NewMessagesCount} from "@dialogs";
 
 
 export const CommonTemplate = ({children, clearMusicSearch}) => {

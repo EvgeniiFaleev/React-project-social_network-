@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Article.module.scss"
-import mockImg from "../../assets/categories/news.jpg"
+import mockImg from "@news/ui/assets/categories/news.jpg"
 
 
 export const Article =

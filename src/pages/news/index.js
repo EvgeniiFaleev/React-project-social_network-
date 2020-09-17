@@ -1,6 +1,6 @@
-import {CommonTemplate} from "../../ui/templates/Common";
+import {CommonTemplate} from "@ui/templates/Common";
 import React from "react";
-import {News} from "../../features/news";
+import {News} from "@news";
 
 
 export const NewsPage = () => {

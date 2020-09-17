@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./Navbar.module.scss";
 import {NavLink} from "react-router-dom";
-import icon from "../../assets/icons/message-group.png"
+import icon from "@icons/message-group.png"
 
 
 export const Navbar = ({children, clearPage, clearMusicSearch, messagesCount}) => {
 
-  const isMobile = document.documentElement.clientWidth <= 860
+  const isMobile = document.documentElement.clientWidth <= 860;
+
+
   return (
     <div className={styles.container}>
       <nav>
@@ -20,7 +22,9 @@ export const Navbar = ({children, clearPage, clearMusicSearch, messagesCount}) =
             </NavLink>
           </li>
           <li onClick={clearPage}>
-            <NavLink to={isMobile ? "/friends" : "/users" } activeClassName={styles.active}>
+            <NavLink to={isMobile ?
+              "/friends" :
+              "/users"} activeClassName={styles.active}>
               <i className="fa fa-users"/>
               <strong>Users</strong>
               <small>our developers</small>

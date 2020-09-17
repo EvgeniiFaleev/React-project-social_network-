@@ -1,6 +1,6 @@
 import * as types from "./types"
-import {usersAPI} from "../../../../api/api";
-import {initActions} from "../../../autnentification/modules/initialization";
+import {usersAPI} from "@api/socialAPI";
+import {initActions} from "@auth/modules/initialization";
 import {usersActions} from "./index";
 
 // Action Creators===============================================

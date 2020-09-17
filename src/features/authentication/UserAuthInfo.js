@@ -1,9 +1,9 @@
 import React, {useCallback, useRef, useState} from "react";
-import {Dropdown} from "./ui/molecules/Dropdown/Dropdown";
-import {UserAuthInfoBar} from "./ui/organisms/UserAutnInfoBar/UserAuthInfoBar";
-import dropClass from "./ui/molecules/Dropdown/Dropdown.module.scss";
+import {Dropdown} from "@auth/ui/molecules/Dropdown/Dropdown";
+import {UserAuthInfoBar} from "@auth/ui/organisms/UserAutnInfoBar/UserAuthInfoBar";
+import dropClass from "@auth/ui/molecules/Dropdown/Dropdown.module.scss";
 import {useSelector} from "react-redux";
-import {SignIn} from "./ui/atoms/SIgnIn";
+import {SignIn} from "@auth/ui/atoms/SIgnIn";
 
 
 export const UserAuthInfo = () => {

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {dialogsActions} from "../../../modules/dialogs";
+import {dialogsActions} from "@dialogs/modules/dialogs";
 import styles from "./NewMessagesCount.module.scss"
 
 

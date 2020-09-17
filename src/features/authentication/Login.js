@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {Redirect} from "react-router";
-import {LoginForm} from "./ui/organisms/LoginForm/LoginForm";
-import styles from "./Login.module.scss"
+import {LoginForm} from "@auth/ui/organisms/LoginForm/LoginForm";
+import styles from "@auth/Login.module.scss"
 
 
 export const Login = () => {

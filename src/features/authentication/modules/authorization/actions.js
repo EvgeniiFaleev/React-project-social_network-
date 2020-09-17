@@ -1,4 +1,4 @@
-import {authAPI, profileAPI} from "../../../../api/api";
+import {authAPI, profileAPI} from "@api/socialAPI";
 import * as types from "./types"
 // ==========Action Creators======================
 

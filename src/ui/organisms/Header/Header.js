@@ -1,13 +1,11 @@
 import React from 'react';
 import classes from './Header.module.scss'
 import logo
-  from "./../../assets/images/logo/Free Watercolor Logos_6.png"
-import {UserAuthInfo} from "../../../features/autnentification/UserAuthInfo";
+  from "@images/logo/Free Watercolor Logos_6.png"
 
 
 export const Header = ({children}) => {
 
-  console.log(children)
   return (
     <header className={classes.header}>
       <div className={classes.header_content}>

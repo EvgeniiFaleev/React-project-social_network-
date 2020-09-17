@@ -3,7 +3,7 @@ import configureMockStore from 'redux-mock-store'
 import appReducer, {
   initializeApp, initializedSuccess, initialState
 } from "../app-reducer";
-import {authAPI} from "../../api/api";
+import {authAPI} from "../../api/socialAPI";
 import {authUser} from "../auth-reducer";
 
 

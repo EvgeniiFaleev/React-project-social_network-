@@ -1,5 +1,5 @@
-import {CommonTemplate} from "../../ui/templates/Common";
-import {Users} from "../../features/users";
+import {CommonTemplate} from "@ui/templates/Common";
+import {Users} from "@users";
 import React from "react";
 
 

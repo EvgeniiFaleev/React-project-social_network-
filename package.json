@@ -4,7 +4,7 @@
   "homepage": "https://evgeniifaleev.github.io/React-project-social_network-/",
   "private": true,
   "dependencies": {
-    "@loadable/component": "^5.13.1",
+    "@craco/craco": "^5.6.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -19,14 +19,13 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
-    "redux-form": "latest",
     "redux-thunk": "latest",
     "reselect": "^4.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -47,7 +46,6 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/core": "^4.10.2",
     "fetch-mock": "^9.4.0",
     "gh-pages": "^2.2.0",
     "redux-mock-store": "^1.5.4"

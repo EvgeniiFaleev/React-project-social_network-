@@ -1,11 +1,11 @@
 import {combineReducers} from "redux";
-import {authReducer} from "../../features/autnentification";
-import {usersReducer} from "../../features/users";
-import {profileReducer} from "../../features/profile";
-import {initReducer} from "../../features/autnentification";
-import {dialogsReducer} from "../../features/dialogs";
-import {newsReducer} from "../../features/news";
-import {musicReducer} from "../../features/music";
+import {authReducer} from "@auth";
+import {usersReducer} from "@users";
+import {profileReducer} from "@profile";
+import {initReducer} from "@auth";
+import {dialogsReducer} from "@dialogs";
+import {newsReducer} from "@news";
+import {musicReducer} from "@music";
 
 
 export const rootReducer = combineReducers({

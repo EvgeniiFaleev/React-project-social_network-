@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Followbtn.module.scss"
-import {usersActions} from "../../../modules/users";
+import {usersActions} from "@users/modules/users";
 import {useDispatch} from "react-redux";
 
 export const FollowBtn = ({followed, isFollowing, id}) =>{

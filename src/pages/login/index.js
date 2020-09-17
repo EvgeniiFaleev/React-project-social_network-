@@ -1,6 +1,6 @@
-import {CommonTemplate} from "../../ui/templates/Common";
+import {CommonTemplate} from "@ui/templates/Common";
 import React from "react";
-import {Login} from "../../features/autnentification";
+import {Login} from "@auth";
 
 
 export const LoginPage = () => {

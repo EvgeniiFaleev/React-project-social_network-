@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {profileActions} from "../../../../profile/modules/profile";
+import {profileActions} from "@profile/modules/profile";
 import classes from "./ProfileStatus.module.scss";
 
 export const ProfileStatus = ({dispatch, isOwner}) => {

@@ -1,5 +1,5 @@
 import * as types from "./types"
-import {musicApi} from "../../../../api/musicAPI";
+import {musicApi} from "@api/musicAPI";
 
 
 export const setMusicCharts = (charts) => (

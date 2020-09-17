@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router";
-import {UsersSearch} from "./ui/moleculs/UsersSearch/UsersSearch";
+import {UsersSearch} from "@users/ui/moleculs/UsersSearch/UsersSearch";
 
 
 export const Search = () => {

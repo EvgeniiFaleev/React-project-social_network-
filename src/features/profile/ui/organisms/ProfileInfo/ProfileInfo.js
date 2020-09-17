@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import classes from "./ProfileInfo.module.scss";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
-import {ProfileDescription} from "../../molecules/ProfileDescription/ProfileDescription";
-import {ProfileStatus} from "../../atoms/ProfileStatus/ProfileStatus";
-import {profileActions} from "../../../modules/profile";
+import {ProfileDescription} from "@profile/ui/molecules/ProfileDescription/ProfileDescription";
+import {ProfileStatus} from "@profile/ui/atoms/ProfileStatus/ProfileStatus";
+import {profileActions} from "@profile/modules/profile";
 import {Link} from "react-router-dom";
 
 

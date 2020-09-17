@@ -1,15 +1,14 @@
 import React, {useEffect, useRef, useState} from "react";
-import {DialogsForm} from "../DialogsForm/DialogsForm";
+import {DialogsForm} from "@dialogs/ui/molecules/DialogsForm/DialogsForm";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
-import {dialogsActions} from "../../../modules/dialogs";
-import {profileActions} from "../../../../profile/modules/profile";
-import {Preloader} from "../../../../../ui";
-import {Message} from "../../atoms/Message/Message";
+import {dialogsActions} from "@dialogs/modules/dialogs";
+import {profileActions} from "@profile/modules/profile";
+import {Preloader} from "@ui";
+import {Message} from "@dialogs/ui/atoms/Message/Message";
 import classes from "./Dialog.module.scss"
-import no_avatar
-  from "../../../../../ui/assets/images/avatar-undefined.jpg";
-import msgClasses from "../../atoms/Message/Message.module.scss"
+import no_avatar from "@images/avatar-undefined.jpg";
+import msgClasses from "@dialogs/ui/atoms/Message/Message.module.scss"
 
 
 export const Dialog = () => {
@@ -59,9 +58,9 @@ export const Dialog = () => {
     if (ref.current) ref.current.scrollIntoView();
 
     if (renderCount > 1) {
-      if(ref.current.classList.contains(msgClasses.owner)){
+      if (ref.current.classList.contains(msgClasses.owner)) {
         ref.current.classList.add(classes.new_owner);
-      } else{
+      } else {
         ref.current.classList.add(classes.new_other)
       }
     }

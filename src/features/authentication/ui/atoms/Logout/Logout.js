@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {authActions} from "../../../modules/authorization";
+import {authActions} from "@auth/modules/authorization";
 import styles from "./Logout.module.scss"
 
 export const Logout = ({isMobile}) =>{

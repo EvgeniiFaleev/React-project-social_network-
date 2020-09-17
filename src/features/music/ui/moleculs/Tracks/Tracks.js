@@ -1,11 +1,11 @@
 import styles from "./Tracks.module.scss"
-import {Preloader} from "../../../../../ui";
+import {Preloader} from "@ui";
 import React, {useEffect, useReducer, useRef} from "react";
-import {converter} from "../../../utils"
-import {Player} from "../Player/Player";
+import {converter} from "@music/utils"
+import {Player} from "@music/ui/organisms/Player/Player";
 import {
   playerActions, playerInitialState, playerReducer
-} from "../../../modules/player";
+} from "@music/modules/player";
 
 
 export const Tracks = ({tracks, children}) => {
