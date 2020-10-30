@@ -1,5 +1,5 @@
 import * as  types from "./types"
-import * as authActions from "../authorization/actions";
+import * as authActions from "../authorization/actions.ts";
 // ==========Action Creators======================
 
 export const initializedSuccess = () => (

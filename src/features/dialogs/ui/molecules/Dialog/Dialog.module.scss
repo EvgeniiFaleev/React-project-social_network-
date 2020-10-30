@@ -32,7 +32,7 @@
 .dialog_container{
   padding: 20px 0;
   background-color: #f8f8f8;
-  height: 100%;
+  height: 100vh;
   margin: 0 90px;
   overflow: hidden;
   box-sizing: border-box;
@@ -91,6 +91,7 @@
     box-sizing: border-box;
     padding-top: 0;
     position: fixed;
+    height: 100%;
     width: 100%;
     bottom: 44px;
     top:50px;

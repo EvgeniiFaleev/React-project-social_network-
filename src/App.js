@@ -14,7 +14,7 @@ class App extends Component {
 
   render() {
     if (!this.props.initialized) return <Preloader/>;
-
+console.log("render")
     return (
       <HashRouter>
            <Routes/>

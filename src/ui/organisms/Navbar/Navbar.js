@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Navbar.module.scss";
 import {NavLink} from "react-router-dom";
 import icon from "@icons/message-group.png"
+import * as PropTypes from "prop-types";
 
 
 export const Navbar = ({children, clearPage, clearMusicSearch, messagesCount}) => {
@@ -57,12 +58,19 @@ export const Navbar = ({children, clearPage, clearMusicSearch, messagesCount}) =
               <strong>Music</strong>
               <small>deezer chart</small>
             </NavLink>
-
           </li>
         </ul>
       </nav>
       {children}
     </div>
   );
+};
+
+Navbar.propTypes = {
+  children: PropTypes.element,
+  clearPage: PropTypes.func,
+  clearMusicSearch: PropTypes.func,
+  messagesCount: PropTypes.oneOfType([PropTypes.string,
+    PropTypes.number])
 };
 

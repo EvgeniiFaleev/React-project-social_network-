@@ -1,7 +1,7 @@
 import {profileAPI, usersAPI} from "@api/socialAPI";
-import {initActions} from "@auth/modules/initialization";
 import * as types from "./types";
 import {usersActions} from "@users/modules/users";
+import {batch} from "react-redux";
 
 // ===============Action Creators====================
 export const addPostActionCreator = (newMessageBody) => (
@@ -50,9 +50,11 @@ export const followUser = () => (dispatch, getState) => {
   dispatch(toggleIsFollowing(true));
   usersAPI.followUser(getState().profile.profile.userId)
     .then(() => {
-      dispatch(isFollowed(true));
-      dispatch(toggleIsFollowing(false));
-      dispatch(usersActions.getFriendsDemo(6, 1));
+      batch(() => {
+        dispatch(isFollowed(true));
+        dispatch(toggleIsFollowing(false));
+        dispatch(usersActions.getFriendsDemo(6, 1));
+      });
     });
 };
 
@@ -60,9 +62,11 @@ export const unFollowUser = () => (dispatch, getState) => {
   dispatch(toggleIsFollowing(true));
   usersAPI.unFollowUser(getState().profile.profile.userId)
     .then(() => {
-      dispatch(isFollowed(false));
-      dispatch(toggleIsFollowing(false));
-      dispatch(usersActions.getFriendsDemo(6, 1));
+      batch(() =>{
+        dispatch(isFollowed(false));
+        dispatch(toggleIsFollowing(false));
+        dispatch(usersActions.getFriendsDemo(6, 1));
+      })
     });
 };
 
@@ -72,11 +76,9 @@ export const isUserFollowed = (userId) => (dispatch) => {
 };
 
 export const getUser = (userId) => (dispatch) => {
-  dispatch(initActions.toggleIsFetching(true));
   return profileAPI.getUser(userId)
     .then((data) => {
       dispatch(setUserProfile(data));
-      dispatch(initActions.toggleIsFetching(false));
     });
 };
 

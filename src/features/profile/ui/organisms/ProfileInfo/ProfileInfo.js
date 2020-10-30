@@ -11,12 +11,12 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
   const dispatch = useDispatch();
 
   const isOwner = userId === authUserId;
-  const {followed, isFollowing} = useSelector((state) => (
-    {
+  const {followed, isFollowing} = useSelector((state) => { debugger
+    return {
       followed: state.profile.followed,
       isFollowing: state.profile.isFollowing
     }
-  ), shallowEqual);
+}, shallowEqual);
   const onSaveFile = (e) => {
     if (e.target.files.length) dispatch(profileActions.savePhoto(e.target.files[0]));
   };
@@ -24,7 +24,6 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
   useEffect(() => {
     dispatch(profileActions.isUserFollowed(userId));
   }, [dispatch, userId]);
-
   return (
     <div className={classes.profileInfo_wrapper}>
 
