@@ -1,6 +1,15 @@
 import  * as types from "./types"
+import {ProfileType} from "@socialAPI";
+import {ProfileActionsType} from "@profile/modules/profile/actions";
 
-export const initialState = {
+interface ProfileState{
+  isFollowing: boolean,
+  followed: boolean,
+  profile: null  | ProfileType,
+  status: string
+}
+
+export const initialState: ProfileState = {
   isFollowing: false,
   followed:false,
   profile: null,
@@ -8,16 +17,8 @@ export const initialState = {
 };
 
 export const reducer = (state = initialState,
-  action) => {
+  action: ProfileActionsType): ProfileState => {
   switch (action.type) {
-    case types.ADD_POST:
-      return {
-        ...state,
-        enterPosts: [...state.enterPosts, {
-          message: action.newMessageBody,
-          likeCount: "0"
-        }],
-      };
     case types.SET_USER_PROFILE:
       return {
         ...state,
@@ -31,7 +32,7 @@ export const reducer = (state = initialState,
     case types.UPDATE_PHOTO:
       return {
         ...state,
-        profile: {...state.profile, photos: action.photo}
+        profile: {...state.profile, photos: action.photo} as ProfileType
       };
     case types.TOGGLE_IS_FOLLOWING:
       return{

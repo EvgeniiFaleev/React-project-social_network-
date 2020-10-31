@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
-export interface ResponseDataType {
+export interface ResponseDataType<T = {}> {
   resultCode: number,
   messages: Array<any> | string,
-  data: object
+  data: T
 }
 
-type contacts = {
+type ContactsType = {
   github: string,
   vk: string,
   facebook: string,
@@ -16,18 +16,19 @@ type contacts = {
   youtube: string,
   mainLink: string,
 }
-type photos = {
-  small: string,
-  large: string
+export type PhotosType = {
+  small: string | null,
+  large: string | null
 }
 
-export interface ProfileType {
-  userId: number,
-  lookingForAJob: boolean,
-  lookingForAJobDescription: string,
-  fullName: string,
-  contacts: contacts,
-  photos: photos
+export type ProfileType = {
+  aboutMe?: null | string,
+  userId?: number | null,
+  lookingForAJob?: boolean  | null,
+  lookingForAJobDescription?: string | null,
+  fullName?: string | null,
+  contacts?: ContactsType | null,
+  photos?: PhotosType | null
 }
 
 export type LoginInfoType = {
@@ -35,10 +36,24 @@ export type LoginInfoType = {
   email: string
 };
 
-export interface UserInfoType {
+export type UserInfoType = {
   id: number,
   email: string,
   login: string
+}
+
+export type UsersItemType = {
+  name: string,
+  id: number,
+  photos: PhotosType,
+  status: null | string,
+  followed: boolean
+}
+
+export type UsersType = {
+  items: Array<UsersItemType>,
+  totalCount?: string,
+  error?: string | null
 }
 
 const instance = axios.create({
@@ -55,13 +70,14 @@ const usersAPI = {
     return profileAPI.getUser(id);
   },
 
-  getUsers(pageSize: number, currentPage: number, isFriend: boolean, term: string = "") {
+  getUsers(pageSize: number, currentPage: number,
+           isFriend: boolean, term: string = ""): Promise<UsersType> {
     return instance
         .get(`users?count=${pageSize}&page=${currentPage}&friend=${isFriend}&term=${term}`)
         .then((response) => response.data);
   },
 
-  followUser(userId: number) {
+  followUser(userId: number): Promise<{} | void> {
     return instance.post(`follow/${userId}`)
         .then((response) => {
           if (response.data.resultCode === 0) {
@@ -72,7 +88,7 @@ const usersAPI = {
         }).catch((e) => console.log(e));
   },
 
-  unFollowUser(userId:number) {
+  unFollowUser(userId: number): Promise<{} | void> {
     return instance.delete(`follow/${userId}`)
         .then((response) => {
           if (response.data.resultCode === 0) {
@@ -83,7 +99,7 @@ const usersAPI = {
         }).catch((e) => console.log(e));
   },
 
-  isFollowed(userId) {
+  isFollowed(userId: number): Promise<boolean> {
     return instance.get(`follow/${userId}`)
         .then((response) => response.data);
   }
@@ -91,7 +107,7 @@ const usersAPI = {
 
 
 const authAPI = {
-  me() :Promise<UserInfoType>{
+  me(): Promise<UserInfoType> {
     return instance
         .get(`/auth/me`)
         .then((response) => {
@@ -99,7 +115,7 @@ const authAPI = {
         });
   },
 
-  login(formData: LoginInfoType) :Promise<ResponseDataType>{
+  login(formData: LoginInfoType): Promise<ResponseDataType> {
 
     return instance.post("/auth/login", formData)
         .then((response) => {
@@ -107,9 +123,9 @@ const authAPI = {
         });
   },
 
-  logout() : Promise<ResponseDataType> {
+  logout(): Promise<ResponseDataType> {
 
-   return  instance.delete("/auth/login").then((response) => {
+    return instance.delete("/auth/login").then((response) => {
       if (response.data.resultCode === 0) return response.data;
     });
   },
@@ -123,7 +139,7 @@ const authAPI = {
 };
 
 const profileAPI = {
-  getUser(id) {
+  getUser(id: number): Promise<ProfileType> {
     return instance
         .get(`profile/${id}`)
         .then((response) => {
@@ -131,44 +147,68 @@ const profileAPI = {
         });
   },
 
-  getStatus(id) {
+  getStatus(id: number): Promise<string> {
 
     return instance.get(`profile/status/${id}`)
         .then((response) => response.data)
   },
 
-  updateStatus(status) {
+  updateStatus(status: string ): Promise<ResponseDataType | void> {
     return instance.put("profile/status", {status})
         .then((response) => {
-          console.log(response);
           if (response.data.resultCode === 0) {
 
-            return response;
+            return response.data;
           }
         }).catch((e) => console.log("ОШИБКА " + e));
   },
 
-  setPhoto(photoFile) {
+  setPhoto(photoFile: File): Promise<ResponseDataType<{photos:PhotosType}> | never> {
     const formData = new FormData();
     formData.append("newPhoto", photoFile);
     return instance.put('/profile/photo', formData)
         .then((response) => {
           if (response.data.resultCode === 0) {
-            return response;
+            return response.data;
           }
         });
   },
 
-  setProfile(profile) {
+  setProfile(profile: Omit<ProfileType, "photos">): Promise<AxiosResponse<ResponseDataType>> {
     return instance.put('/profile/', profile).then((response) => {
       return response;
     })
   }
 };
 
+export type DialogsItemType = {
+  hasNewMessages: boolean,
+  id: number,
+  lastDialogActivityDate: string,
+  lastUserActivityDate: string,
+  newMessagesCount: number,
+  photos: PhotosType,
+  userName: string
+}
+
+export type DialogType = {
+  addedAt: string
+  body: string
+  deletedByRecipient: boolean
+  deletedBySender: boolean
+  distributionId: null
+  id: string
+  isSpam: boolean
+  recipientId: number
+  recipientName: string
+  senderId: number
+  senderName: string
+  translatedBody: null
+  viewed: boolean
+}
 const dialogsAPI = {
 
-  getNewMessagesCount() {
+  getNewMessagesCount(): Promise<number | void> {
     return instance.get("/dialogs/messages/new/count")
         .then((response) => {
           return response.data
@@ -177,26 +217,26 @@ const dialogsAPI = {
   },
 
 
-  getDialogs() {
+  getDialogs(): Promise<Array<DialogsItemType> | void > {
     return instance.get("/dialogs")
         .then((response) => {
           console.log(response);
           return response.data
-        });
+        }).catch((e)=> console.log(e));
   },
 
-  startDialog(userId) {
+  startDialog(userId:number): Promise<AxiosResponse<ResponseDataType>> {
     return instance.put(`/dialogs/${userId}`)
         .then((response) => response);
   },
 
-  sendMessage(userId, message) {
+  sendMessage(userId:number, message:string):  Promise<AxiosResponse<ResponseDataType>> {
     return instance.post(`/dialogs/${userId}/messages`,
         {body: message})
         .then((response) => response);
   },
 
-  getDialog(id) {
+  getDialog(id:number): Promise<Array<DialogType>> {
     return instance.get(`dialogs/${id}/messages/new?newerThen=2020-02-04T16:01:53.417`)
         .then((response) => {
           console.log(response.data.items);

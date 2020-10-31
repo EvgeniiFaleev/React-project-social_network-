@@ -5,23 +5,47 @@
       "@music": [
         "features/music"
       ],
+      "@music/*": [
+        "features/music/*"
+      ],
       "@ui": [
         "ui"
+      ],
+      "@ui/*": [
+        "ui/*"
+      ],
+      "@news": [
+        "features/news"
       ],
       "@news/*": [
         "features/news/*"
       ],
+      "@profile": [
+        "features/profile"
+      ],
       "@profile/*": [
         "features/profile/*"
+      ],
+      "@users": [
+        "features/users"
       ],
       "@users/*": [
         "features/users/*"
       ],
+      "@auth": [
+        "features/authentication"
+      ],
       "@auth/*": [
         "features/authentication/*"
       ],
+      "@dialogs": [
+        "features/dialogs"
+      ],
       "@dialogs/*": [
         "features/dialogs/*"
+      ],
+      "@images": [
+        "ui/assets/images"
       ],
       "@images/*": [
         "ui/assets/images/*"
@@ -39,10 +63,10 @@
         "utils"
       ],
       "@pages": [
-        "src/pages"
+        "pages"
       ],
       "@store": [
-        "src/lib/store"
+        "lib/store"
       ]
     }
   }

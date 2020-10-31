@@ -1,13 +1,20 @@
 import * as types from "./types"
+import {DialogsItemType, DialogType} from "@socialAPI";
+import {DialogsActionType} from "@dialogs/modules/dialogs/actions";
 
+type DialogsStateType = {
+  dialogs: Array<DialogsItemType> | null,
+  dialog: Array<DialogType> | null,
+  newMessages: number
+}
 
-const initialState = {
+const initialState: DialogsStateType = {
   dialogs: null,
   dialog: null,
   newMessages: 0
 };
 
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action: DialogsActionType): DialogsStateType => {
   switch (action.type) {
 
     case types.SET_DIALOGS :

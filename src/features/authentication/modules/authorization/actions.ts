@@ -2,31 +2,33 @@ import {
   authAPI,
   LoginInfoType,
   profileAPI,
+  ProfileType,
   ResponseDataType,
   UserInfoType
 } from "@socialAPI";
 import * as types from "./types"
 import {AppThunkType, TDispatch} from "@store";
+import {Action} from "redux";
 
 // ==========Action Creators======================
 
 
-export interface IGetCaptchaActionType {
-  type: typeof types.GET_CAPTCHA_URL_SUCCESS,
+ interface IGetCaptchaActionType extends Action<typeof types.GET_CAPTCHA_URL_SUCCESS> {
   captchaUrl: string | null
 }
 
 
-export interface IAuthUserActon {
-  type: typeof types.AUTH_USER,
-  user: UserInfoType | {},
+interface IAuthUserActonType extends Action<typeof types.AUTH_USER> {
+  user: ProfileType | {},
   isAuth: boolean
 }
 
-export type AuthActionsTypes = IAuthUserActon | IGetCaptchaActionType;
+export type AuthActionsTypes =
+    IAuthUserActonType
+    | IGetCaptchaActionType;
 
-export const authUser = (user: UserInfoType | undefined,
-                         isAuth: boolean): IAuthUserActon => (
+export const authUser = (user: undefined | ProfileType,
+                         isAuth: boolean): IAuthUserActonType => (
     {
       type: types.AUTH_USER,
       user: {
@@ -46,33 +48,34 @@ export const setCaptchaUrlSuccess = (captchaUrl: string | null): IGetCaptchaActi
 
 // =====================Thunk Creators====================
 
-export const me = (isAuth: boolean): AppThunkType => async (dispatch: TDispatch) => {
+export const me = (isAuth: boolean): AppThunkType<Promise<void>> => async (dispatch: TDispatch) => {
 
   const data: UserInfoType = await authAPI.me();
   if (data) {
-    const authUserProfile = await profileAPI.getUser(data.id);
+    const authUserProfile: ProfileType = await profileAPI.getUser(data.id);
     dispatch(authUser(authUserProfile, isAuth));
   }
 
 };
 
 
-export const login = (formData: LoginInfoType): AppThunkType<Promise<string | never>> => (dispatch: TDispatch) => {
-  return authAPI.login(formData).then((response: ResponseDataType) => {
-    if (response.resultCode === 0) {
-      dispatch(me(true));
-      dispatch(setCaptchaUrlSuccess(null));
-    } else {
-      if (response.resultCode === 10) {
-        dispatch(getCaptcha());
-      }
-      const error = response.messages.length > 0 ?
-          response.messages[0] :
-          "Unknown Error";
-      return error;
-    }
-  });
-};
+export const login = (formData: LoginInfoType): AppThunkType<Promise<string | never>> =>
+    (dispatch: TDispatch) => {
+      return authAPI.login(formData).then((response: ResponseDataType) => {
+        if (response.resultCode === 0) {
+          dispatch(me(true));
+          dispatch(setCaptchaUrlSuccess(null));
+        } else {
+          if (response.resultCode === 10) {
+            dispatch(getCaptcha());
+          }
+          const error = response.messages.length > 0 ?
+              response.messages[0] :
+              "Unknown Error";
+          return error;
+        }
+      });
+    };
 
 export const logout = (): AppThunkType<Promise<void>> => (dispatch: TDispatch) => {
   return authAPI.logout().then(() => {

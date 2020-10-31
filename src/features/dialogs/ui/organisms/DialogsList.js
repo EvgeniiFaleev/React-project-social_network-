@@ -21,9 +21,13 @@ export const DialogsList = () => {
       isFetching: state.init.isFetching
     }
   ), shallowEqual);
-  dialogs = dialogs?.map((dialog) => {
-    return <DialogDescription key={dialog.id} {...dialog}/>;
-  });
+
+  if(dialogs){
+    dialogs = dialogs?.map((dialog) => {
+      return <DialogDescription key={dialog.id} {...dialog}/>;
+    });
+  }
+
 
   return (
     <>

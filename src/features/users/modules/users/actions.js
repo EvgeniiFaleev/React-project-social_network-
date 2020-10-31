@@ -89,14 +89,13 @@ export const search = (term) => async (dispatch, getState) => {
 
 export const getFriendsDemo = (pageSize,
   currentPage,
-  isFriend = true) => {
-  return (dispatch) => {
-    return usersAPI.getUsers(pageSize, currentPage, isFriend)
+  isFriend = true) => (dispatch) => {
+     usersAPI.getUsers(pageSize, currentPage, isFriend)
       .then((data) => {
         dispatch(setFriends(data.items));
       });
   };
-};
+;
 
 export const folowUnfollowFlow = (dispatch,
   id,

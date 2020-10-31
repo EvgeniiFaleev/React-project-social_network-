@@ -11,7 +11,7 @@ export const ProfileInfo = ({userId, profile, authUserId, ...props}) => {
   const dispatch = useDispatch();
 
   const isOwner = userId === authUserId;
-  const {followed, isFollowing} = useSelector((state) => { debugger
+  const {followed, isFollowing} = useSelector((state) => {
     return {
       followed: state.profile.followed,
       isFollowing: state.profile.isFollowing
