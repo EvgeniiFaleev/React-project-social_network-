@@ -1,8 +1,18 @@
 import {updateArrayOfItemsWithId} from "@utils/obj-helpers";
 import * as types from "./types"
+import {UsersItemType} from "@socialAPI";
+import {UsersActions} from "@users/modules/users/actions";
 
-
-const initialState = {
+type UsersStateType = {
+  friends: Array<UsersItemType>,
+  users: Array<UsersItemType>,
+  pageSize: number,
+  totalUsersCount: number,
+  currentPage: number,
+  isFetching: boolean,
+  isFollowing: Array<number>
+}
+const initialState: UsersStateType = {
   friends: [],
   users: [],
   pageSize: 20,
@@ -12,22 +22,22 @@ const initialState = {
   isFollowing: []
 };
 
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action: UsersActions): UsersStateType => {
 
   switch (action.type) {
     case types.FOLLOW:
       return {
         ...state,
         users: updateArrayOfItemsWithId(state.users,
-          action.userId,
-          {followed: true})
+            action.userId,
+            {followed: true})
       };
     case types.UN_FOLLOW:
       return {
         ...state,
         users: updateArrayOfItemsWithId(state.users,
-          action.userId,
-          {followed: false})
+            action.userId,
+            {followed: false})
       };
     case types.SET_USERS:
       return {
@@ -49,17 +59,12 @@ export const reducer = (state = initialState, action) => {
         ...state,
         totalUsersCount: action.totalCount
       };
-    case types.SET_FRIENDS_COUNT:
-      return {
-        ...state,
-        friendsCount: action.friendsCount
-      };
     case types.TOGGLE_IS_FOLLOWING:
       return {
         ...state,
         isFollowing: action.isFetchingButton ?
-          [...state.isFollowing, action.id] :
-          state.isFollowing.filter((id) => action.id !== id),
+            [...state.isFollowing, action.id] :
+            state.isFollowing.filter((id) => action.id !== id),
       };
 
     default:

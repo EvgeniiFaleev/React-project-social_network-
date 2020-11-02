@@ -62,6 +62,9 @@
       "@utils": [
         "utils"
       ],
+      "@utils/*": [
+        "utils/*"
+      ],
       "@pages": [
         "pages"
       ],

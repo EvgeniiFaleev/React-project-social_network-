@@ -52,7 +52,7 @@ export type UsersItemType = {
 
 export type UsersType = {
   items: Array<UsersItemType>,
-  totalCount?: string,
+  totalCount?: number,
   error?: string | null
 }
 
@@ -77,7 +77,7 @@ const usersAPI = {
         .then((response) => response.data);
   },
 
-  followUser(userId: number): Promise<{} | void> {
+  followUser(userId: number): Promise<ResponseDataType | void | never> {
     return instance.post(`follow/${userId}`)
         .then((response) => {
           if (response.data.resultCode === 0) {
@@ -88,7 +88,7 @@ const usersAPI = {
         }).catch((e) => console.log(e));
   },
 
-  unFollowUser(userId: number): Promise<{} | void> {
+  unFollowUser(userId: number): Promise<ResponseDataType | void | never> {
     return instance.delete(`follow/${userId}`)
         .then((response) => {
           if (response.data.resultCode === 0) {

@@ -4,37 +4,37 @@ import {initActions} from "@auth/modules/initialization";
 import {AppThunkType, TDispatch} from "@store";
 import {Action} from "redux";
 
-interface SetDialogActionType extends Action<typeof types.SET_DIALOG>{
+interface ISetDialogAction extends Action<typeof types.SET_DIALOG>{
   dialog: Array<DialogType>
 }
 
-export const setDialog = (dialog: Array<DialogType>): SetDialogActionType => (
+export const setDialog = (dialog: Array<DialogType>): ISetDialogAction => (
     {
       type: types.SET_DIALOG,
       dialog
     }
 );
-interface SetDialogsActionType extends Action<typeof types.SET_DIALOGS> {
+interface ISetDialogsAction extends Action<typeof types.SET_DIALOGS> {
   dialogs: Array<DialogsItemType>
 }
 
-export const setDialogs = (dialogs: Array<DialogsItemType>): SetDialogsActionType => (
+export const setDialogs = (dialogs: Array<DialogsItemType>): ISetDialogsAction => (
     {
       type: types.SET_DIALOGS,
       dialogs
     }
 );
 
-interface SetNewMessagesActionType  extends Action<typeof types.SET_NEW_MESSAGES> {
+interface ISetNewMessagesAction  extends Action<typeof types.SET_NEW_MESSAGES> {
   payload: number
 }
 
 export  type DialogsActionType =
-    SetDialogActionType
-    | SetNewMessagesActionType
-    | SetDialogsActionType
+    ISetDialogAction
+    | ISetNewMessagesAction
+    | ISetDialogsAction
 
-export const setNewMessages = (payload: number): SetNewMessagesActionType => (
+export const setNewMessages = (payload: number): ISetNewMessagesAction => (
     {
       type: types.SET_NEW_MESSAGES,
       payload
