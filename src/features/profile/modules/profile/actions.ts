@@ -9,7 +9,7 @@ import {usersActions} from "@users/modules/users";
 import {batch} from "react-redux";
 import {Action} from "redux";
 import {AppThunkType, TDispatch} from "@store";
-import {RootState} from "../../../../lib/store/root-reducer";
+import {RootState} from "@store/root-reducer";
 
 // ===============Action Creators====================
 

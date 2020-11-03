@@ -1,9 +1,9 @@
 import {CommonTemplate} from "@ui/templates/Common";
-import React from "react";
+import React, {FC} from "react";
 import {Dialogs} from "@dialogs";
 
 
-export const DialogsPage = () => {
+export const DialogsPage:FC = () => {
   return(
     <CommonTemplate>
       <Dialogs/>

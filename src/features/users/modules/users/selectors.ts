@@ -1,5 +1,5 @@
 import {createSelector} from "reselect";
-import {RootState} from "../../../../lib/store/root-reducer";
+import {RootState} from "@store/root-reducer";
 import {UsersItemType} from "@socialAPI";
 
 

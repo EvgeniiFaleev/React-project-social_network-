@@ -20,10 +20,10 @@ export const setMusicCharts = (charts: IMusicResponse): ISetMusicChartsAction =>
 );
 
 interface ISetSearchResults extends Action<typeof types.SET_SEARCH_RESULTS> {
-  searchResults: IMusicCategory<ITracks>
+  searchResults: IMusicCategory<ITracks> | null
 }
 
-export const setSearchResults = (searchResults: IMusicCategory<ITracks>): ISetSearchResults => (
+export const setSearchResults = (searchResults: IMusicCategory<ITracks> | null): ISetSearchResults => (
     {
       type: types.SET_SEARCH_RESULTS,
       searchResults

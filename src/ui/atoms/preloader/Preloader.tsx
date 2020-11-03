@@ -1,8 +1,8 @@
-import React from "react";
+import React, {FC} from "react";
 import classes from "./Preloader.module.scss"
 
 
-export const Preloader = () => {
+export const Preloader:FC = () => {
   return (
 
   <div className={classes.cssload_loader}>

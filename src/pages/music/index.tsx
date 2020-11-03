@@ -1,12 +1,12 @@
 import {CommonTemplate} from "@ui/templates/Common";
-import React from "react";
+import React, {FC} from "react";
 import {Music, musicActions} from "@music";
 import {useDispatch} from "react-redux";
 
 
-export const MusicPage = () => {
+export const MusicPage: FC = () => {
   const dispatch = useDispatch();
-  const clearSearch = () => {
+  const clearSearch = (): void => {
     dispatch(musicActions.setSearchResults(null));
   };
 

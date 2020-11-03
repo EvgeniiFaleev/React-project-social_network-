@@ -5,10 +5,10 @@ import {AppThunkType, TDispatch} from "@store";
 import {Action} from "redux";
 
 interface ISetDialogAction extends Action<typeof types.SET_DIALOG>{
-  dialog: Array<DialogType>
+  dialog: Array<DialogType> | null
 }
 
-export const setDialog = (dialog: Array<DialogType>): ISetDialogAction => (
+export const setDialog = (dialog: Array<DialogType> | null): ISetDialogAction => (
     {
       type: types.SET_DIALOG,
       dialog
@@ -65,7 +65,6 @@ export const getDialog = (id: number): AppThunkType<Promise<Array<DialogType>>> 
     (dispatch: TDispatch) => {
   return dialogsAPI.getDialog(id)
       .then((dialog) => {
-            debugger
             dispatch(setDialog(dialog));
             return dialog;
           }

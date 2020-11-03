@@ -1,9 +1,9 @@
 import {CommonTemplate} from "@ui/templates/Common";
-import React from "react";
+import React, {FC} from "react";
 import {Profile} from "@profile";
 
 
-export const ProfilePage = () => {
+export const ProfilePage: FC = () => {
   return (
     <CommonTemplate>
       <Profile/>

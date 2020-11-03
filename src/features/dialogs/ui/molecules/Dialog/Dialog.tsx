@@ -1,4 +1,10 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {
+  FC,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 import {DialogsForm} from "@dialogs/ui/molecules/DialogsForm/DialogsForm";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
@@ -9,27 +15,33 @@ import {Message} from "@dialogs/ui/atoms/Message/Message";
 import classes from "./Dialog.module.scss"
 import no_avatar from "@images/avatar-undefined.jpg";
 import msgClasses from "@dialogs/ui/atoms/Message/Message.module.scss"
+import {RootState} from "@store/root-reducer";
+import exp from "constants";
 
 
-export const Dialog = () => {
+export interface IParams {
+  id: string
+}
 
-  const {id} = useParams();
+export const Dialog:FC = () => {
+
+  const {id} = useParams<IParams>();
   const dispatch = useDispatch();
-  const [renderCount, setCount] = useState(0);
+  const [renderCount, setCount] = useState<number>(0);
 
-  const {userName, userPhoto, dialog, authUserId} = useSelector((state) => (
+  const {userName, userPhoto, dialog, authUserId} = useSelector((state:RootState) => (
     {
-      userPhoto: state.profile.profile?.photos.small,
+      userPhoto: state.profile!.profile?.photos?.small,
       userName: state.profile.profile?.fullName,
-      dialog: state.dialogs.dialog,
+      dialog: state.dialogs!.dialog,
       authUserId: state.auth.user.userId,
 
     }
   ), shallowEqual);
 
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
-  const messages = dialog?.map((message, index, arr) => {
+  const messages:Array<ReactNode> | undefined = dialog?.map((message, index, arr) => {
     return <Message message={message}
 
       ref={arr.length - 1 === index ?
@@ -43,9 +55,9 @@ export const Dialog = () => {
 
   useEffect(() => {
 
-    dispatch(profileActions.getUser(id));
+    dispatch(profileActions.getUser(+id));
     const timerId = setInterval(() => {
-      dispatch(dialogsActions.getDialog(id));
+      dispatch(dialogsActions.getDialog(+id));
     }, 10000);
 
     return () => {
@@ -54,18 +66,20 @@ export const Dialog = () => {
     }
   }, [id, dispatch]);
 
+  const dialogLength:number | undefined = dialog?.length;
+
   useEffect(() => {
     if (ref.current) ref.current.scrollIntoView();
 
-    if (renderCount > 1) {
-      if (ref.current.classList.contains(msgClasses.owner)) {
-        ref.current.classList.add(classes.new_owner);
+    if (renderCount > 1 && ref.current !== null) {
+      if (ref.current!.classList.contains(msgClasses.owner)) {
+        ref.current!.classList.add(classes.new_owner);
       } else {
-        ref.current.classList.add(classes.new_other)
+        ref.current!.classList.add(classes.new_other)
       }
     }
-    setCount((prevState) => prevState + 1);
-  }, [dialog?.length]);
+    // setCount((prevState) => prevState + 1);
+  }, [dialogLength, renderCount]);
 
   return (
     <>
