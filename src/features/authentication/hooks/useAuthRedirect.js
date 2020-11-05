@@ -5,7 +5,9 @@ import {useSelector} from "react-redux";
 export const useAuthRedirect = () => {
   const history = useHistory();
   const isAuth = useSelector((state) =>  state.auth.isAuth);
+debugger
   if (!isAuth) {
+
    history.push("/login");
   }
 };

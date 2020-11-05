@@ -12,6 +12,7 @@ import {useParams} from "react-router";
 export const Profile = () => {
 
   useAuthRedirect();
+
   const selectedId = useParams().userId;
   const dispatch = useDispatch();
   const {profile, authUserId} = useSelector((state) => {
@@ -20,13 +21,15 @@ export const Profile = () => {
       authUserId: state.auth.user.userId
     }
   }, shallowEqual);
-
+  const isAuth = useSelector((state) =>  state.auth.isAuth);
 
   let userId = selectedId|| authUserId;
 
   useEffect(() => {
-    dispatch(profileActions.getUser(userId));
-    dispatch(profileActions.getStatus(userId));
+    if(isAuth){
+      dispatch(profileActions.getUser(userId));
+      dispatch(profileActions.getStatus(userId));
+    }
     return(() => {
       dispatch(profileActions.setUserProfile(null))
     })

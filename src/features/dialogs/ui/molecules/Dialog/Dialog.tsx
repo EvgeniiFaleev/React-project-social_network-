@@ -16,7 +16,6 @@ import classes from "./Dialog.module.scss"
 import no_avatar from "@images/avatar-undefined.jpg";
 import msgClasses from "@dialogs/ui/atoms/Message/Message.module.scss"
 import {RootState} from "@store/root-reducer";
-import exp from "constants";
 
 
 export interface IParams {

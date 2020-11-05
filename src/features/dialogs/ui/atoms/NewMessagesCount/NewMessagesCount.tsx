@@ -7,8 +7,11 @@ import {RootState} from "@store/root-reducer";
 
 export const NewMessagesCount: FC = () => {
   const dispatch = useDispatch();
+
+  const isAuth = useSelector((state: RootState) => state.auth.isAuth);
+
   useEffect(() => {
-    dispatch(dialogsActions.getNewMessagesCount());
+   if (isAuth) dispatch(dialogsActions.getNewMessagesCount());
   }, [dispatch]);
 
   const newMessagesCount: number = useSelector((state: RootState) => state.dialogs.newMessages);
