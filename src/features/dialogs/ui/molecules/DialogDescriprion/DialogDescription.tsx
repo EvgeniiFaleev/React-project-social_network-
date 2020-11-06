@@ -1,11 +1,12 @@
-import React from "react";
+import React, {FC} from "react";
 import classes from "./DialogDescription.module.scss";
 import {Link} from "react-router-dom";
 import no_img from "@images/avatar-undefined.jpg"
+import {DialogsItemType} from "@socialAPI";
 
 
-export const DialogDescription = ({
-  hasNewMessages, id, lastDialogActivityDate, lastUserActivityDate,
+export const DialogDescription: FC<DialogsItemType> = ({
+  hasNewMessages, id, lastUserActivityDate,
   newMessagesCount, photos: {small: avatar}, userName
 }) => {
 

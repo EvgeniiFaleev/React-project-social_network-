@@ -14,8 +14,7 @@ export const DialogsForm:FC = () => {
   const {register, handleSubmit} = useForm<IDialogForm>();
   const dispatch = useDispatch();
   const {id} = useParams<IParams>();
-  // const inputMessage = useRef<HTMLInputElement>(null);
-  //
+
   const onSendMessage = async ({message}: IDialogForm) => {
     await dispatch(dialogsActions.sendMessage(+id, message));
     await dispatch(dialogsActions.getDialog(+id));

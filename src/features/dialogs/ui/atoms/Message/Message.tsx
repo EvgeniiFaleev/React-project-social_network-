@@ -8,10 +8,10 @@ interface IMessageProps {
 }
 
 export const Message =
-    React.forwardRef< HTMLDivElement, IMessageProps >(({message, isOwner}, ref) => {
-  return <div ref={ref} key={message.id}
-      className={`${classes.xmessage} ${isOwner ? classes.owner : classes.other}`}>
-    <p className={classes.message_text}>{message.body}</p>
-    <p className={classes.message_meta}>{message.addedAt}</p>
-  </div>;
-});
+    React.forwardRef<HTMLDivElement, IMessageProps>(({message, isOwner}, ref) => {
+      return <div ref={ref} key={message.id}
+          className={`${classes.message} ${isOwner ? classes.owner : classes.other}`}>
+        <p className={classes.message_text}>{message.body}</p>
+        <p className={classes.message_meta}>{message.addedAt}</p>
+      </div>;
+    });
