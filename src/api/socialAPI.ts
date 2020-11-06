@@ -32,8 +32,11 @@ export type ProfileType = {
 }
 
 export type LoginInfoType = {
-  password: string,
   email: string
+  password: string
+  rememberMe: boolean
+  captcha?: string
+  logError?: string
 };
 
 export type UserInfoType = {

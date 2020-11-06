@@ -59,8 +59,7 @@ export const me = (isAuth: boolean): AppThunkType<Promise<void>> => async (dispa
 };
 
 
-export const login = (formData: LoginInfoType): AppThunkType<Promise<string | never>> =>
-    (dispatch: TDispatch) => {
+export const login = (formData: LoginInfoType): AppThunkType<Promise<string | void>> => (dispatch: TDispatch) => {
       return authAPI.login(formData).then((response: ResponseDataType) => {
         if (response.resultCode === 0) {
           dispatch(me(true));

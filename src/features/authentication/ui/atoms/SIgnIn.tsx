@@ -1,11 +1,11 @@
-import React from "react";
+import React, {FC} from "react";
 import styles from "./SignIn.module.scss"
 import classes
   from "../organisms/UserAutnInfoBar/UserAuthInfoBar.module.scss";
 import {NavLink} from "react-router-dom";
 
 
-export const SignIn = () => {
+export const SignIn:FC = () => {
   return (
     <div className={styles.sign_in}>
 

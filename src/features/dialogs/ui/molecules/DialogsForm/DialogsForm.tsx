@@ -1,4 +1,4 @@
-import React, {FC, useRef} from "react";
+import React, {FC} from "react";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {dialogsActions} from "@dialogs/modules/dialogs";
@@ -9,7 +9,8 @@ import {IParams} from "@dialogs/ui/molecules/Dialog/Dialog";
 interface IDialogForm {
   message: string
 }
-export const DialogsForm:FC = () => {
+
+export const DialogsForm: FC = () => {
 
   const {register, handleSubmit} = useForm<IDialogForm>();
   const dispatch = useDispatch();
@@ -37,19 +38,22 @@ export const DialogsForm:FC = () => {
 
 
   return (
-    <form className={classes.wrapper} name="dialog"
-      onSubmit={(e)=> {handleSubmit(onSendMessage)}}>
-      <div><textarea onKeyDown={onResize} ref={(elem: HTMLTextAreaElement) => {
-        register(elem, {
-          required: true
-        });
-      }} name="message"
-        placeholder="Enter new message"
-      /></div>
-      <div className={classes.button_wrapper}>
-        <button>Send</button>
-      </div>
-    </form>
+      <form className={classes.wrapper} name="dialog"
+          onSubmit={(e) => {
+            handleSubmit(onSendMessage)
+          }}>
+        <div><textarea onKeyDown={onResize}
+            ref={(elem: HTMLTextAreaElement) => {
+              register(elem, {
+                required: true
+              });
+            }} name="message"
+            placeholder="Enter new message"
+        /></div>
+        <div className={classes.button_wrapper}>
+          <button>Send</button>
+        </div>
+      </form>
   )
 };
 

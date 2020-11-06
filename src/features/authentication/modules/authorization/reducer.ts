@@ -17,11 +17,12 @@ const initialState: AuthState = {
     fullName: null,
     userId: null,
     photos: null,
-  } ,
+  },
   isAuth: false,
   captchaUrl: null
 };
-export const reducer = (state = initialState, action: AuthActionsTypes) : AuthState => {
+
+export const reducer = (state = initialState, action: AuthActionsTypes): AuthState => {
   switch (action.type) {
     case types.AUTH_USER:
       return {
