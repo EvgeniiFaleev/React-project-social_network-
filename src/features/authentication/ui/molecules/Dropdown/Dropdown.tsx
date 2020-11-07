@@ -9,7 +9,7 @@ interface IDropdownProps {
 
 export const Dropdown = React.forwardRef<HTMLUListElement, IDropdownProps>(({isVisible}, ref) => {
 
-
+  const isMobile: boolean = document.documentElement.clientWidth <= 860;
   const match: match | null = useRouteMatch("/profile");
 
   return (
@@ -20,7 +20,7 @@ export const Dropdown = React.forwardRef<HTMLUListElement, IDropdownProps>(({isV
                 My profile
               </Link>
             </li>}
-        <Logout/>
+        <Logout isMobile={isMobile}/>
       </ul>
   )
 });

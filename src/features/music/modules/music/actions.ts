@@ -39,8 +39,8 @@ export const getMusicChart = (): AppThunkType => (dispatch: TDispatch) => {
       });
 };
 
-export const search = (query: string): AppThunkType<Promise<void>> => (dispatch: TDispatch) => {
-  return musicApi.search(query).then((searchResults) => {
+export const search = (query: string): AppThunkType<void> => (dispatch: TDispatch) => {
+  musicApi.search(query).then((searchResults) => {
     dispatch(setSearchResults((searchResults as IMusicCategory<ITracks>)))
   })
 };

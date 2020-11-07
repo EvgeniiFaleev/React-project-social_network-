@@ -1,5 +1,9 @@
 
 import * as types from "./types"
+import {Reducer} from "react";
+import {PlayerActionsType} from "@music/modules/player/actions";
+
+
 
 export const initialState = {
   currentAlbum: "",
@@ -16,8 +20,9 @@ export const initialState = {
   title: "",
 };
 
+export type PlayerStateType = typeof initialState;
 
-export  function reducer(state, action) {
+export const reducer: Reducer<PlayerStateType, PlayerActionsType> = (state, action) => {
   switch (action.type) {
     case types.NEXT_SONG:
       return {
