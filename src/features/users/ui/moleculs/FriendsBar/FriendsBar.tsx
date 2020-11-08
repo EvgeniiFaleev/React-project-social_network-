@@ -1,13 +1,17 @@
-import React, {useEffect} from "react";
+import React, {FC, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./FriendsBar.module.scss"
 import {Preloader} from "@ui";
 import avatar_undefined from "@ui/assets/images/avatar-undefined.jpg"
 import {Link, NavLink} from "react-router-dom";
 import {usersActions} from "@users/modules/users";
+import {RootState} from "@store/root-reducer";
 
 
-export const FriendsBar = ({clearPage}) => {
+interface IFriendsBarProps {
+  clearPage : React.EventHandler<React.MouseEvent>
+}
+export const FriendsBar:FC<IFriendsBarProps> = ({clearPage}) => {
 
   const dispatch = useDispatch();
 
@@ -15,7 +19,7 @@ export const FriendsBar = ({clearPage}) => {
     dispatch(usersActions.getFriendsDemo(6, 1));
   }, [dispatch]);
 
-  const friends = useSelector((state) => state.users.friends);
+  const friends = useSelector((state:RootState) => state.users.friends);
 
   const friendsElements = friends.map((friend) => {
     return (

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./App.module.scss";
 import {HashRouter} from "react-router-dom";
 import {connect, ConnectedProps} from "react-redux";
-import {Preloader} from "./ui";
+import {Preloader} from "@ui/index";
 import {initActions} from "@auth/modules/initialization/";
 import {Routes} from "./Routes";
 import {RootState} from "./lib/store/root-reducer";

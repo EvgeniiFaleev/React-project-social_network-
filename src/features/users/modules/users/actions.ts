@@ -100,7 +100,7 @@ export type UsersActions =
 export const getUsers = (pageSize: number,
                          currentPage: number,
                          isFriend: boolean = false,
-                         term: string): AppThunkType<Promise<void>> => {
+                         term?: string): AppThunkType<Promise<void>> => {
   return (dispatch) => {
     dispatch(initActions.toggleIsFetching(true));
     return usersAPI.getUsers(pageSize, currentPage, isFriend, term)
