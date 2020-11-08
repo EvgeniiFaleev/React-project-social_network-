@@ -1,4 +1,4 @@
-export const converter = (duration) => {
+export const converter = (duration: number): string => {
   const minutes = Math.floor(duration / 60);
   let seconds = String(Math.floor(duration % 60));
   if (seconds.length === 1) {
@@ -8,11 +8,10 @@ export const converter = (duration) => {
   return result;
 };
 
-export const calculateProgress = (mouseX, progressElement) => {
+export const calculateProgress = (mouseX: number, progressElement: HTMLProgressElement): number => {
   const barWidth = progressElement.getBoundingClientRect().right -
-    progressElement.getBoundingClientRect().left;
+      progressElement.getBoundingClientRect().left;
   const scrollPos = Math.abs(mouseX -
-    progressElement.getBoundingClientRect().left);
-  const percentToScroll = scrollPos / barWidth * 100;
-  return percentToScroll;
+      progressElement.getBoundingClientRect().left);
+  return scrollPos / barWidth * 100;
 };

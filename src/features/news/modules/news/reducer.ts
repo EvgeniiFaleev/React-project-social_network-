@@ -1,11 +1,12 @@
-import { Article } from "@api/newsAPI";
+import { IArticle } from "@api/newsAPI";
 import  * as types from "./types"
 import {ISetNews} from "@news/modules/news/actions";
 
 type NewsStateType =  {
-  articles: Array<Article> | null
+  articles: Array<IArticle> | null
 }
-export const initialState = {
+
+export const initialState: NewsStateType = {
 articles: null
 };
 

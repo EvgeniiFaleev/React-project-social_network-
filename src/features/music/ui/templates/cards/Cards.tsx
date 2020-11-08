@@ -1,9 +1,13 @@
 import styles from "./Cards.module.scss";
 import {Preloader} from "@ui";
-import React from "react";
+import React, {FC} from "react";
 
+interface ICardsProps {
+  header: string
+  // we have children in FC type
+}
 
-export const Cards= ({children, header}) => {
+export const Cards: FC<ICardsProps>= ({children, header}) => {
 
 
   return (

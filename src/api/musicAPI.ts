@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 
-interface IArtist {
+export interface IArtist {
   id: number
   link: string
   name: string
@@ -20,8 +20,8 @@ interface IArtist {
   type: string
 }
 
-interface IAlbum {
-  artists: IArtist
+export interface IAlbum {
+  artist: IArtist
   cover: string
   cover_big: string
   cover_medium: string
@@ -38,7 +38,7 @@ interface IAlbum {
   type: string
 }
 
-interface IPlayLists {
+export interface IPlayLists {
   checksum: string
   creation_date: string
   id: number
@@ -56,7 +56,7 @@ interface IPlayLists {
   type: string
 }
 
-interface IPodcasts {
+export interface IPodcasts {
   available: boolean
   description: string
   fans: number

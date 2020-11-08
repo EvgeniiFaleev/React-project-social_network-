@@ -1,13 +1,16 @@
 import classes from "../../Music.module.scss";
-import React from "react";
+import React, {FC, ReactNode} from "react";
 import {Card} from "@music/ui/templates/card/Card";
 import {Cards} from "@music/ui/templates/cards/Cards";
+import {IPodcasts} from "@api/musicAPI";
 
+interface IPodcastsProps {
+  podcasts?: Array<IPodcasts>
+}
 
-export const Podcasts = ({podcasts}) => {
+export const Podcasts: FC<IPodcastsProps> = ({podcasts}) => {
 
-  const podcastsElements = podcasts?.map((podcast) => {
-
+  const podcastsElements: Array<ReactNode> | undefined = podcasts?.map((podcast) => {
     return <Card
       id={podcast.id} pictureLink={podcast.link}
       picture={podcast.picture_big}>

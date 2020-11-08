@@ -25,8 +25,9 @@ export const UserAuthInfo: FC = () => {
   };
 
 
-  const onCloseDropDown = useCallback((e) => {
-    if (!e.target.closest("." + dropClass.dropdown)) {
+  const onCloseDropDown: EventListener = useCallback((e: Event): void => {
+    let target = e.target as HTMLDivElement
+    if (!target.closest("." + dropClass.dropdown)) {
       setDropdown(false);
       userInfoRef.current!.style.background = "";
       dropRef.current!.style.opacity = "0";

@@ -6,34 +6,42 @@ const instance: AxiosInstance = axios.create({
 });
 
 export interface INewsParams {
-  type: string,
-  country: string,
-  category: string,
-  query: string
+  type?: string,
+  country?: string,
+  category?: string,
+  query?: string
 }
 
 interface INewsData {
-  articles: Array<Article>
+  articles: Array<IArticle>
   status: string,
   totalResults: number,
 }
 
-export interface Article {
+export interface IArticle {
   author: string,
   content: string,
   description: string,
   publishedAt: string
+  source: {
+    id:string
+    name:string
+  }
+  urlToImage: string
+  title: string
+  url: string
 }
 
 export const newsAPI = {
   getNews({
             type = "top-headlines", country = "country=us",
             category = "&category=general", query = ""
-          }: INewsParams): Promise<Array<Article> | void> {
+          }: INewsParams ): Promise<Array<IArticle> | void> {
     return instance.get(`/${type}?${country}${category}${query}&apiKey=9f6b4297388249849db6c199fd357b24`)
         .then((response: AxiosResponse<INewsData>) => {
           if (response.data.status === "ok") {
             console.log(response.data.articles);
+            debugger
             return response.data.articles
           } else {
             console.log(response);

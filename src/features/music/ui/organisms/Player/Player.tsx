@@ -41,7 +41,7 @@ export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatc
       title: nextTrack!.dataset.track_title!
     }));
   };
-  const onBackward = () => {
+  const onBackward = (): void => {
     if (state.currentNumber <= 0) return;
     const prevTrackNumber = state.currentNumber - 1;
     const query = "div[data-track_number='" + `${prevTrackNumber}` +
@@ -93,7 +93,7 @@ export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatc
     }
   };
 
-  const closeHint = (e: React.MouseEvent<HTMLProgressElement>) => {
+  const closeHint = () => {
     hintRef.current!.hidden = true;
   };
 
