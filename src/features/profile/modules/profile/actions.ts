@@ -14,10 +14,10 @@ import {RootState} from "@store/root-reducer";
 // ===============Action Creators====================
 
 interface SetUserProfileActionType extends Action<typeof types.SET_USER_PROFILE> {
-  profile: ProfileType
+  profile: ProfileType | null
 }
 
-export const setUserProfile = (profile: ProfileType): SetUserProfileActionType => (
+export const setUserProfile = (profile: ProfileType | null): SetUserProfileActionType => (
     {
       type: types.SET_USER_PROFILE,
       profile

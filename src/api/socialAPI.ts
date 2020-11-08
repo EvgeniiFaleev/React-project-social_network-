@@ -6,7 +6,7 @@ export interface ResponseDataType<T = {}> {
   data: T
 }
 
-type ContactsType = {
+export type ContactsType = {
   github: string,
   vk: string,
   facebook: string,

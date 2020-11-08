@@ -11,13 +11,13 @@ import no_avatar from "@images/avatar-undefined.jpg";
 import {RootState} from "@store/root-reducer";
 
 
-export interface IParams {
+export interface IDialogParams {
   id: string
 }
 
 export const Dialog: FC = () => {
 
-  const {id} = useParams<IParams>();
+  const {id} = useParams<IDialogParams>();
   const dispatch = useDispatch();
 
   const {userName, userPhoto, dialog, authUserId} =

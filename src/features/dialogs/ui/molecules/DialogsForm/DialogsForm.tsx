@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import {dialogsActions} from "@dialogs/modules/dialogs";
 import {useParams} from "react-router";
 import classes from "./DialogsForm.module.scss";
-import {IParams} from "@dialogs/ui/molecules/Dialog/Dialog";
+import {IDialogParams} from "@dialogs/ui/molecules/Dialog/Dialog";
 
 interface IDialogForm {
   message: string
@@ -14,7 +14,7 @@ export const DialogsForm: FC = () => {
 
   const {register, handleSubmit} = useForm<IDialogForm>();
   const dispatch = useDispatch();
-  const {id} = useParams<IParams>();
+  const {id} = useParams<IDialogParams>();
 
   const onSendMessage = async ({message}: IDialogForm) => {
     await dispatch(dialogsActions.sendMessage(+id, message));
