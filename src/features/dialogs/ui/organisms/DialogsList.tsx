@@ -10,11 +10,11 @@ import {RootState} from "@store/root-reducer";
 export const DialogsList: FC = () => {
 
   const dispatch = useDispatch();
-
+  const isAuth = useSelector((state:RootState) => state.auth.isAuth);
 
   useEffect(() => {
-    dispatch(dialogsActions.getDialogs());
-  }, [dispatch]);
+    if(isAuth) dispatch(dialogsActions.getDialogs());
+  }, [dispatch, isAuth]);
 
   const {dialogs, isFetching} = useSelector((state: RootState) => (
       {
