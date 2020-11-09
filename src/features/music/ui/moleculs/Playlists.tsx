@@ -10,6 +10,7 @@ interface IPlaylistsProps {
 export const Playlists:FC<IPlaylistsProps> = ({playlists}) => {
 
   const playlistsElements = playlists?.map((playlist) => <Card
+      key={playlist.id}
     id={playlist.id} pictureLink={playlist.link}
     picture={playlist.picture_big}
     // title={playlist.title}

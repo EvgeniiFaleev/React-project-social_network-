@@ -14,7 +14,7 @@ export const UsersSearch: FC<IUsesrsSearchProps> = ({searchTerm, onSearch, onCha
         <p><input autoComplete="off" onKeyDown={onSearch}
             placeholder="Find User" type="text"
             value={searchTerm} onChange={onChange}/>
-          <i className="fa fa-search"></i>
+          <i className="fa fa-search"/>
         </p>
       </div>
 

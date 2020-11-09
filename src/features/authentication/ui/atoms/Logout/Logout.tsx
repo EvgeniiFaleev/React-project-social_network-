@@ -13,7 +13,7 @@ export const Logout: FC<ILogoutProps> = ({isMobile}) => {
   const dispatch: TDispatch = useDispatch();
   const onLogout = (): Promise<void> => dispatch(authActions.logout());
 
-  return <li className={(!isMobile || styles.logout) as string}
+  return <li className={(isMobile ? "" : styles.logout)}
       onClick={onLogout}>
     <i className="fa fa-sign-out" aria-hidden="true"/>Logout</li>
 };

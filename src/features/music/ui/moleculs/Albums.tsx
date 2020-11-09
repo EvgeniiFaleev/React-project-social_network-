@@ -10,6 +10,7 @@ interface IAlbumsProps {
 export const Albums:FC<IAlbumsProps> = ({albums}) => {
 
   const albumsElements: Array<ReactNode> | undefined  = albums?.map((album) => <Card
+      key={album.id}
     id={album.id} picture={album.cover_big}
     artistName={album.artist.name}
     title={album.title}

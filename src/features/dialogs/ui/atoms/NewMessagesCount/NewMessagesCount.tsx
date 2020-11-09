@@ -12,7 +12,7 @@ export const NewMessagesCount: FC = () => {
 
   useEffect(() => {
    if (isAuth) dispatch(dialogsActions.getNewMessagesCount());
-  }, [dispatch]);
+  }, [dispatch, isAuth]);
 
   const newMessagesCount: number = useSelector((state: RootState) => state.dialogs.newMessages);
 

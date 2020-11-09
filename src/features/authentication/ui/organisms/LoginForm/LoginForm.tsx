@@ -26,7 +26,6 @@ export const LoginForm: FC<ILoginFormProps> = ({captchaUrl}) => {
   return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div><input name='email' className={classes.common_input}
-            onChange={() => console.log(errors)}
             ref={register({
               required: "Please  enter your email"
             })}

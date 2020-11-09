@@ -1,7 +1,6 @@
 import * as  types from "./types"
 import * as authActions from "../authorization/actions";
 import {AppThunkType, TDispatch} from "@store";
-import exp from "constants";
 
 // ==========Action Creators======================
 export interface InitSuccessActionType {
@@ -26,7 +25,9 @@ export const toggleIsFetching = (isFetching: boolean): ToggleFetchingActionType 
     }
 );
 
-export type InitActions = InitSuccessActionType | ToggleFetchingActionType;
+export type InitActions =
+    InitSuccessActionType
+    | ToggleFetchingActionType;
 // =====================Thunk Creators====================
 
 export const initializeApp = (): AppThunkType => (dispatch: TDispatch) => {

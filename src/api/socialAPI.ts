@@ -223,7 +223,6 @@ const dialogsAPI = {
   getDialogs(): Promise<Array<DialogsItemType> | void > {
     return instance.get("/dialogs")
         .then((response) => {
-          console.log(response);
           return response.data
         }).catch((e)=> console.log(e));
   },
@@ -242,7 +241,6 @@ const dialogsAPI = {
   getDialog(id:number): Promise<Array<DialogType>> {
     return instance.get(`dialogs/${id}/messages/new?newerThen=2020-02-04T16:01:53.417`)
         .then((response) => {
-          console.log(response.data.items);
           return response.data
         });
   }

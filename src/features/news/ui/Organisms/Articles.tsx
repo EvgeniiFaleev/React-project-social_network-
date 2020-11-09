@@ -13,8 +13,8 @@ export const Articles: FC = () => {
       state.news.articles
   ));
 
-  let articleElements: Array<ReactNode> | undefined | string = articles?.map((item) => {
-    return <Article {...item}/>
+  let articleElements: Array<ReactNode> | undefined | string = articles?.map((item,index) => {
+    return <Article key={index} {...item}/>
   });
 
   if (articleElements?.length === 0) {

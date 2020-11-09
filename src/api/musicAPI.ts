@@ -120,7 +120,6 @@ export const musicApi = {
   search(query: string): Promise<IMusicCategory<ITracks> | void> {
     return instance.get(`/search?q=${query}`)
         .then((response: AxiosResponse<IMusicCategory<ITracks>>) => {
-          debugger
           return response.data
         }).catch((err) => console.log(err))
   }

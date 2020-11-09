@@ -23,7 +23,7 @@ export const FriendsBar:FC<IFriendsBarProps> = ({clearPage}) => {
 
   const friendsElements = friends.map((friend) => {
     return (
-      <div className={styles.friend}>
+      <div key={friend.id} className={styles.friend}>
         <Link to={`/profile/${friend.id}`}>
           <img className={styles.friendPhoto}
             src={friend.photos?.small || avatar_undefined}

@@ -40,8 +40,6 @@ export const newsAPI = {
     return instance.get(`/${type}?${country}${category}${query}&apiKey=9f6b4297388249849db6c199fd357b24`)
         .then((response: AxiosResponse<INewsData>) => {
           if (response.data.status === "ok") {
-            console.log(response.data.articles);
-            debugger
             return response.data.articles
           } else {
             console.log(response);

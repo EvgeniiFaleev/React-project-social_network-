@@ -13,8 +13,9 @@ interface IProfileInfoProps {
   profile: ProfileType
   myAva_img: string
   authUserId: number
+  isAuth: boolean
 }
-export const ProfileInfo:FC<IProfileInfoProps> = ({userId, profile, authUserId, myAva_img}) => {
+export const ProfileInfo:FC<IProfileInfoProps> = ({userId, profile, authUserId, myAva_img, isAuth}) => {
 
   const dispatch = useDispatch();
 
@@ -32,8 +33,8 @@ export const ProfileInfo:FC<IProfileInfoProps> = ({userId, profile, authUserId, 
   };
 
   useEffect(() => {
-    dispatch(profileActions.isUserFollowed(userId));
-  }, [dispatch, userId]);
+    if(isAuth) dispatch(profileActions.isUserFollowed(userId));
+  }, [dispatch, userId, isAuth]);
 
 
   return (

@@ -11,19 +11,19 @@ interface IPodcastsProps {
 export const Podcasts: FC<IPodcastsProps> = ({podcasts}) => {
 
   const podcastsElements: Array<ReactNode> | undefined = podcasts?.map((podcast) => {
-    return <Card
-      id={podcast.id} pictureLink={podcast.link}
-      picture={podcast.picture_big}>
+    return <Card key={podcast.id}
+        id={podcast.id} pictureLink={podcast.link}
+        picture={podcast.picture_big}>
       <p
-        className={classes.podcast_description}>{podcast.description}</p>
+          className={classes.podcast_description}>{podcast.description}</p>
     </Card>
   });
 
   return (
-    <>
-      <Cards header="Top Podcasts">
-        {podcastsElements}
-      </Cards>
-    </>
+      <>
+        <Cards header="Top Podcasts">
+          {podcastsElements}
+        </Cards>
+      </>
   )
 };

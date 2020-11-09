@@ -10,7 +10,7 @@ interface IArtistsProps {
 export const Artists: FC<IArtistsProps> = ({artists}) => {
 
   const artistsElements: Array<ReactNode> | undefined = artists?.map((artist) =>
-      <Card
+      <Card key={artist.id}
           id={artist.id} link={artist.link}
           picture={artist.picture_big}
           artistName={artist.name}

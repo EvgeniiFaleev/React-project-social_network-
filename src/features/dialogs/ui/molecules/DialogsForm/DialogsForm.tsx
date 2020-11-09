@@ -25,7 +25,6 @@ export const DialogsForm: FC = () => {
   const onResize = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const el = e.currentTarget;
     setTimeout(function () {
-      console.log(el.scrollTop);
       el.style.height = "auto";
       el.style.height = el.scrollHeight + "px";
     }, 0);

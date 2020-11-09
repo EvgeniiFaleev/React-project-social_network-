@@ -17,8 +17,8 @@ interface IPlayerProps {
   initPlayer: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 
-export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatch, state, initPlayer},
-                                                                        ref) => {
+export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(
+    ({dispatch, state, initPlayer}, ref) => {
 
   const trackRef = ref as React.RefObject<HTMLAudioElement>;
   const hintRef = useRef<HTMLElement>(null);
@@ -29,8 +29,7 @@ export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatc
     }
 
     const nextTrackNumber = state.currentNumber + 1;
-    const query = "div[data-track_number='" + `${nextTrackNumber}` +
-        "']";
+    const query = `div[data-track_number=${nextTrackNumber}]`;
 
     const nextTrack = document.querySelector<HTMLDivElement>(`${query}`);
     dispatch(playerActions.nextSong({
@@ -41,11 +40,11 @@ export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatc
       title: nextTrack!.dataset.track_title!
     }));
   };
+
   const onBackward = (): void => {
     if (state.currentNumber <= 0) return;
     const prevTrackNumber = state.currentNumber - 1;
-    const query = "div[data-track_number='" + `${prevTrackNumber}` +
-        "']";
+    const query = `div[data-track_number=${prevTrackNumber}]`;
     const prevTrack = document.querySelector<HTMLDivElement>(`${query}`);
     dispatch(playerActions.prevSong({
       currentSrc: prevTrack!.dataset.url_track!,
@@ -65,7 +64,8 @@ export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatc
   };
 
   const playingProgress = (e: SyntheticEvent<HTMLAudioElement>) => {
-    const duration = trackRef.current!.duration;
+    let duration = trackRef.current!.duration;
+    if(isNaN(duration)) return;
     const currentSecond = converter(trackRef.current!.currentTime);
     dispatch(playerActions.setProgress({
       progress: trackRef.current!.currentTime / duration * 100,
@@ -101,6 +101,7 @@ export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatc
     trackRef.current!.volume = state.volume / 100;
   }, [state.volume, trackRef]);
 
+
   return (
       <div className={styles.player}>
         <audio ref={trackRef} onTimeUpdate={playingProgress}
@@ -113,9 +114,8 @@ export const Player = React.forwardRef<HTMLAudioElement, IPlayerProps>(({dispatc
           <img
               src={state.currentAlbum} alt="player_album"/>
           {state.isPlaying ?
-              <i className={"fa fa-pause" + " " + styles.pause}/> :
-              <i className={"fa fa-play" + " " + styles.play}/>}
-
+              <i className={`fa fa-pause ${styles.pause}`}/> :
+              <i className={`fa fa-play ${styles.play}`}/>}
         </div>
         <div className={styles.arrows}>
           <i className="fa fa-step-backward" onClick={onBackward}

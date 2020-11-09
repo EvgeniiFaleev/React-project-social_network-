@@ -39,7 +39,7 @@ export const Tracks: FC<ITracksProps> = ({tracks, children}) => {
   }, [tracks]);
 
 
-  const initPlayer = (e:React.MouseEvent<HTMLDivElement>) => {
+  const initPlayer = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.currentTarget.dataset.url_track && state.currentSrc !==
         e.currentTarget.dataset.url_track) {
       dispatch((
@@ -59,9 +59,12 @@ export const Tracks: FC<ITracksProps> = ({tracks, children}) => {
 
   const onPlay = (): void => {
     if (trackRef.current!.paused) {
-      trackRef.current!.play();
+      const playPromise = trackRef.current!.play();
+      // Fix Uncaught Error: The error you provided does not contain a stack trace.
+      if (playPromise) playPromise.catch(() => {
+      });
+      //==========================================================================
       dispatch(playerActions.toggleIsPlaying(true));
-      console.log("play")
     } else {
       trackRef.current!.pause();
       dispatch(playerActions.toggleIsPlaying(false));
@@ -70,10 +73,12 @@ export const Tracks: FC<ITracksProps> = ({tracks, children}) => {
 
   useEffect(() => {
 
-    return () => { //we have old state here that`s why track dont
+    return () => {
+      //we have old state here that`s why track dont
       // play when first
       // song dispatch happened
-      if (state.currentSrc.length > 0) onPlay()};
+      if (state.currentSrc.length > 0) onPlay()
+    };
   }, [state.currentNumber, state.currentSrc.length]);
 
   const tracksElements = tracks?.map((track, index) => {

@@ -4,7 +4,6 @@ import {useAuthRedirect} from "@auth/hooks/useAuthRedirect";
 import {Preloader} from "@ui";
 import {ProfileInfo} from "@profile/ui/organisms/ProfileInfo/ProfileInfo";
 import * as profileActions from "@profile/modules/profile/actions";
-import profileCommon from "@profile/ui/assets/profileCommon.jpg";
 import avatarUndefined from "@ui/assets/images/avatar-undefined.jpg"
 import {useParams} from "react-router";
 import {RootState} from "@store/root-reducer";
@@ -49,6 +48,7 @@ export const Profile: FC = () => {
                   <ProfileInfo authUserId={authUserId as number}
                       profile={profile}
                       userId={userId as number}
+                      isAuth={isAuth}
                       // head_img={profileCommon}
                       myAva_img={profile.photos?.small || avatarUndefined}
                   />

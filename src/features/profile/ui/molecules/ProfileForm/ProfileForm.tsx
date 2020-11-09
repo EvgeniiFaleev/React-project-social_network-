@@ -50,9 +50,9 @@ export const ProfileForm: FC<IProfileFormProps> = ({
 
   };
 
-  const contactItems = Object.entries(contacts!).map((item) => {
+  const contactItems = Object.entries(contacts!).map((item, index) => {
 
-    return <p className={classes.contacts_item}>{item[0].charAt(0)
+    return <p key={index} className={classes.contacts_item}>{item[0].charAt(0)
         .toUpperCase() + item[0].slice(1)}:
       <input className={classes.contacts_input}
           onChange={() => triggerValidation("contacts." + item[0])}

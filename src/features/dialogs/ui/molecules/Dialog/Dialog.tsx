@@ -34,7 +34,7 @@ export const Dialog: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   const messages: Array<ReactNode> | undefined = dialog?.map((message, index, arr) => {
-    return <Message message={message}
+    return <Message key={message.id} message={message}
 
         ref={arr.length - 1 === index ?
             ref :

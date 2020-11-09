@@ -1,5 +1,5 @@
 import classes from "@music/Music.module.scss";
-import {Tracks} from "@music/ui/moleculs/Tracks/Tracks";
+import {Tracks} from "@music/ui/organisms/Tracks/Tracks";
 import {Artists} from "@music/ui/moleculs/Artists";
 import {Albums} from "@music/ui/moleculs/Albums";
 import {Podcasts} from "@music/ui/moleculs/Podcasts";

@@ -1,16 +1,16 @@
-import React, { FC } from "react";
+import React, {FC} from "react";
 import {musicActions} from "@music/modules/music";
-import {Tracks} from "@music/ui//moleculs/Tracks/Tracks";
+import {Tracks} from "@music/ui/organisms/Tracks/Tracks";
 import {Arrow} from "@ui/atoms/Arrow/Arrow";
-import {IMusicCategory, ITracks} from "@api/musicAPI";
+import {ITracks} from "@api/musicAPI";
 import {TDispatch} from "@store/index";
 
 export interface ISearchResultsProps {
-  searchResults : undefined | Array<ITracks>
+  searchResults: undefined | Array<ITracks>
   dispatch: TDispatch
 }
 
-export const SearchResults:FC<ISearchResultsProps> = ({searchResults, dispatch}) => {
+export const SearchResults: FC<ISearchResultsProps> = ({searchResults, dispatch}) => {
 
 
   const onBackToChart = (): void => {
@@ -20,10 +20,10 @@ export const SearchResults:FC<ISearchResultsProps> = ({searchResults, dispatch})
 
   return (
 
-    <Tracks tracks={searchResults}>
-      <>
-        <Arrow back={onBackToChart}/> Search Results
-      </>
-    </Tracks>
+      <Tracks tracks={searchResults}>
+        <>
+          <Arrow back={onBackToChart}/> Search Results
+        </>
+      </Tracks>
   )
 };

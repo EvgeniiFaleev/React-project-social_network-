@@ -129,7 +129,6 @@ export const updateStatus = (status: string): AppThunkType<Promise<void>> => (di
 
 export const savePhoto = (photoFile: File): AppThunkType<Promise<void>> => async (dispatch: TDispatch) => {
   let response = await profileAPI.setPhoto(photoFile);
-  debugger
   dispatch(updatePhoto(response.data.photos))
 };
 export const saveProfile = (profile: ProfileType) => async (dispatch: TDispatch, getState: () => RootState) => {
