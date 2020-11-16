@@ -10,10 +10,10 @@ import {RootState} from "@store/root-reducer";
 export const DialogsList: FC = () => {
 
   const dispatch = useDispatch();
-  const isAuth = useSelector((state:RootState) => state.auth.isAuth);
+  const isAuth = useSelector((state: RootState) => state.auth.isAuth);
 
   useEffect(() => {
-    if(isAuth) dispatch(dialogsActions.getDialogs());
+    if (isAuth) dispatch(dialogsActions.getDialogs());
   }, [dispatch, isAuth]);
 
   const {dialogs, isFetching} = useSelector((state: RootState) => (
@@ -23,7 +23,6 @@ export const DialogsList: FC = () => {
       }
   ), shallowEqual);
 
-
   let dialogsElems: Array<ReactNode> | null = null;
 
   if (dialogs) {
@@ -31,7 +30,6 @@ export const DialogsList: FC = () => {
       return <DialogDescription key={dialog.id} {...dialog}/>;
     });
   }
-
 
   return (
       <>
